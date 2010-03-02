@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace EmailReader.Model
+{
+  public class CombinedFilter : IFilter, IObserver, ISubject
+  {
+    protected Subject subject;
+    protected IFilter filter1, filter2;
+    string _Name;
+    public string Name
+    {
+      get { return _Name; }
+    }
+
+    public CombinedFilter(IFilter f1, IFilter f2)
+    {
+        this.filter1 = f1;
+        this.filter2 = f2;
+    }
+
+      public virtual bool apply(int emailID)
+    { return false; }
+
+      public void updateEdit(Object o)
+      {
+      }
+      public void updateDelete()
+      {
+      }
+      public void AttachObserver(IObserver o)
+      {
+          subject.AttachObserver(o);
+      }
+      public void notifyObserver()
+      {
+          subject.notifyObserver();
+      }
+      public void DetachObserver(IObserver o)
+      {
+          subject.DetachObserver(o);
+      }
+  }
+}

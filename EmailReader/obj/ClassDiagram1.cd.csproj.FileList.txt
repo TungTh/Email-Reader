@@ -1,0 +1,5 @@
+obj\Debug\EmailReader.exe
+obj\Debug\EmailReader.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\EmailReader.Properties.Resources.resources
+obj\Debug\ClassDiagram1.cd.csproj.GenerateResource.Cache
