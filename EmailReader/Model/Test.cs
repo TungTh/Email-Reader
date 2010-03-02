@@ -11,7 +11,7 @@ namespace EmailReader.Model
 {
   public partial class Test : Form
   {
-    ActionHandle actionHandle = new ActionHandle();
+    ActionHandler actionHandle = new ActionHandler();
     int _currentActionNumber = 0;
     public Test()
     {

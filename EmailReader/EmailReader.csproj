@@ -37,7 +37,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Action.cs" />
-    <Compile Include="Model\ActionHandle.cs" />
+    <Compile Include="Model\ActionHandler.cs" />
     <Compile Include="Model\BasicFilter.cs" />
     <Compile Include="Model\CombinedFilter.cs" />
     <Compile Include="Model\CombinedFilter_AND.cs" />
