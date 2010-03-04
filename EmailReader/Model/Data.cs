@@ -7,51 +7,42 @@ namespace EmailReader.Model
 {
   public static class Data
   {
-    static Dictionary<int, IEmail> _Emails;
+    static List<IEmail> _Emails;
 
-    static Dictionary<int, ITag> _Tags;
+    static List<ITag> _Tags;
 
-    static Dictionary<int, IFilter> _Filters;
+    static List<IFilter> _Filters;
 
     static public ICollection<IEmail> getEmailCollection()
     {
-      return Data._Emails.Values;
+      return Data._Emails;
     }
 
     static public ICollection<ITag> getTagCollection()
     {
-      return Data._Tags.Values;
+      return Data._Tags;
     }
 
     static public ICollection<IFilter> getFilterCollection()
     {
-      return Data._Filters.Values;
+      return Data._Filters;
     }
+
     #region Tags
-    static public void insertTag(string tagName) { }
+    static public void insertTag(ITag tag) { }
 
-    static public void removeTag(string tagName) { }
+    static public void removeTag(ITag tag) { }
 
-    static public void renameTag(string tagName, string newName) { }
-
-    static public Tag getTag(string tagName) { return null; }
     #endregion
 
-    #region Emails
-    static public void getEmail(int emailID) { }
-    #endregion
-
+ 
     #region Filters
 
-    static public void insertFilter(IFilter filter){}
+    static public void insertFilter(IFilter filter) { }
 
-    static public void removeFilter(string filterName){}
+    static public void removeFilter(IFilter filter) { }
 
-    static public void updateFilter(string filterName, IFilter newFilter) { }
-
-    static public IFilter getFilter(string filterName) { return null; }
-
-#endregion
+    #endregion
 
   }
 }

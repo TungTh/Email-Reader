@@ -13,9 +13,8 @@ namespace EmailReader.Model
       get { return _ID; }
     }
 
-    public Email(int emailID)
+    public Email()
     {
-      _ID = emailID;
     }
 
   }

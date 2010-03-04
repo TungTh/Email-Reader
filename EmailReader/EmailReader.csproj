@@ -36,41 +36,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Action.cs" />
-    <Compile Include="Model\ActionHandler.cs" />
+    <Compile Include="Model\Command\Action.cs" />
+    <Compile Include="Model\Command\ActionHandler.cs" />
     <Compile Include="Model\BasicFilter.cs" />
     <Compile Include="Model\CombinedFilter.cs" />
     <Compile Include="Model\CombinedFilter_AND.cs" />
     <Compile Include="Model\CombinedFilter_OR.cs" />
     <Compile Include="Model\Data.cs" />
-    <Compile Include="Model\DeleteBasicFilter.cs" />
-    <Compile Include="Model\DeleteComboFilter.cs" />
-    <Compile Include="Model\DeleteTag.cs" />
+    <Compile Include="Model\Test\DeleteBasicFilter.cs" />
+    <Compile Include="Model\Test\DeleteComboFilter.cs" />
+    <Compile Include="Model\Test\DeleteTag.cs" />
     <Compile Include="Model\Email.cs" />
     <Compile Include="Model\Filter_NOT.cs" />
-    <Compile Include="Model\IAction.cs" />
+    <Compile Include="Model\Command\IAction.cs" />
     <Compile Include="Model\IEmail.cs" />
     <Compile Include="Model\IFilter.cs" />
-    <Compile Include="Model\InsertBasicFilter.cs" />
-    <Compile Include="Model\InsertComboFilter.cs" />
-    <Compile Include="Model\InsertTag.cs" />
+    <Compile Include="Model\Test\InsertBasicFilter.cs" />
+    <Compile Include="Model\Test\InsertComboFilter.cs" />
+    <Compile Include="Model\Test\InsertTag.cs" />
     <Compile Include="Model\IOperator.cs" />
     <Compile Include="Model\ITag.cs" />
-    <Compile Include="Model\Macro.cs" />
-    <Compile Include="Model\ReverseOrderMacro.cs" />
+    <Compile Include="Model\Command\Macro.cs" />
+    <Compile Include="Model\Command\ReverseOrderMacro.cs" />
     <Compile Include="Model\Tag.cs" />
-    <Compile Include="Model\ISubject.cs" />
-    <Compile Include="Model\Subject.cs" />
-    <Compile Include="Model\IObserver.cs" />
-    <Compile Include="Model\Test.cs">
+    <Compile Include="Model\Observer\ISubject.cs" />
+    <Compile Include="Model\Observer\Subject.cs" />
+    <Compile Include="Model\Observer\IObserver.cs" />
+    <Compile Include="Model\Test\Test.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Model\Test.Designer.cs">
+    <Compile Include="Model\Test\Test.Designer.cs">
       <DependentUpon>Test.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Model\Test.resx">
+    <EmbeddedResource Include="Model\Test\Test.resx">
       <SubType>Designer</SubType>
       <DependentUpon>Test.cs</DependentUpon>
     </EmbeddedResource>
@@ -85,6 +85,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="ClassDiagram1.cd" />
+    <None Include="Interfaces.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

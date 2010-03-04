@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using EmailReader.Model.Observer;
 
 namespace EmailReader.Model
 {
@@ -12,7 +13,7 @@ namespace EmailReader.Model
         {
             get { return _Name; }
         }
-        public bool apply(int emailID)
+        public bool apply(IEmail email)
         {
             return false;
         }      

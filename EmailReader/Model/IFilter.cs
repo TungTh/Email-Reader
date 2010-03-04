@@ -7,7 +7,7 @@ namespace EmailReader.Model
   public interface IFilter
   {
     string Name { get;}
-    bool apply(int emailID);
+    bool apply(IEmail email);
   }
 
 }

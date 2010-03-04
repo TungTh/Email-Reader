@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using EmailReader.Model.Observer;
 
 namespace EmailReader.Model
 {
@@ -28,7 +29,7 @@ namespace EmailReader.Model
         {
         }
 
-        public bool apply(int emailID)
+        public bool apply(IEmail email)
         { return false; }
 
         public void AttachObserver(IObserver o)

@@ -3,11 +3,12 @@ namespace EmailReader.Model
 {
   public interface ITag
   {
-    void editEmailTag(int emailID, string newValue);
-    string getEmailTag(int emailID);
+    void editEmailTag(IEmail email, string newValue);
+    string getEmailTag(IEmail email);
     bool IsDefaultTag { get; }
     string Name { get; }
-    void tagEmail(int emailID, string value);
-    void untagEmail(int emailID);
+    void tagEmail(IEmail email, string value);
+    void untagEmail(IEmail email);
+    void rename(string newName);
   }
 }

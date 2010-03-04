@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-
+using EmailReader.Model.Observer;
 namespace EmailReader.Model
 {
   public class Tag : EmailReader.Model.ITag
@@ -25,15 +25,17 @@ namespace EmailReader.Model
     {        
     }
 
-    public void tagEmail(int emailID, string value) { }
+    public void tagEmail(IEmail email, string value) { }
 
-    public void untagEmail(int emailID) { }
+    public void untagEmail(IEmail email) { }
 
-    public void editEmailTag(int emailID, string newValue) { }
+    public void editEmailTag(IEmail email, string newValue) { }
 
-    public string getEmailTag(int emailID)
+    public string getEmailTag(IEmail email)
     {
-      return _TaggedEmails[emailID];
+      return null;
     }
+
+    public void rename(string newName) { }
   }
 }

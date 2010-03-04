@@ -10,7 +10,7 @@ namespace EmailReader.Model
         {
             
         }
-        public override bool apply(int emailID)
+        public override bool apply(IEmail email)
         {
             return false;
         }

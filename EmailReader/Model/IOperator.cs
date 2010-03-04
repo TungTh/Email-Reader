@@ -6,7 +6,6 @@ namespace EmailReader.Model
 {
   public interface IOperator
   {
-
     string Name { get;}
 
     bool validateInput(string value, string criteria);

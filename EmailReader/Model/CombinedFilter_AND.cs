@@ -10,7 +10,7 @@ namespace EmailReader.Model
             : base(f1, f2)
         {
         }
-        public override bool apply(int EmailID)
+        public override bool apply(IEmail email)
         {
             return false;
         }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using EmailReader.Model.Observer;
 
 namespace EmailReader.Model
 {
@@ -20,7 +21,7 @@ namespace EmailReader.Model
         this.filter2 = f2;
     }
 
-      public virtual bool apply(int emailID)
+      public virtual bool apply(IEmail email)
     { return false; }
 
       public void updateEdit(Object o)
