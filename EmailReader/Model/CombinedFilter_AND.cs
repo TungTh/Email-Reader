@@ -8,10 +8,10 @@ namespace EmailReader.Model
     {
         public CombinedFilter_AND(IFilter f1, IFilter f2)
             : base(f1, f2)
-        {
-        }
+        { }
         public override bool apply(IEmail email)
         {
+         
             return false;
         }
 

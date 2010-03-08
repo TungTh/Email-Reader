@@ -19,23 +19,44 @@ namespace EmailReader.Model
       get { return _IsDefaultTag; }
     }
 
-    Dictionary<int, string> _TaggedEmails = new Dictionary<int, string>();
+    Dictionary<IEmail, string> _TaggedEmails = new Dictionary<IEmail, string>();
 
-    protected Tag()
-    {        
+    protected Tag(string name, bool isDefault)
+    {
+      _Name = name;
+      _IsDefaultTag = isDefault;
     }
 
-    public void tagEmail(IEmail email, string value) { }
+    public void tagEmail(IEmail email, string value)
+    {
+      if (!_TaggedEmails.ContainsKey(email))
+        _TaggedEmails.Add(email, value);
+      else throw new Exception("This email was already existed");
+    }
 
-    public void untagEmail(IEmail email) { }
+    public void untagEmail(IEmail email)
+    {
+      if (_TaggedEmails.ContainsKey(email))
+        _TaggedEmails.Remove(email);
+      else throw new Exception("This email can not untag because it was not existed");
+    }
 
-    public void editEmailTag(IEmail email, string newValue) { }
+    public void editEmailTag(IEmail email, string newValue)
+    {
+      untagEmail(email);
+      tagEmail(email, newValue);
+    }
 
     public string getEmailTag(IEmail email)
     {
-      return null;
-    }
+      if (!_TaggedEmails.ContainsKey(email))
+        throw new Exception("This email was not existed");
+        return _TaggedEmails[email] ;
 
-    public void rename(string newName) { }
+    }
+    public void rename(string newName) {
+      this.Name = newName;
+    }
   }
 }
+

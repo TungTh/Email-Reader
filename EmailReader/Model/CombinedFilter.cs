@@ -17,30 +17,28 @@ namespace EmailReader.Model
 
     public CombinedFilter(IFilter f1, IFilter f2)
     {
-        this.filter1 = f1;
-        this.filter2 = f2;
+      this.filter1 = f1;
+      this.filter2 = f2;
     }
 
-      public virtual bool apply(IEmail email)
-    { return false; }
+    public virtual bool apply(IEmail email)
+    {
+     throw  new System.NotImplementedException(); }
 
-      public void updateEdit(Object o)
-      {
-      }
-      public void updateDelete()
-      {
-      }
-      public void AttachObserver(IObserver o)
-      {
-          subject.AttachObserver(o);
-      }
-      public void notifyObserver()
-      {
-          subject.notifyObserver();
-      }
-      public void DetachObserver(IObserver o)
-      {
-          subject.DetachObserver(o);
-      }
+    public void updateDelete()
+    {
+    }
+    public void AttachObserver(IObserver o)
+    {
+      subject.AttachObserver(o);
+    }
+    public void notifyObserver()
+    {
+      subject.notifyObserver();
+    }
+    public void DetachObserver(IObserver o)
+    {
+      subject.DetachObserver(o);
+    }
   }
 }
