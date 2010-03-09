@@ -4,7 +4,7 @@ using System.Text;
 using EmailReader.Model.Observer;
 namespace EmailReader.Model
 {
-  public class Tag : EmailReader.Model.ITag
+  public class Tag : EmailReader.Model.ITag, ISubject
   {
     private Subject subject;
     string _Name;
@@ -12,7 +12,6 @@ namespace EmailReader.Model
     {
       get { return _Name; }
     }
-
     bool _IsDefaultTag;
     public bool IsDefaultTag
     {
@@ -25,6 +24,7 @@ namespace EmailReader.Model
     {
       _Name = name;
       _IsDefaultTag = isDefault;
+      subject = new Subject();
     }
 
     public void tagEmail(IEmail email, string value)
@@ -57,6 +57,19 @@ namespace EmailReader.Model
     public void rename(string newName) {
       this.Name = newName;
     }
+      void AttachObserver(IObserver o)
+      {
+          subject.AttachObserver(o);
+      }
+      void notifyObserver()
+      {
+          subject.notifyObserver();
+      }
+      void DetachObserver(IObserver o)
+      {
+          subject.DetachObserver(o);
+      }
+
   }
 }
 
