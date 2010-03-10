@@ -17,7 +17,7 @@ namespace EmailReader.Model
 
     public CombinedFilter(IFilter f1, IFilter f2)
     {
-      this.filter1 = f1;
+      this.filter1 = f1 ;
       this.filter2 = f2;
     }
 
@@ -27,6 +27,7 @@ namespace EmailReader.Model
 
     public void updateDelete()
     {
+
     }
     public void AttachObserver(IObserver o)
     {

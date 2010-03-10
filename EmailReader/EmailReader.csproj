@@ -62,6 +62,7 @@
     <Compile Include="Model\Observer\ISubject.cs" />
     <Compile Include="Model\Observer\Subject.cs" />
     <Compile Include="Model\Observer\IObserver.cs" />
+    <Compile Include="Model\Test\Operator_AND.cs" />
     <Compile Include="Model\Test\Test.cs">
       <SubType>Form</SubType>
     </Compile>
