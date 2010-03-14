@@ -8,6 +8,7 @@ namespace EmailReader.Model
     public class BasicFilter : IFilter, IObserver, ISubject
     {
         private Subject subject;
+        private ISubject targetSubject;
         private string criteria;
         string _Name;
         public string Name
@@ -18,21 +19,40 @@ namespace EmailReader.Model
         ITag _Tag;
         IOperator _Operator;
 
+        #region Constructor
         public BasicFilter(ITag tag, IOperator filterOperator, string criteria)
         {
             _Tag = tag;
             _Operator = filterOperator;
             this.criteria = criteria;
+            subject = new Subject();
         }
 
+        #endregion
+
+        #region Methods
         public bool apply(IEmail email)
         {
             return _Operator.apply(_Tag.getEmailTag(email), criteria);
         }
+        #endregion
+
+        #region Observer
         public void updateDelete()
         {
+            /* When Tag is deleted, tag will notify to BasicFilter
+             * - Tags will detach BasicFilter
+             * - BasicFilter notify to its observers
+             * - Data remove this BasicFilter
+             */
+            targetSubject.DetachObserver(this);
+            notifyObserver();
+            Data.removeFilter(this);
 
         }
+        #endregion
+
+        #region Observable
         public void AttachObserver(IObserver o)
         {
             subject.AttachObserver(o);
@@ -45,6 +65,6 @@ namespace EmailReader.Model
         {
             subject.DetachObserver(o);
         }
-
+        #endregion
     }
 }

@@ -9,11 +9,17 @@ namespace EmailReader.Model
     {
         private Subject subject;
         private IFilter filter;
+        private ISubject targetSubject;
         string _Name;
+
+        #region Constructor
         public Filter_NOT(IFilter filter)
         {
             this.filter = filter;
+            subject = new Subject();
         }
+        #endregion 
+
         public string Name
         {
             get { return _Name; }
@@ -21,18 +27,31 @@ namespace EmailReader.Model
         public bool apply(IEmail email)
         {
             return !this.filter;
-        }      
+        }
+
+        #region Obseverble
         public void AttachObserver(IObserver o)
         {
+            subject.AttachObserver(o);
         }
         public void notifyObserver()
         {
+            subject.notifyObserver();
         }
         public void DetachObserver(IObserver o)
         {
+            subject.DetachObserver(o);
         }
+
+        #endregion
+
+        #region Observer
         public void updateDelete()
         {
+            targetSubject.DetachObserver(this);
+            notifyObserver();
+            Data.removeFilter(this);
         }
+        #endregion
     }
 }
