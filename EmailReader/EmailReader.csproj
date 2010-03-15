@@ -43,17 +43,11 @@
     <Compile Include="Model\CombinedFilter_AND.cs" />
     <Compile Include="Model\CombinedFilter_OR.cs" />
     <Compile Include="Model\Data.cs" />
-    <Compile Include="Model\Test\DeleteBasicFilter.cs" />
-    <Compile Include="Model\Test\DeleteComboFilter.cs" />
-    <Compile Include="Model\Test\DeleteTag.cs" />
     <Compile Include="Model\Email.cs" />
     <Compile Include="Model\Filter_NOT.cs" />
     <Compile Include="Model\Command\IAction.cs" />
     <Compile Include="Model\IEmail.cs" />
     <Compile Include="Model\IFilter.cs" />
-    <Compile Include="Model\Test\InsertBasicFilter.cs" />
-    <Compile Include="Model\Test\InsertComboFilter.cs" />
-    <Compile Include="Model\Test\InsertTag.cs" />
     <Compile Include="Model\IOperator.cs" />
     <Compile Include="Model\ITag.cs" />
     <Compile Include="Model\Command\Macro.cs" />
@@ -62,19 +56,8 @@
     <Compile Include="Model\Observer\ISubject.cs" />
     <Compile Include="Model\Observer\Subject.cs" />
     <Compile Include="Model\Observer\IObserver.cs" />
-    <Compile Include="Model\Test\Operator_AND.cs" />
-    <Compile Include="Model\Test\Test.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Model\Test\Test.Designer.cs">
-      <DependentUpon>Test.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Model\Test\Test.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>Test.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
