@@ -14,7 +14,7 @@ namespace EmailReader
     {
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
-      Application.Run(new Model.Test());
+      Application.Run(new MainScreen());
     }
 
   }

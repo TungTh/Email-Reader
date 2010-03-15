@@ -36,6 +36,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MainScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainScreen.Designer.cs">
+      <DependentUpon>MainScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Command\Action.cs" />
     <Compile Include="Model\Command\ActionHandler.cs" />
     <Compile Include="Model\BasicFilter.cs" />
@@ -44,6 +50,12 @@
     <Compile Include="Model\CombinedFilter_OR.cs" />
     <Compile Include="Model\Data.cs" />
     <Compile Include="Model\Email.cs" />
+    <Compile Include="FilterManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FilterManager.Designer.cs">
+      <DependentUpon>FilterManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Filter_NOT.cs" />
     <Compile Include="Model\Command\IAction.cs" />
     <Compile Include="Model\IEmail.cs" />
@@ -56,8 +68,23 @@
     <Compile Include="Model\Observer\ISubject.cs" />
     <Compile Include="Model\Observer\Subject.cs" />
     <Compile Include="Model\Observer\IObserver.cs" />
+    <Compile Include="Model\Test\Operator_AND.cs" />
+    <Compile Include="Model\Test\Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Model\Test\Test.Designer.cs">
+      <DependentUpon>Test.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="MainScreen.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MainScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FilterManager.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FilterManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
