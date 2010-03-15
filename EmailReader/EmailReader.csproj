@@ -68,6 +68,16 @@
     <Compile Include="Model\Observer\ISubject.cs" />
     <Compile Include="Model\Observer\Subject.cs" />
     <Compile Include="Model\Observer\IObserver.cs" />
+<<<<<<< HEAD
+=======
+    <Compile Include="Model\Test\Operator_AND.cs" />
+    <Compile Include="Model\Test\Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Model\Test\Test.Designer.cs">
+      <DependentUpon>Test.cs</DependentUpon>
+    </Compile>
+>>>>>>> 073385604e7cb4c43b005122ddf700c7333361a3
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MainScreen.resx">

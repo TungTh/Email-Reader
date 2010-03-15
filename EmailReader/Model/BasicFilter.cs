@@ -8,30 +8,31 @@ namespace EmailReader.Model
     public class BasicFilter : IFilter, IObserver, ISubject
     {
         private Subject subject;
+        private string criteria;
         string _Name;
         public string Name
         {
             get { return _Name; }
             set { _Name = value; }
         }
-        string _TagName;
+        ITag _Tag;
         IOperator _Operator;
 
-        public BasicFilter(string tagName, IOperator filterOperator, string criteria)
+        public BasicFilter(ITag tag, IOperator filterOperator, string criteria)
         {
-            _TagName = tagName;
+            _Tag = tag;
             _Operator = filterOperator;
-        }
-        public void updateEdit(Object o)
-        {
-        }
-        public void updateDelete()
-        {
+            this.criteria = criteria;
         }
 
         public bool apply(IEmail email)
-        { return false; }
+        {
+            return _Operator.apply(_Tag.getEmailTag(email), criteria);
+        }
+        public void updateDelete()
+        {
 
+        }
         public void AttachObserver(IObserver o)
         {
             subject.AttachObserver(o);

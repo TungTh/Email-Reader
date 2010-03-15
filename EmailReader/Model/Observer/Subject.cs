@@ -11,14 +11,23 @@ namespace EmailReader.Model.Observer
         {
             listObservers = new List<IObserver>();
         }
-      public void AttachObserver(IObserver o)
+        public void AttachObserver(IObserver o)
         {
+            if (!listObservers.Contains(o))
+                listObservers.Add(o);
+            else throw new DuplicateWaitObjectException();
         }
         public void notifyObserver()
         {
+            foreach (IObserver item in listObservers)
+                item.updateDelete();
         }
         public void DetachObserver(IObserver o)
         {
+            if (listObservers.Contains(o))
+                listObservers.Remove(o);
+            else
+                throw new KeyNotFoundException();
         }
     }
 }
