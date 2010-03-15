@@ -6,3 +6,22 @@ D:\TungTh\TmpDownload\WorkingSpace\SPM\EmailReader\EmailReader\obj\Debug\EmailRe
 D:\TungTh\TmpDownload\WorkingSpace\SPM\EmailReader\EmailReader\obj\Debug\EmailReader.exe
 D:\TungTh\TmpDownload\WorkingSpace\SPM\EmailReader\EmailReader\obj\Debug\EmailReader.pdb
 D:\TungTh\TmpDownload\WorkingSpace\SPM\EmailReader\EmailReader\obj\Debug\EmailReader.Model.Test.resources
+E:\NHH\Master of Infomation Technology\SPM\EmailReaderHaiNH\EmailReader\obj\Debug\EmailReader.exe
+E:\NHH\Master of Infomation Technology\SPM\EmailReaderHaiNH\EmailReader\obj\Debug\EmailReader.pdb
+E:\NHH\Master of Infomation Technology\SPM\EmailReaderHaiNH\EmailReader\obj\Debug\ResolveAssemblyReference.cache
+E:\NHH\Master of Infomation Technology\SPM\EmailReaderHaiNH\EmailReader\obj\Release\ResolveAssemblyReference.cache
+E:\NHH\Master of Infomation Technology\SPM\EmailReaderHaiNH\EmailReader\obj\Release\EmailReader.Properties.Resources.resources
+E:\NHH\Master of Infomation Technology\SPM\EmailReaderHaiNH\EmailReader\obj\Release\EmailReader.csproj.GenerateResource.Cache
+E:\NHH\Master of Infomation Technology\SPM\EmailReaderHaiNH\EmailReader\obj\Release\EmailReader.Form2.resources
+E:\NHH\Master of Infomation Technology\SPM\EmailReaderHaiNH\EmailReader\bin\Release\EmailReader.exe
+E:\NHH\Master of Infomation Technology\SPM\EmailReaderHaiNH\EmailReader\bin\Release\EmailReader.pdb
+E:\NHH\Master of Infomation Technology\SPM\EmailReaderHaiNH\EmailReader\obj\Release\EmailReader.exe
+E:\NHH\Master of Infomation Technology\SPM\EmailReaderHaiNH\EmailReader\obj\Release\EmailReader.pdb
+E:\NHH\Master of Infomation Technology\SPM\EmailReaderHaiNH\EmailReader\obj\Debug\EmailReader.MainScreen.resources
+E:\NHH\Master of Infomation Technology\SPM\EmailReaderHaiNH\EmailReader\obj\Debug\EmailReader.Properties.Resources.resources
+E:\NHH\Master of Infomation Technology\SPM\EmailReaderHaiNH\EmailReader\obj\Debug\EmailReader.Form2.resources
+E:\NHH\Master of Infomation Technology\SPM\EmailReaderHaiNH\EmailReader\obj\Debug\EmailReader.csproj.GenerateResource.Cache
+E:\NHH\Master of Infomation Technology\SPM\EmailReaderHaiNH\EmailReader\bin\Debug\EmailReader.exe
+E:\NHH\Master of Infomation Technology\SPM\EmailReaderHaiNH\EmailReader\bin\Debug\EmailReader.pdb
+E:\EmailReaderHaiNH\EmailReader\obj\Debug\EmailReader.exe
+E:\EmailReaderHaiNH\EmailReader\obj\Debug\EmailReader.pdb
