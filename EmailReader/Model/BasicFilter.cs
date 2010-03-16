@@ -5,10 +5,9 @@ using EmailReader.Model.Observer;
 
 namespace EmailReader.Model
 {
-    public class BasicFilter : IFilter, IObserver, ISubject
-    {
-        private Subject subject;
-        private ISubject targetSubject;
+    public class BasicFilter :  IObserver
+    {       
+        private TagSubject tagSubject;     
         private string criteria;
         string _Name;
         public string Name
@@ -16,24 +15,24 @@ namespace EmailReader.Model
             get { return _Name; }
             set { _Name = value; }
         }
-        ITag _Tag;
+        
         IOperator _Operator;
 
         #region Constructor
-        public BasicFilter(ITag tag, IOperator filterOperator, string criteria)
+        public BasicFilter(TagSubject tagSubject, IOperator filterOperator, string criteria)
         {
-            _Tag = tag;
+            this.tagSubject = tagSubject;
             _Operator = filterOperator;
             this.criteria = criteria;
-            subject = new Subject();
+            tagSubject.AttachObserver(this);
+            
         }
-
         #endregion
 
         #region Methods
         public bool apply(IEmail email)
         {
-            return _Operator.apply(_Tag.getEmailTag(email), criteria);
+            return _Operator.apply(tagSubject.getEmailTag(email), criteria);
         }
         #endregion
 
@@ -45,25 +44,10 @@ namespace EmailReader.Model
              * - BasicFilter notify to its observers
              * - Data remove this BasicFilter
              */
-            targetSubject.DetachObserver(this);
+            tagSubject.DetachObserver(this);
             notifyObserver();
             Data.removeFilter(this);
 
-        }
-        #endregion
-
-        #region Observable
-        public void AttachObserver(IObserver o)
-        {
-            subject.AttachObserver(o);
-        }
-        public void notifyObserver()
-        {
-            subject.notifyObserver();
-        }
-        public void DetachObserver(IObserver o)
-        {
-            subject.DetachObserver(o);
         }
         #endregion
     }

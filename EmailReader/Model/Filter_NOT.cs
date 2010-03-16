@@ -17,6 +17,7 @@ namespace EmailReader.Model
         {
             this.filter = filter;
             subject = new Subject();
+            targetSubject.AttachObserver(this);
         }
         #endregion 
 

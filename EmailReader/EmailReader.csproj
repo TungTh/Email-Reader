@@ -43,6 +43,8 @@
     <Compile Include="Model\CombinedFilter_AND.cs" />
     <Compile Include="Model\CombinedFilter_OR.cs" />
     <Compile Include="Model\Data.cs" />
+    <Compile Include="Model\Observer\FilterSubject.cs" />
+    <Compile Include="Model\Observer\TagSubject.cs" />
     <Compile Include="Model\Test\DeleteBasicFilter.cs" />
     <Compile Include="Model\Test\DeleteComboFilter.cs" />
     <Compile Include="Model\Test\DeleteTag.cs" />

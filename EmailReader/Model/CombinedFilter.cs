@@ -9,7 +9,9 @@ namespace EmailReader.Model
     {
         protected Subject subject;
         protected IFilter filter1, filter2;
-        protected ISubject targetSubject;
+        protected ISubject targetSubject1;
+        private ISubject targetSubject2;
+        
         string _Name;
         public string Name
         {
@@ -20,6 +22,7 @@ namespace EmailReader.Model
         {
             this.filter1 = f1;
             this.filter2 = f2;
+            targetSubject1.AttachObserver(f1);
         }
 
         public virtual bool apply(IEmail email)
