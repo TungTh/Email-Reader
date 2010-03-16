@@ -11,7 +11,7 @@ namespace EmailReader.Model.Observer
         {
             listObservers = new List<IObserver>();
         }
-        public void AttachObserver(IObserver o)
+        public void attachObserver(IObserver o)
         {
             if (!listObservers.Contains(o))
                 listObservers.Add(o);
@@ -22,7 +22,7 @@ namespace EmailReader.Model.Observer
             foreach (IObserver item in listObservers)
                 item.updateDelete();
         }
-        public void DetachObserver(IObserver o)
+        public void detachObserver(IObserver o)
         {
             if (listObservers.Contains(o))
                 listObservers.Remove(o);

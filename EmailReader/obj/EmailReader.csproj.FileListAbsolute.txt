@@ -5,7 +5,6 @@ D:\TungTh\TmpDownload\WorkingSpace\SPM\EmailReader\EmailReader\obj\Debug\EmailRe
 D:\TungTh\TmpDownload\WorkingSpace\SPM\EmailReader\EmailReader\obj\Debug\EmailReader.csproj.GenerateResource.Cache
 D:\TungTh\TmpDownload\WorkingSpace\SPM\EmailReader\EmailReader\obj\Debug\EmailReader.exe
 D:\TungTh\TmpDownload\WorkingSpace\SPM\EmailReader\EmailReader\obj\Debug\EmailReader.pdb
-D:\TungTh\TmpDownload\WorkingSpace\SPM\EmailReader\EmailReader\obj\Debug\EmailReader.Model.Test.resources
 E:\NHH\Master of Infomation Technology\SPM\EmailReaderHaiNH\EmailReader\obj\Debug\EmailReader.exe
 E:\NHH\Master of Infomation Technology\SPM\EmailReaderHaiNH\EmailReader\obj\Debug\EmailReader.pdb
 E:\NHH\Master of Infomation Technology\SPM\EmailReaderHaiNH\EmailReader\obj\Debug\ResolveAssemblyReference.cache
@@ -25,3 +24,5 @@ E:\NHH\Master of Infomation Technology\SPM\EmailReaderHaiNH\EmailReader\bin\Debu
 E:\NHH\Master of Infomation Technology\SPM\EmailReaderHaiNH\EmailReader\bin\Debug\EmailReader.pdb
 E:\EmailReaderHaiNH\EmailReader\obj\Debug\EmailReader.exe
 E:\EmailReaderHaiNH\EmailReader\obj\Debug\EmailReader.pdb
+D:\TungTh\TmpDownload\WorkingSpace\SPM\EmailReader\EmailReader\obj\Debug\EmailReader.MainScreen.resources
+D:\TungTh\TmpDownload\WorkingSpace\SPM\EmailReader\EmailReader\obj\Debug\EmailReader.Model.FilterCreation.resources

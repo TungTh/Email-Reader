@@ -260,7 +260,6 @@ namespace EmailReader
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "MainScreen";
             this.Text = "MainScreen";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();

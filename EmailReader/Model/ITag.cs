@@ -5,7 +5,7 @@ namespace EmailReader.Model
   {
     void editEmailTag(IEmail email, string newValue);
     string getEmailTag(IEmail email);
-    bool IsDefaultTag { get; }
+    bool isDefaultTag { get; }
     string Name { get; }
     void tagEmail(IEmail email, string value);
     void untagEmail(IEmail email);
