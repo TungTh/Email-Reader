@@ -1,7 +1,0 @@
-D:\TungTh\TmpDownload\WorkingSpace\SPM\EmailReader\EmailReader\obj\Debug\ResolveAssemblyReference.cache
-D:\TungTh\TmpDownload\WorkingSpace\SPM\EmailReader\EmailReader\obj\Debug\EmailReader.Properties.Resources.resources
-D:\TungTh\TmpDownload\WorkingSpace\SPM\EmailReader\EmailReader\obj\Debug\ClassDiagram1.cd.csproj.GenerateResource.Cache
-D:\TungTh\TmpDownload\WorkingSpace\SPM\EmailReader\EmailReader\obj\Debug\EmailReader.exe
-D:\TungTh\TmpDownload\WorkingSpace\SPM\EmailReader\EmailReader\obj\Debug\EmailReader.pdb
-D:\TungTh\TmpDownload\WorkingSpace\SPM\EmailReader\EmailReader\bin\Debug\EmailReader.exe
-D:\TungTh\TmpDownload\WorkingSpace\SPM\EmailReader\EmailReader\bin\Debug\EmailReader.pdb
