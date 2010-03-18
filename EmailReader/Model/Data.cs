@@ -13,6 +13,36 @@ namespace EmailReader.Model
 
     static List<IFilter> _Filters;
 
+    static Data()
+    {
+      _Emails = new List<IEmail>();
+      _Tags = new List<ITag>();
+      _Filters = new List<IFilter>();
+
+      
+
+      //create default tags
+      ObservableTag _fromTag = new Tag("From", true);
+      ObservableTag _toTag = new Tag("To", true);
+      ObservableTag _contentTag = new Tag("Content", true);
+      ObservableTag _sentTag = new Tag("SentDate", true);
+
+      _Tags.Add(_fromTag);
+      _Tags.Add(_toTag);
+      _Tags.Add(_contentTag);
+      _Tags.Add(_sentTag);
+
+      for (int i = 0; i < 100; i++)
+      {
+        Email email = new Email(i);
+        _Emails.Add(email);
+        _fromTag.tagEmail(email, "Sender " + i.ToString());
+        _toTag.tagEmail(email, "Receiver " + (i % 5).ToString());
+        _contentTag.tagEmail(email, "This is testing email " +i.ToString());
+        _sentTag.tagEmail(email, "2010-03-18 09:"+(i%60).ToString().PadLeft(2,'0'));
+      }
+    }
+
     static public ICollection<IEmail> getEmailCollection()
     {
       return Data._Emails;
@@ -35,7 +65,6 @@ namespace EmailReader.Model
 
     #endregion
 
- 
     #region Filters
 
     static public void insertFilter(IFilter filter) { }

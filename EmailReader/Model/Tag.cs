@@ -9,7 +9,7 @@ namespace EmailReader.Model
   {
     Dictionary<IEmail, string> _TaggedEmails = new Dictionary<IEmail, string>();
 
-    protected Tag(string name, bool isDefault) : base(name, isDefault) { }
+    public Tag(string name, bool isDefault) : base(name, isDefault) { }
 
     public override void tagEmail(IEmail email, string value)
     {
