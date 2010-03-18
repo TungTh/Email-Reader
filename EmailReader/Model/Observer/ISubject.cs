@@ -6,8 +6,8 @@ namespace EmailReader.Model.Observer
 {
     public interface ISubject
     {
-        void AttachObserver(IObserver o);
+        void attachObserver(IObserver o);
         void notifyObserver();
-        void DetachObserver(IObserver o);
+        void detachObserver(IObserver o);
     }
 }

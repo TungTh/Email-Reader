@@ -5,8 +5,12 @@ using EmailReader.Model.Observer;
 
 namespace EmailReader.Model
 {
-    class Filter_NOT : IFilter, IObserver, ISubject
+  class Filter_NOT : AbstractFilter
+  {
+    private IFilter filter;
+    public Filter_NOT(string name,IFilter filter):base(name)
     {
+
         private Subject subject;
         private IFilter filter;
         private ISubject targetSubject;
@@ -54,5 +58,9 @@ namespace EmailReader.Model
             Data.removeFilter(this);
         }
         #endregion
+
+   
     }
+ 
+  }
 }
