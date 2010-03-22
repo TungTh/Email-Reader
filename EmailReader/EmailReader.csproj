@@ -70,7 +70,6 @@
     <Compile Include="Model\CombinedFilter_AND.cs" />
     <Compile Include="Model\CombinedFilter_OR.cs" />
     <Compile Include="Model\Data.cs" />
-
     <Compile Include="Model\Email.cs" />
     <Compile Include="FilterManager.cs">
       <SubType>Form</SubType>
@@ -86,6 +85,8 @@
     <Compile Include="Model\ITag.cs" />
     <Compile Include="Model\Command\Macro.cs" />
     <Compile Include="Model\Command\ReverseOrderMacro.cs" />
+    <Compile Include="Model\StringContainsOperator.cs" />
+    <Compile Include="Model\StringEqualOperator.cs" />
     <Compile Include="Model\Tag.cs" />
     <Compile Include="Model\Observer\ISubject.cs" />
     <Compile Include="Model\Observer\Subject.cs" />

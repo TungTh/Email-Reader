@@ -19,7 +19,7 @@ namespace EmailReader.Model
       _Tags = new List<ITag>();
       _Filters = new List<IFilter>();
 
-      
+
 
       //create default tags
       ObservableTag _fromTag = new Tag("From", true);
@@ -38,8 +38,8 @@ namespace EmailReader.Model
         _Emails.Add(email);
         _fromTag.tagEmail(email, "Sender " + i.ToString());
         _toTag.tagEmail(email, "Receiver " + (i % 5).ToString());
-        _contentTag.tagEmail(email, "This is testing email " +i.ToString());
-        _sentTag.tagEmail(email, "2010-03-18 09:"+(i%60).ToString().PadLeft(2,'0'));
+        _contentTag.tagEmail(email, "This is testing email " + i.ToString());
+        _sentTag.tagEmail(email, "2010-03-18 09:" + (i % 60).ToString().PadLeft(2, '0'));
       }
     }
 
@@ -59,18 +59,15 @@ namespace EmailReader.Model
     }
 
     #region Tags
-    static public void insertTag(ITag tag) { }
+    static public void insertTag(ITag tag) { _Tags.Add(tag); }
 
-    static public void removeTag(ITag tag) { }
-
+    static public void removeTag(ITag tag) { _Tags.Remove(tag); }
     #endregion
 
     #region Filters
+    static public void insertFilter(IFilter filter) { _Filters.Add(filter); }
 
-    static public void insertFilter(IFilter filter) { }
-
-    static public void removeFilter(IFilter filter) { }
-
+    static public void removeFilter(IFilter filter) { _Filters.Remove(filter); }
     #endregion
 
   }
