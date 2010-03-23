@@ -9,10 +9,10 @@ namespace EmailReader.Model
   {
     private AbstractFilter filter;
 
-    public Filter_NOT(string name, AbstractFilter filter)
+    public Filter_NOT(string name, IFilter filter)
       : base(name)
     {
-      this.filter = filter;
+      this.filter = (AbstractFilter) filter;
       this.filter.attachObserver(this);
     }
 
