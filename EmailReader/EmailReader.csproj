@@ -69,7 +69,7 @@
     <Compile Include="Model\CombinedFilter.cs" />
     <Compile Include="Model\CombinedFilter_AND.cs" />
     <Compile Include="Model\CombinedFilter_OR.cs" />
-    <Compile Include="Model\Data.cs" />
+    <Compile Include="Data.cs" />
     <Compile Include="Model\Email.cs" />
     <Compile Include="FilterManager.cs">
       <SubType>Form</SubType>

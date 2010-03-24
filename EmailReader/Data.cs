@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Collections;
-
-namespace EmailReader.Model
+using EmailReader.Model;
+namespace EmailReader
 {
   public static class Data
   {
@@ -67,7 +67,11 @@ namespace EmailReader.Model
     #region Filters
     static public void insertFilter(IFilter filter) { _Filters.Add(filter); }
 
-    static public void removeFilter(IFilter filter) { _Filters.Remove(filter); }
+    static public void removeFilter(IFilter filter)
+    {
+      filter.notifyObserver();
+      _Filters.Remove(filter);
+    }
     #endregion
 
   }
