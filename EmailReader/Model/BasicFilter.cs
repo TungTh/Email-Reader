@@ -14,7 +14,7 @@ namespace EmailReader.Model
     {
       _Tag = tag;
       _Operator = filterOperator;
-      this.criteria = criteria;
+      this.criteria = criteria;               
     }
     public override bool apply(IEmail email)
     {
@@ -22,7 +22,9 @@ namespace EmailReader.Model
     }
     public override void updateDelete()
     {
-
+        _Tag.detachObserver(this);
+        notifyObserver();
+        Data.removeFilter(this);
 
     }
   }

@@ -7,9 +7,9 @@ namespace EmailReader.Model
 {
   public class Filter_NOT : AbstractFilter
   {
-    private AbstractFilter filter;
+    private IFilter filter;
 
-    public Filter_NOT(string name, AbstractFilter filter)
+    public Filter_NOT(string name, IFilter filter)
       : base(name)
     {
       this.filter = filter;

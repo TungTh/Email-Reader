@@ -4,7 +4,7 @@ using System.Text;
 using EmailReader.Model.Observer;
 namespace EmailReader.Model
 {
-  public abstract class ObservableTag : ITag, Observer.ISubject
+  public abstract class ObservableTag : ITag
   {
     Subject _subject = new Subject();
     protected string _name = null;

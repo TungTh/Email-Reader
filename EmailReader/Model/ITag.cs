@@ -1,7 +1,8 @@
 ﻿using System;
+using EmailReader.Model.Observer;
 namespace EmailReader.Model
 {
-  public interface ITag
+  public interface ITag : ISubject
   {
     void editEmailTag(IEmail email, string newValue);
     string getEmailTag(IEmail email);
