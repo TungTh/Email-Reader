@@ -4,7 +4,7 @@ using System.Text;
 using EmailReader.Model.Observer;
 namespace EmailReader.Model
 {
-  public abstract class AbstractFilter : IFilter, ISubject, IObserver
+  public abstract class AbstractFilter : IFilter
   {
     string _name = null;
     Subject _subject = new Subject();
