@@ -19,5 +19,10 @@ namespace EmailReader
         {
 
         }
+
+      private void MainScreen_Load(object sender, EventArgs e)
+      {
+        Testing.MainTest test= new EmailReader.Testing.MainTest();
+      }
     }
 }

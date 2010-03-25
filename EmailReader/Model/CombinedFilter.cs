@@ -21,10 +21,9 @@ namespace EmailReader.Model
     {
         filter1.detachObserver(this);
         filter2.detachObserver(this);
-        notifyObserver();
+        // don't need to call "notifyObservers" function 
+        // removeFilter method will call it.
         Data.removeFilter(this);      
     }
-
   }
-
 }

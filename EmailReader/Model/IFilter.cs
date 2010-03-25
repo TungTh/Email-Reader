@@ -10,5 +10,4 @@ namespace EmailReader.Model
     string Name { get;}
     bool apply(IEmail email);
   }
-
 }

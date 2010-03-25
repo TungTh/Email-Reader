@@ -17,6 +17,5 @@ namespace EmailReader.Model
     {
       _ID = ID;
     }
-
   }
 }

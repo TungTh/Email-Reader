@@ -12,7 +12,7 @@ namespace EmailReader.Model
     public Filter_NOT(string name, IFilter filter)
       : base(name)
     {
-      this.filter = (AbstractFilter) filter;
+      this.filter = filter;
       this.filter.attachObserver(this);
     }
 
@@ -29,8 +29,5 @@ namespace EmailReader.Model
       Data.removeFilter(this);
     }
     #endregion
-
-
   }
-
 }

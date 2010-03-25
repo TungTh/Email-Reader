@@ -2,11 +2,20 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace EmailReader.Model
+namespace EmailReader.Model.Operator
 {
-  public class StringEqualOperator : EmailReader.Model.IOperator
+  public class StringEquals : EmailReader.Model.IOperator
   {
-    #region IOperator Members
+    static IOperator _operator = null;
+
+    public static IOperator getInstance()
+    {
+      if (_operator == null)
+        _operator = new StringEquals();
+      return _operator;
+    }
+
+    private StringEquals() { }
 
     public string Name
     {
@@ -22,7 +31,5 @@ namespace EmailReader.Model
     {
       return value == criteria;
     }
-
-    #endregion
   }
 }

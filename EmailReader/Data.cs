@@ -19,8 +19,6 @@ namespace EmailReader
       _Tags = new List<ITag>();
       _Filters = new List<IFilter>();
 
-
-
       //create default tags
       ObservableTag _fromTag = new Tag("From", true);
       ObservableTag _toTag = new Tag("To", true);
@@ -61,7 +59,11 @@ namespace EmailReader
     #region Tags
     static public void insertTag(ITag tag) { _Tags.Add(tag); }
 
-    static public void removeTag(ITag tag) { _Tags.Remove(tag); }
+    static public void removeTag(ITag tag)
+    {
+      tag.notifyObserver();
+      _Tags.Remove(tag);
+    }
     #endregion
 
     #region Filters

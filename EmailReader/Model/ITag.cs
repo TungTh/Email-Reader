@@ -11,6 +11,6 @@ namespace EmailReader.Model
     void tagEmail(IEmail email, string value);
     void untagEmail(IEmail email);
     void rename(string newName);
-
+    bool hasTag(IEmail email);
   }
 }
