@@ -123,6 +123,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Testing\MainTest.cs" />
+    <Compile Include="View\EmailBriefInfo.cs" />
+    <Compile Include="View\FilterBriefInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">

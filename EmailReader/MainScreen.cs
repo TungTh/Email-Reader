@@ -6,11 +6,18 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using EmailReader.Model;
+using EmailReader.Model.Operator;
+using EmailReader.View;
+using System.Collections;
 
 namespace EmailReader
 {
     public partial class MainScreen : Form
     {
+        //for displaying List of Tags and List of Emails
+        ArrayList arrEmailInfo = new ArrayList();
+        ArrayList arrFilterInfo = new ArrayList();
+
         public MainScreen()
         {
             InitializeComponent();
@@ -31,7 +38,7 @@ namespace EmailReader
                 if (tag.isDefaultTag == true)
                 {
                     string tagValue = tag.getEmailTag(email);
-                    MessageBox.Show(tag.Name+" = "+ tagValue);
+                    MessageBox.Show(tag.Name + " = " + tagValue);
                 }
             }
 
@@ -58,7 +65,7 @@ namespace EmailReader
             ITag fromTag = arrTag.Current;
 
             //tao operator
-            IOperator strContainOper= new StringContainsOperator();
+            IOperator strContainOper = StringContaining.getInstance();
 
             IFilter basicFilter = new BasicFilter("From John", fromTag, strContainOper, "9");
 
@@ -67,7 +74,7 @@ namespace EmailReader
             foreach (IEmail e in Data.getEmailCollection())
             {
                 if (basicFilter.apply(e))
-                    MessageBox.Show("tim thay roi:"+fromTag.getEmailTag(e));
+                    MessageBox.Show("tim thay roi:" + fromTag.getEmailTag(e));
             }
         }
 
@@ -79,7 +86,7 @@ namespace EmailReader
             ITag fromTag = arrTag.Current;
 
             //tao operator
-            IOperator strContainOper = new StringContainsOperator();
+            IOperator strContainOper = StringContaining.getInstance();
 
             AbstractFilter basicFilter = new BasicFilter("From 9", fromTag, strContainOper, "9");
             IFilter notFilter = new Filter_NOT("Not from 9", basicFilter);
@@ -99,11 +106,11 @@ namespace EmailReader
             arrTag.MoveNext();
             ITag fromTag = arrTag.Current;
             arrTag.MoveNext();
-            ITag toTag = arrTag.Current;            
+            ITag toTag = arrTag.Current;
 
             //tao operator
-            IOperator strContainOper = new StringContainsOperator();
-            
+            IOperator strContainOper = StringContaining.getInstance();
+
             IFilter filterForm5 = new BasicFilter("From 5", fromTag, strContainOper, "5");
             IFilter filterTo2 = new BasicFilter("To 2", toTag, strContainOper, "2");
             AbstractFilter filterFrom5AndTo2 = new CombinedFilter_AND("From 5 and to 2", filterForm5, filterTo2);
@@ -113,7 +120,7 @@ namespace EmailReader
             foreach (IEmail e in Data.getEmailCollection())
             {
                 if (filterFrom5AndTo2.apply(e))
-                    MessageBox.Show("tim thay roi:" + fromTag.getEmailTag(e) +toTag.getEmailTag(e));
+                    MessageBox.Show("tim thay roi:" + fromTag.getEmailTag(e) + toTag.getEmailTag(e));
             }
         }
 
@@ -128,7 +135,7 @@ namespace EmailReader
             ITag toTag = arrTag.Current;
 
             //tao operator
-            IOperator strContainOper = new StringContainsOperator();
+            IOperator strContainOper = StringContaining.getInstance();
 
             IFilter filterForm5 = new BasicFilter("From 5", fromTag, strContainOper, "5");
             IFilter filterTo2 = new BasicFilter("To 2", toTag, strContainOper, "2");
@@ -143,16 +150,103 @@ namespace EmailReader
             }
         }
 
+        private bool testEmailWithFilters(IEmail e,ICollection<IFilter> selectedFilters)
+        {
+            bool ret = true;
+
+            if (selectedFilters != null)
+            {
+                foreach (IFilter f in selectedFilters)
+                {
+                    if (f.apply(e) == false)
+                    {
+                        ret = false;
+                        break;
+                    }
+                }
+            }
+
+            return ret;
+        }
+
+        //show list of emails
+        private void showEmailList(ICollection<IFilter> selectedFilters)
+        {
+            dtgListEmail.DataSource = null;
+            arrEmailInfo.Clear();
+
+            //find default tags
+            IEnumerator<ITag> arrTag = Data.getTagCollection().GetEnumerator();
+            arrTag.MoveNext();
+            ITag from_tag = arrTag.Current;
+            arrTag.MoveNext();
+            ITag to_tag = arrTag.Current;
+            arrTag.MoveNext();
+            ITag subject_tag = arrTag.Current;
+            arrTag.MoveNext();
+            ITag send_date_tag = arrTag.Current;
+
+            //build arr 
+            foreach (IEmail e in Data.getEmailCollection())
+            {
+                if (testEmailWithFilters(e, selectedFilters))
+                {
+                    EmailBriefInfo eInfo = new EmailBriefInfo(e);
+                    eInfo.Date = send_date_tag.getEmailTag(e);
+                    eInfo.From = from_tag.getEmailTag(e);
+                    eInfo.Subject = subject_tag.getEmailTag(e);
+                    arrEmailInfo.Add(eInfo);
+                }
+            }
+
+            //data binding
+            dtgListEmail.DataSource = arrEmailInfo;
+        }
+
+        private void showFilterList()
+        {
+            foreach (IFilter filter in Data.getFilterCollection())
+            {
+                FilterBriefInfo fInfo = new FilterBriefInfo(filter);
+                fInfo.Name = filter.Name;
+                arrFilterInfo.Add(fInfo);
+            }
+
+            dtgFilterList.DataSource = arrFilterInfo;
+            
+        }
+
         private void MainScreen_Load(object sender, EventArgs e)
         {
-
+            showEmailList(null);
+            showFilterList();
         }
-      private void MainScreen_Load(object sender, EventArgs e)
-      {
-        Testing.MainTest test= new EmailReader.Testing.MainTest();
-            //demoHienCacDefaultTag();
-            //demoTaoBasicFilterVaApplyFilter();
-            demoTaoORFilterVaApplyFilter();
-		}
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnApplyFilter_Click(object sender, EventArgs e)
+        {
+            //get selected filters
+            ICollection<IFilter> arrSelectedFilters=new List<IFilter>();
+
+            //check each row of grid to find out selected row
+            for (int i = 0; i < dtgFilterList.Rows.Count; i++)
+            {
+                if ( (dtgFilterList.Rows[i].Cells[0].Value!=null) 
+                    && ((bool)(dtgFilterList.Rows[i].Cells[0].Value) == true) ) 
+                {
+                    //correspond Filter 
+                    arrSelectedFilters.Add( ((FilterBriefInfo)arrFilterInfo[i]).Filter);
+                }
+            }
+            
+            showEmailList(arrSelectedFilters);
+        }
+
+
+
     }
 }
