@@ -37,9 +37,7 @@ namespace EmailReader.Model
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.txtPreview = new System.Windows.Forms.TextBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.cmbFilter = new System.Windows.Forms.ComboBox();
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
@@ -47,9 +45,9 @@ namespace EmailReader.Model
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.comboBox7 = new System.Windows.Forms.ComboBox();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -127,13 +125,11 @@ namespace EmailReader.Model
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.comboBox4);
-            this.groupBox2.Controls.Add(this.txtPreview);
             this.groupBox2.Controls.Add(this.comboBox3);
-            this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.cmbFilter);
             this.groupBox2.Location = new System.Drawing.Point(16, 210);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(530, 132);
+            this.groupBox2.Size = new System.Drawing.Size(530, 73);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Combined Filter";
@@ -150,34 +146,16 @@ namespace EmailReader.Model
             this.comboBox4.TabIndex = 24;
             this.comboBox4.Text = "Select Filter 2";
             // 
-            // txtPreview
-            // 
-            this.txtPreview.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPreview.Location = new System.Drawing.Point(10, 76);
-            this.txtPreview.Multiline = true;
-            this.txtPreview.Name = "txtPreview";
-            this.txtPreview.Size = new System.Drawing.Size(439, 44);
-            this.txtPreview.TabIndex = 22;
-            this.txtPreview.Text = "[From PUF] OR [From M2_Software] AND NOT[Spam] ";
-            // 
             // comboBox3
             // 
             this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Items.AddRange(new object[] {
+            "AND",
+            "OR"});
             this.comboBox3.Location = new System.Drawing.Point(160, 36);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(121, 21);
             this.comboBox3.TabIndex = 21;
-            this.comboBox3.Text = "Select Operator";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 60);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(45, 13);
-            this.label5.TabIndex = 20;
-            this.label5.Tag = "Preview";
-            this.label5.Text = "Preview";
             // 
             // cmbFilter
             // 
@@ -202,7 +180,7 @@ namespace EmailReader.Model
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(255, 486);
+            this.button6.Location = new System.Drawing.Point(255, 409);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(75, 23);
             this.button6.TabIndex = 35;
@@ -211,7 +189,7 @@ namespace EmailReader.Model
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(174, 486);
+            this.button5.Location = new System.Drawing.Point(174, 409);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 23);
             this.button5.TabIndex = 34;
@@ -220,7 +198,7 @@ namespace EmailReader.Model
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(12, 486);
+            this.button2.Location = new System.Drawing.Point(12, 409);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 33;
@@ -229,7 +207,7 @@ namespace EmailReader.Model
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(93, 486);
+            this.button1.Location = new System.Drawing.Point(93, 409);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 32;
@@ -240,12 +218,22 @@ namespace EmailReader.Model
             // 
             this.groupBox3.Controls.Add(this.checkBox1);
             this.groupBox3.Controls.Add(this.comboBox7);
-            this.groupBox3.Location = new System.Drawing.Point(16, 375);
+            this.groupBox3.Location = new System.Drawing.Point(16, 326);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(530, 64);
             this.groupBox3.TabIndex = 38;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Not filter";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(11, 30);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(41, 17);
+            this.checkBox1.TabIndex = 20;
+            this.checkBox1.Text = "not";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // comboBox7
             // 
@@ -262,22 +250,12 @@ namespace EmailReader.Model
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(12, 348);
+            this.radioButton3.Location = new System.Drawing.Point(12, 299);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(129, 17);
             this.radioButton3.TabIndex = 37;
             this.radioButton3.Text = "Create/ edit NOT filter";
             this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(11, 30);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(41, 17);
-            this.checkBox1.TabIndex = 20;
-            this.checkBox1.Text = "not";
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // listBox1
             // 
@@ -340,7 +318,7 @@ namespace EmailReader.Model
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(820, 521);
+            this.ClientSize = new System.Drawing.Size(820, 449);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.button4);
@@ -363,7 +341,6 @@ namespace EmailReader.Model
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
@@ -381,9 +358,7 @@ namespace EmailReader.Model
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.TextBox txtPreview;
         private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cmbFilter;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button6;
