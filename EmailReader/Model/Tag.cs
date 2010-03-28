@@ -38,6 +38,11 @@ namespace EmailReader.Model
       return _TaggedEmails[email];
 
     }
+
+    public override bool hasTag(IEmail email)
+    {
+      return _TaggedEmails.ContainsKey(email);
+    }
   }
 
 }

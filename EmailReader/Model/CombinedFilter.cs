@@ -13,13 +13,17 @@ namespace EmailReader.Model
     {
       this.filter1 = f1;
       this.filter2 = f2;
+      filter1.attachObserver(this);
+      filter2.attachObserver(this);
     }
 
     public override void updateDelete()
     {
-      throw new NotImplementedException();
+        filter1.detachObserver(this);
+        filter2.detachObserver(this);
+        // don't need to call "notifyObservers" function 
+        // removeFilter method will call it.
+        Data.removeFilter(this);      
     }
-
   }
-
 }

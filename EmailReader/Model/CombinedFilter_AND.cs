@@ -13,7 +13,6 @@ namespace EmailReader.Model
         {               
             return filter1.apply(email) && filter2.apply(email);
         }
-
     }
 }
 

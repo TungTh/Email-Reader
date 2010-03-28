@@ -20,7 +20,6 @@ namespace EmailReader
         {
 
         }
-
         void demoHienCacDefaultTag()
         {
             IEnumerator<IEmail> arrEmail = Data.getEmailCollection().GetEnumerator();
@@ -147,9 +146,13 @@ namespace EmailReader
         private void MainScreen_Load(object sender, EventArgs e)
         {
 
+        }
+      private void MainScreen_Load(object sender, EventArgs e)
+      {
+        Testing.MainTest test= new EmailReader.Testing.MainTest();
             //demoHienCacDefaultTag();
             //demoTaoBasicFilterVaApplyFilter();
             demoTaoORFilterVaApplyFilter();
-        }
+		}
     }
 }

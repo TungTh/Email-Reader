@@ -4,7 +4,7 @@ using System.Text;
 using EmailReader.Model.Observer;
 namespace EmailReader.Model
 {
-  public abstract class ObservableTag : ITag, Observer.ISubject
+  public abstract class ObservableTag : ITag
   {
     Subject _subject = new Subject();
     protected string _name = null;
@@ -41,10 +41,12 @@ namespace EmailReader.Model
     {
       _name = newName;
     }
+
     public abstract void editEmailTag(IEmail email, string newValue);
     public abstract string getEmailTag(IEmail email);
     public abstract void tagEmail(IEmail email, string value);
     public abstract void untagEmail(IEmail email);
+    public abstract bool hasTag(IEmail email);
     #endregion
 
   }

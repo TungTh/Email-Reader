@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Collections;
-
-namespace EmailReader.Model
+using EmailReader.Model;
+namespace EmailReader
 {
   public static class Data
   {
@@ -18,8 +18,6 @@ namespace EmailReader.Model
       _Emails = new List<IEmail>();
       _Tags = new List<ITag>();
       _Filters = new List<IFilter>();
-
-
 
       //create default tags
       ObservableTag _fromTag = new Tag("From", true);
@@ -61,13 +59,21 @@ namespace EmailReader.Model
     #region Tags
     static public void insertTag(ITag tag) { _Tags.Add(tag); }
 
-    static public void removeTag(ITag tag) { _Tags.Remove(tag); }
+    static public void removeTag(ITag tag)
+    {
+      tag.notifyObserver();
+      _Tags.Remove(tag);
+    }
     #endregion
 
     #region Filters
     static public void insertFilter(IFilter filter) { _Filters.Add(filter); }
 
-    static public void removeFilter(IFilter filter) { _Filters.Remove(filter); }
+    static public void removeFilter(IFilter filter)
+    {
+      filter.notifyObserver();
+      _Filters.Remove(filter);
+    }
     #endregion
 
   }
