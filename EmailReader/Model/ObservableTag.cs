@@ -6,7 +6,7 @@ namespace EmailReader.Model
 {
   public abstract class ObservableTag : ITag
   {
-    Subject _subject = new Subject();
+    ISubject _subject = new UndoableSubject();
     protected string _name = null;
     protected bool _isDefault = false;
 

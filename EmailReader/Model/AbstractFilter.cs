@@ -7,7 +7,7 @@ namespace EmailReader.Model
   public abstract class AbstractFilter : IFilter
   {
     string _name = null;
-    Subject _subject = new Subject();
+    ISubject _subject = new UndoableSubject();
 
     #region ISubject Members
 
@@ -32,8 +32,15 @@ namespace EmailReader.Model
 
     public abstract bool apply(IEmail email);
 
-    public abstract void updateDelete();
-
+    public void updateDelete()
+    {
+      Data.ActionHandler.beginMacro();
+      notifyObserver();
+      selfDelete();
+      Data.directRemoveFilter(this);
+      Data.ActionHandler.endMacro();
+    }
+    protected abstract void selfDelete();
     public AbstractFilter(string name)
     {
       _name = name;

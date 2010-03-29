@@ -70,6 +70,17 @@
     <Compile Include="Model\CombinedFilter_AND.cs" />
     <Compile Include="Model\CombinedFilter_OR.cs" />
     <Compile Include="Data.cs" />
+    <Compile Include="Model\Command\AttachObserver.cs" />
+    <Compile Include="Model\Command\DettachObserver.cs" />
+    <Compile Include="Model\Command\EditEmailTag.cs" />
+    <Compile Include="Model\Command\IActionHandler.cs" />
+    <Compile Include="Model\Command\InsertFilter.cs" />
+    <Compile Include="Model\Command\InsertTag.cs" />
+    <Compile Include="Model\Command\RemoveFilter.cs" />
+    <Compile Include="Model\Command\RemoveTag.cs" />
+    <Compile Include="Model\Command\RenameTag.cs" />
+    <Compile Include="Model\Command\TagEmail.cs" />
+    <Compile Include="Model\Command\UntagEmail.cs" />
     <Compile Include="Model\Email.cs" />
     <Compile Include="FilterManager.cs">
       <SubType>Form</SubType>
@@ -83,8 +94,8 @@
     <Compile Include="Model\IFilter.cs" />
     <Compile Include="Model\IOperator.cs" />
     <Compile Include="Model\ITag.cs" />
-    <Compile Include="Model\Command\Macro.cs" />
     <Compile Include="Model\Command\ReverseOrderMacro.cs" />
+    <Compile Include="Model\Observer\UndoableSubject.cs" />
     <Compile Include="Model\Operator\StringContaining.cs" />
     <Compile Include="Model\Operator\StringEquals.cs" />
     <Compile Include="Model\Tag.cs" />
@@ -92,6 +103,7 @@
     <Compile Include="Model\Observer\Subject.cs" />
     <Compile Include="Model\Observer\IObserver.cs" />
     <Compile Include="Model\ObservableTag.cs" />
+    <Compile Include="Model\UndoableTag.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MainScreen.resx">

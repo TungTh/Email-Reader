@@ -4,7 +4,7 @@ using System.Text;
 using System.Collections;
 using EmailReader.Model;
 using EmailReader.Model.Operator;
-
+using EmailReader.Model.Command;
 namespace EmailReader
 {
   public static class Data
@@ -14,6 +14,8 @@ namespace EmailReader
     static List<ITag> _Tags;
 
     static List<IFilter> _Filters;
+
+    public static IActionHandler ActionHandler = new ActionHandler();
 
     public static ITag FromTag = new Tag("From", true);
     public static ITag ToTag = new Tag("To", true);
@@ -49,44 +51,71 @@ namespace EmailReader
       //hai add default filter
       IFilter filterForm5 = new BasicFilter("From 5", FromTag, StringContaining.getInstance(), "5");
       IFilter filterTo2 = new BasicFilter("To 2", ToTag, StringContaining.getInstance(), "2");
-      _Filters.Add(filterForm5);
-      _Filters.Add(filterTo2);
+      insertFilter(filterForm5);
+      insertFilter(filterTo2);
+      //_Filters.Add(filterForm5);
+      //_Filters.Add(filterTo2);
     }
 
-    static public ICollection<IEmail> getEmailCollection()
+    public static ICollection<IEmail> getEmailCollection()
     {
       return Data._Emails;
     }
 
-    static public ICollection<ITag> getTagCollection()
+    public static ICollection<ITag> getTagCollection()
     {
       return Data._Tags;
     }
 
-    static public ICollection<IFilter> getFilterCollection()
+    public static ICollection<IFilter> getFilterCollection()
     {
       return Data._Filters;
     }
 
     #region Tags
-    static public void insertTag(ITag tag) { _Tags.Add(tag); }
-
-    static public void removeTag(ITag tag)
+    public static void insertTag(ITag tag)
     {
+      ActionHandler.storeAction(new RemoveTag(tag));
+      _Tags.Add(tag);
+    }
+
+    public static void removeTag(ITag tag)
+    {
+      ActionHandler.beginMacro();
       tag.notifyObserver();
+      ActionHandler.storeAction(new InsertTag(tag));
       _Tags.Remove(tag);
+      ActionHandler.endMacro();
     }
     #endregion
 
     #region Filters
-    static public void insertFilter(IFilter filter) { _Filters.Add(filter); }
-
-    static public void removeFilter(IFilter filter)
+    public static void insertFilter(IFilter filter)
     {
-      filter.notifyObserver();
+      ActionHandler.storeAction(new RemoveFilter(filter));
+      _Filters.Add(filter);
+    }
+
+    public static void removeFilter(IFilter filter)
+    {
+      filter.updateDelete();
+    }
+
+    internal static void directRemoveFilter(IFilter filter)
+    {
+      ActionHandler.storeAction(new InsertFilter(filter));
       _Filters.Remove(filter);
     }
     #endregion
 
+    public static void undo()
+    {
+      ActionHandler.undo();
+    }
+
+    public static void redo()
+    {
+      ActionHandler.redo();
+    }
   }
 }

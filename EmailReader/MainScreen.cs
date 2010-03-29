@@ -27,7 +27,7 @@ namespace EmailReader
     {
 
     }
-    
+
     void demoHienCacDefaultTag()
     {
       IEnumerator<IEmail> arrEmail = Data.getEmailCollection().GetEnumerator();
@@ -194,16 +194,19 @@ namespace EmailReader
 
     private void showFilterList()
     {
+      arrFilterInfo.Clear();
       foreach (IFilter filter in Data.getFilterCollection())
       {
         FilterBriefInfo fInfo = new FilterBriefInfo(filter);
         arrFilterInfo.Add(fInfo);
       }
+      filterBriefInfoBindingSource.ResetBindings(false);
       filterBriefInfoBindingSource.DataSource = arrFilterInfo;
     }
 
     private void MainScreen_Load(object sender, EventArgs e)
     {
+      new Testing.MainTest();
       showEmailList(null);
       showFilterList();
     }
@@ -218,11 +221,26 @@ namespace EmailReader
       //get selected filters
       ICollection<IFilter> arrSelectedFilters = new List<IFilter>();
 
-      foreach( FilterBriefInfo filterInfo in  arrFilterInfo){
+      foreach (FilterBriefInfo filterInfo in arrFilterInfo)
+      {
         if (filterInfo.IsSelected)
           arrSelectedFilters.Add(filterInfo.Filter);
       }
       showEmailList(arrSelectedFilters);
+    }
+
+    private void button4_Click(object sender, EventArgs e)
+    {
+      Data.undo();
+      showEmailList(null);
+      showFilterList();
+    }
+
+    private void button5_Click(object sender, EventArgs e)
+    {
+      Data.redo();
+      showEmailList(null);
+      showFilterList();
     }
   }
 }
