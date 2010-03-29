@@ -5,35 +5,37 @@ using EmailReader.Model;
 
 namespace EmailReader.View
 {
-    class FilterBriefInfo
+  class FilterBriefInfo
+  {
+    IFilter filter;
+
+    public string Name
     {
-        string name;
-        IFilter filter;
-
-        public string Name
-        {
-            get
-            {
-                return name;
-            }
-
-            set
-            {
-                name = value;
-            }
-        }
-
-        public IFilter Filter
-        {
-            get
-            {
-                return filter;
-            }
-        }
-
-        public FilterBriefInfo(IFilter filter)
-        {
-            this.filter = filter;
-        }
+      get
+      {
+        return filter.Name;
+      }
     }
+
+    private bool isSelected;
+
+    public bool IsSelected
+    {
+      get { return isSelected; }
+      set { isSelected = value; }
+    }
+
+    public IFilter Filter
+    {
+      get
+      {
+        return filter;
+      }
+    }
+
+    public FilterBriefInfo(IFilter filter)
+    {
+      this.filter = filter;
+    }
+  }
 }

@@ -28,240 +28,256 @@ namespace EmailReader
         /// </summary>
         private void InitializeComponent()
         {
-            this.dtgListEmail = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.TagName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnExit = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.dtgFilterList = new System.Windows.Forms.DataGridView();
-            this.selectedFilters = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.a = new System.Windows.Forms.Label();
-            this.btnApplyFilter = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgListEmail)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgFilterList)).BeginInit();
-            this.SuspendLayout();
-            // 
-            // dtgListEmail
-            // 
-            this.dtgListEmail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgListEmail.Location = new System.Drawing.Point(285, 61);
-            this.dtgListEmail.Name = "dtgListEmail";
-            this.dtgListEmail.Size = new System.Drawing.Size(593, 207);
-            this.dtgListEmail.TabIndex = 0;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+          this.components = new System.ComponentModel.Container();
+          this.dtgListEmail = new System.Windows.Forms.DataGridView();
+          this.dataGridView2 = new System.Windows.Forms.DataGridView();
+          this.TagName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+          this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
+          this.btnExit = new System.Windows.Forms.Button();
+          this.button3 = new System.Windows.Forms.Button();
+          this.comboBox1 = new System.Windows.Forms.ComboBox();
+          this.textBox1 = new System.Windows.Forms.TextBox();
+          this.label1 = new System.Windows.Forms.Label();
+          this.label2 = new System.Windows.Forms.Label();
+          this.button4 = new System.Windows.Forms.Button();
+          this.button5 = new System.Windows.Forms.Button();
+          this.label3 = new System.Windows.Forms.Label();
+          this.button1 = new System.Windows.Forms.Button();
+          this.button6 = new System.Windows.Forms.Button();
+          this.button7 = new System.Windows.Forms.Button();
+          this.a = new System.Windows.Forms.Label();
+          this.btnApplyFilter = new System.Windows.Forms.Button();
+          this.filterBriefInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+          this.filterBriefInfoDataGridView = new System.Windows.Forms.DataGridView();
+          this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+          this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+          ((System.ComponentModel.ISupportInitialize)(this.dtgListEmail)).BeginInit();
+          ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+          ((System.ComponentModel.ISupportInitialize)(this.filterBriefInfoBindingSource)).BeginInit();
+          ((System.ComponentModel.ISupportInitialize)(this.filterBriefInfoDataGridView)).BeginInit();
+          this.SuspendLayout();
+          // 
+          // dtgListEmail
+          // 
+          this.dtgListEmail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+          this.dtgListEmail.Location = new System.Drawing.Point(285, 61);
+          this.dtgListEmail.Name = "dtgListEmail";
+          this.dtgListEmail.Size = new System.Drawing.Size(593, 207);
+          this.dtgListEmail.TabIndex = 0;
+          // 
+          // dataGridView2
+          // 
+          this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+          this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TagName,
             this.Value});
-            this.dataGridView2.Location = new System.Drawing.Point(285, 331);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(593, 160);
-            this.dataGridView2.TabIndex = 1;
-            // 
-            // TagName
-            // 
-            this.TagName.HeaderText = "Name";
-            this.TagName.Name = "TagName";
-            // 
-            // Value
-            // 
-            this.Value.HeaderText = "Value";
-            this.Value.Name = "Value";
-            // 
-            // btnExit
-            // 
-            this.btnExit.Location = new System.Drawing.Point(803, 539);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(75, 23);
-            this.btnExit.TabIndex = 3;
-            this.btnExit.Text = "Exit";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(803, 510);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Add Tag";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+          this.dataGridView2.Location = new System.Drawing.Point(285, 331);
+          this.dataGridView2.Name = "dataGridView2";
+          this.dataGridView2.Size = new System.Drawing.Size(593, 160);
+          this.dataGridView2.TabIndex = 1;
+          // 
+          // TagName
+          // 
+          this.TagName.HeaderText = "Name";
+          this.TagName.Name = "TagName";
+          // 
+          // Value
+          // 
+          this.Value.HeaderText = "Value";
+          this.Value.Name = "Value";
+          // 
+          // btnExit
+          // 
+          this.btnExit.Location = new System.Drawing.Point(803, 539);
+          this.btnExit.Name = "btnExit";
+          this.btnExit.Size = new System.Drawing.Size(75, 23);
+          this.btnExit.TabIndex = 3;
+          this.btnExit.Text = "Exit";
+          this.btnExit.UseVisualStyleBackColor = true;
+          this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+          // 
+          // button3
+          // 
+          this.button3.Location = new System.Drawing.Point(803, 510);
+          this.button3.Name = "button3";
+          this.button3.Size = new System.Drawing.Size(75, 23);
+          this.button3.TabIndex = 4;
+          this.button3.Text = "Add Tag";
+          this.button3.UseVisualStyleBackColor = true;
+          // 
+          // comboBox1
+          // 
+          this.comboBox1.FormattingEnabled = true;
+          this.comboBox1.Items.AddRange(new object[] {
             "A",
             "B ",
             "C"});
-            this.comboBox1.Location = new System.Drawing.Point(285, 510);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(147, 21);
-            this.comboBox1.TabIndex = 5;
-            this.comboBox1.Text = "Select name or type new";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(438, 511);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(354, 20);
-            this.textBox1.TabIndex = 6;
-            this.textBox1.Text = "value";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(282, 315);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 13);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Tags:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(282, 494);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 13);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Add new tag";
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(717, 14);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 9;
-            this.button4.Text = "Undo";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(803, 14);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 10;
-            this.button5.Text = "Redo";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(8, 14);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(177, 31);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "Email Reader";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(285, 537);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(82, 23);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Delete tag";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // dtgFilterList
-            // 
-            this.dtgFilterList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgFilterList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.selectedFilters});
-            this.dtgFilterList.Location = new System.Drawing.Point(12, 86);
-            this.dtgFilterList.Name = "dtgFilterList";
-            this.dtgFilterList.Size = new System.Drawing.Size(264, 404);
-            this.dtgFilterList.TabIndex = 14;
-            // 
-            // selectedFilters
-            // 
-            this.selectedFilters.HeaderText = "";
-            this.selectedFilters.Name = "selectedFilters";
-            this.selectedFilters.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.selectedFilters.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.selectedFilters.Width = 20;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(282, 274);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(82, 23);
-            this.button6.TabIndex = 15;
-            this.button6.Text = "Delete mail";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(14, 511);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(128, 24);
-            this.button7.TabIndex = 16;
-            this.button7.Text = "Manage Filters";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // a
-            // 
-            this.a.AutoSize = true;
-            this.a.Location = new System.Drawing.Point(12, 61);
-            this.a.Name = "a";
-            this.a.Size = new System.Drawing.Size(67, 13);
-            this.a.TabIndex = 17;
-            this.a.Text = "Select filters:";
-            // 
-            // btnApplyFilter
-            // 
-            this.btnApplyFilter.Location = new System.Drawing.Point(195, 55);
-            this.btnApplyFilter.Name = "btnApplyFilter";
-            this.btnApplyFilter.Size = new System.Drawing.Size(81, 25);
-            this.btnApplyFilter.TabIndex = 18;
-            this.btnApplyFilter.Text = "Apply filters";
-            this.btnApplyFilter.UseVisualStyleBackColor = true;
-            this.btnApplyFilter.Click += new System.EventHandler(this.btnApplyFilter_Click);
-            // 
-            // MainScreen
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(890, 569);
-            this.Controls.Add(this.btnApplyFilter);
-            this.Controls.Add(this.a);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.dtgFilterList);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.dtgListEmail);
-            this.Name = "MainScreen";
-            this.Text = "MainScreen";
-            this.Load += new System.EventHandler(this.MainScreen_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dtgListEmail)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgFilterList)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+          this.comboBox1.Location = new System.Drawing.Point(285, 510);
+          this.comboBox1.Name = "comboBox1";
+          this.comboBox1.Size = new System.Drawing.Size(147, 21);
+          this.comboBox1.TabIndex = 5;
+          this.comboBox1.Text = "Select name or type new";
+          // 
+          // textBox1
+          // 
+          this.textBox1.Location = new System.Drawing.Point(438, 511);
+          this.textBox1.Name = "textBox1";
+          this.textBox1.Size = new System.Drawing.Size(354, 20);
+          this.textBox1.TabIndex = 6;
+          this.textBox1.Text = "value";
+          // 
+          // label1
+          // 
+          this.label1.AutoSize = true;
+          this.label1.Location = new System.Drawing.Point(282, 315);
+          this.label1.Name = "label1";
+          this.label1.Size = new System.Drawing.Size(34, 13);
+          this.label1.TabIndex = 7;
+          this.label1.Text = "Tags:";
+          // 
+          // label2
+          // 
+          this.label2.AutoSize = true;
+          this.label2.Location = new System.Drawing.Point(282, 494);
+          this.label2.Name = "label2";
+          this.label2.Size = new System.Drawing.Size(67, 13);
+          this.label2.TabIndex = 8;
+          this.label2.Text = "Add new tag";
+          // 
+          // button4
+          // 
+          this.button4.Location = new System.Drawing.Point(717, 14);
+          this.button4.Name = "button4";
+          this.button4.Size = new System.Drawing.Size(75, 23);
+          this.button4.TabIndex = 9;
+          this.button4.Text = "Undo";
+          this.button4.UseVisualStyleBackColor = true;
+          // 
+          // button5
+          // 
+          this.button5.Location = new System.Drawing.Point(803, 14);
+          this.button5.Name = "button5";
+          this.button5.Size = new System.Drawing.Size(75, 23);
+          this.button5.TabIndex = 10;
+          this.button5.Text = "Redo";
+          this.button5.UseVisualStyleBackColor = true;
+          // 
+          // label3
+          // 
+          this.label3.AutoSize = true;
+          this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+          this.label3.Location = new System.Drawing.Point(8, 14);
+          this.label3.Name = "label3";
+          this.label3.Size = new System.Drawing.Size(177, 31);
+          this.label3.TabIndex = 11;
+          this.label3.Text = "Email Reader";
+          // 
+          // button1
+          // 
+          this.button1.Location = new System.Drawing.Point(285, 537);
+          this.button1.Name = "button1";
+          this.button1.Size = new System.Drawing.Size(82, 23);
+          this.button1.TabIndex = 13;
+          this.button1.Text = "Delete tag";
+          this.button1.UseVisualStyleBackColor = true;
+          // 
+          // button6
+          // 
+          this.button6.Location = new System.Drawing.Point(282, 274);
+          this.button6.Name = "button6";
+          this.button6.Size = new System.Drawing.Size(82, 23);
+          this.button6.TabIndex = 15;
+          this.button6.Text = "Delete mail";
+          this.button6.UseVisualStyleBackColor = true;
+          // 
+          // button7
+          // 
+          this.button7.Location = new System.Drawing.Point(14, 511);
+          this.button7.Name = "button7";
+          this.button7.Size = new System.Drawing.Size(128, 24);
+          this.button7.TabIndex = 16;
+          this.button7.Text = "Manage Filters";
+          this.button7.UseVisualStyleBackColor = true;
+          // 
+          // a
+          // 
+          this.a.AutoSize = true;
+          this.a.Location = new System.Drawing.Point(12, 61);
+          this.a.Name = "a";
+          this.a.Size = new System.Drawing.Size(67, 13);
+          this.a.TabIndex = 17;
+          this.a.Text = "Select filters:";
+          // 
+          // btnApplyFilter
+          // 
+          this.btnApplyFilter.Location = new System.Drawing.Point(195, 55);
+          this.btnApplyFilter.Name = "btnApplyFilter";
+          this.btnApplyFilter.Size = new System.Drawing.Size(81, 25);
+          this.btnApplyFilter.TabIndex = 18;
+          this.btnApplyFilter.Text = "Apply filters";
+          this.btnApplyFilter.UseVisualStyleBackColor = true;
+          this.btnApplyFilter.Click += new System.EventHandler(this.btnApplyFilter_Click);
+          // 
+          // filterBriefInfoBindingSource
+          // 
+          this.filterBriefInfoBindingSource.DataSource = typeof(EmailReader.View.FilterBriefInfo);
+          // 
+          // filterBriefInfoDataGridView
+          // 
+          this.filterBriefInfoDataGridView.AutoGenerateColumns = false;
+          this.filterBriefInfoDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewCheckBoxColumn1,
+            this.dataGridViewTextBoxColumn1});
+          this.filterBriefInfoDataGridView.DataSource = this.filterBriefInfoBindingSource;
+          this.filterBriefInfoDataGridView.Location = new System.Drawing.Point(12, 87);
+          this.filterBriefInfoDataGridView.Name = "filterBriefInfoDataGridView";
+          this.filterBriefInfoDataGridView.Size = new System.Drawing.Size(264, 404);
+          this.filterBriefInfoDataGridView.TabIndex = 19;
+          // 
+          // dataGridViewCheckBoxColumn1
+          // 
+          this.dataGridViewCheckBoxColumn1.DataPropertyName = "IsSelected";
+          this.dataGridViewCheckBoxColumn1.HeaderText = "";
+          this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+          // 
+          // dataGridViewTextBoxColumn1
+          // 
+          this.dataGridViewTextBoxColumn1.DataPropertyName = "Name";
+          this.dataGridViewTextBoxColumn1.HeaderText = "Name";
+          this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+          this.dataGridViewTextBoxColumn1.ReadOnly = true;
+          // 
+          // MainScreen
+          // 
+          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+          this.ClientSize = new System.Drawing.Size(898, 582);
+          this.Controls.Add(this.filterBriefInfoDataGridView);
+          this.Controls.Add(this.btnApplyFilter);
+          this.Controls.Add(this.a);
+          this.Controls.Add(this.button7);
+          this.Controls.Add(this.button6);
+          this.Controls.Add(this.button1);
+          this.Controls.Add(this.label3);
+          this.Controls.Add(this.button5);
+          this.Controls.Add(this.button4);
+          this.Controls.Add(this.label2);
+          this.Controls.Add(this.label1);
+          this.Controls.Add(this.textBox1);
+          this.Controls.Add(this.comboBox1);
+          this.Controls.Add(this.button3);
+          this.Controls.Add(this.btnExit);
+          this.Controls.Add(this.dataGridView2);
+          this.Controls.Add(this.dtgListEmail);
+          this.Name = "MainScreen";
+          this.Text = "MainScreen";
+          this.Load += new System.EventHandler(this.MainScreen_Load);
+          ((System.ComponentModel.ISupportInitialize)(this.dtgListEmail)).EndInit();
+          ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+          ((System.ComponentModel.ISupportInitialize)(this.filterBriefInfoBindingSource)).EndInit();
+          ((System.ComponentModel.ISupportInitialize)(this.filterBriefInfoDataGridView)).EndInit();
+          this.ResumeLayout(false);
+          this.PerformLayout();
 
         }
 
@@ -278,14 +294,16 @@ namespace EmailReader
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dtgFilterList;
+      private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
       private System.Windows.Forms.DataGridViewTextBoxColumn TagName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Value;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn selectedFilters;
+      private System.Windows.Forms.DataGridViewTextBoxColumn Value;
         private System.Windows.Forms.Label a;
-        private System.Windows.Forms.Button btnApplyFilter;
+      private System.Windows.Forms.Button btnApplyFilter;
+      private System.Windows.Forms.BindingSource filterBriefInfoBindingSource;
+      private System.Windows.Forms.DataGridView filterBriefInfoDataGridView;
+      private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+      private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
     }
 }
