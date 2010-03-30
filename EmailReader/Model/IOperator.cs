@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace EmailReader.Model
+namespace EmailReader.Model.Operator
 {
   public interface IOperator
   {

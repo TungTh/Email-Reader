@@ -1,4 +1,4 @@
-namespace EmailReader.Model
+namespace EmailReader
 {
     partial class FilterCreation
     {

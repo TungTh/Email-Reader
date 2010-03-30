@@ -63,7 +63,6 @@
       <DependentUpon>MainScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\AbstractFilter.cs" />
-    <Compile Include="Model\Command\Action.cs" />
     <Compile Include="Model\Command\ActionHandler.cs" />
     <Compile Include="Model\BasicFilter.cs" />
     <Compile Include="Model\CombinedFilter.cs" />

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using EmailReader.Model.Observer;
+using EmailReader.Model.Operator;
 
 namespace EmailReader.Model
 {
