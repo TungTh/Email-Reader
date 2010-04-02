@@ -7,7 +7,6 @@ namespace EmailReader.Testing
 {
   public class MainTest
   {
-
     public MainTest()
     {
       testDeleteTag();
@@ -15,7 +14,7 @@ namespace EmailReader.Testing
 
     void testDeleteTag()
     {
-      ITag tag = new Tag("Flag", false);
+      ITag tag = new UndoableTag("Flag", false);
 
       IFilter filterRed = new BasicFilter("Red Flag", tag, StringContaining.getInstance(), "red");
       IFilter filterYellow = new BasicFilter("Yellow Flag", tag, StringContaining.getInstance(), "yellow");

@@ -7,7 +7,7 @@ namespace EmailReader.View
 {
     class EmailBriefInfo
     {
-        string date, from, subject;
+        string date, from, to, subject;
         IEmail e;
 
         public string Date
@@ -36,6 +36,19 @@ namespace EmailReader.View
             }
         }
 
+        public string To
+        {
+            get
+            {
+                return to;
+            }
+
+            set
+            {
+                to = value;
+            }
+        }
+
         public string Subject
         {
             get
@@ -47,6 +60,16 @@ namespace EmailReader.View
             {
                 subject = value;
             }
+        }
+
+        public IEmail getEmail()
+        {
+           return e;
+        }
+
+        public void setEmail(IEmail e)
+        {
+            this.e = e;
         }
 
         public EmailBriefInfo(IEmail e)

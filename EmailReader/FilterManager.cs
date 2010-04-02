@@ -6,11 +6,11 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace EmailReader.Model
+namespace EmailReader
 {
-    public partial class FilterCreation : Form
+    public partial class FilterManager : Form
     {
-        public FilterCreation()
+        public FilterManager()
         {
             InitializeComponent();
         }

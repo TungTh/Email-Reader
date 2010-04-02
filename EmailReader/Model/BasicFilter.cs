@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using EmailReader.Model.Observer;
+using EmailReader.Model.Operator;
 
 namespace EmailReader.Model
 {
@@ -25,12 +26,9 @@ namespace EmailReader.Model
       return _Tag.hasTag(email) && _Operator.apply(_Tag.getEmailTag(email), criteria);
     }
 
-    public override void updateDelete()
+    protected override void selfDelete()
     {
       _Tag.detachObserver(this);
-      // don't need to call "notifyObservers" function 
-      // removeFilter method will call it. 
-      Data.removeFilter(this);
     }
   }
 }

@@ -1,13 +1,15 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using EmailReader;
 using EmailReader.Model;
 using EmailReader.Model.Operator;
 using EmailReader.View;
+using System.Windows.Forms;
 using System.Collections;
 
 namespace EmailReader
@@ -17,6 +19,10 @@ namespace EmailReader
         //for displaying List of Tags and List of Emails
         ArrayList arrEmailInfo = new ArrayList();
         ArrayList arrFilterInfo = new ArrayList();
+        ArrayList arrTagInfo = new ArrayList();
+        ArrayList arrTagsOfCmb = new ArrayList(); //all tags in data
+        ICollection<IFilter> arrSelectedFilters = new List<IFilter>();
+        IEmail selected_email;
 
         public MainScreen()
         {
@@ -27,6 +33,7 @@ namespace EmailReader
         {
 
         }
+
         void demoHienCacDefaultTag()
         {
             IEnumerator<IEmail> arrEmail = Data.getEmailCollection().GetEnumerator();
@@ -150,7 +157,7 @@ namespace EmailReader
             }
         }
 
-        private bool testEmailWithFilters(IEmail e,ICollection<IFilter> selectedFilters)
+        private bool testEmailWithFilters(IEmail e, ICollection<IFilter> selectedFilters)
         {
             bool ret = true;
 
@@ -169,22 +176,10 @@ namespace EmailReader
             return ret;
         }
 
-        //show list of emails
         private void showEmailList(ICollection<IFilter> selectedFilters)
         {
             dtgListEmail.DataSource = null;
             arrEmailInfo.Clear();
-
-            //find default tags
-            IEnumerator<ITag> arrTag = Data.getTagCollection().GetEnumerator();
-            arrTag.MoveNext();
-            ITag from_tag = arrTag.Current;
-            arrTag.MoveNext();
-            ITag to_tag = arrTag.Current;
-            arrTag.MoveNext();
-            ITag subject_tag = arrTag.Current;
-            arrTag.MoveNext();
-            ITag send_date_tag = arrTag.Current;
 
             //build arr 
             foreach (IEmail e in Data.getEmailCollection())
@@ -192,34 +187,116 @@ namespace EmailReader
                 if (testEmailWithFilters(e, selectedFilters))
                 {
                     EmailBriefInfo eInfo = new EmailBriefInfo(e);
-                    eInfo.Date = send_date_tag.getEmailTag(e);
-                    eInfo.From = from_tag.getEmailTag(e);
-                    eInfo.Subject = subject_tag.getEmailTag(e);
+
+                    try
+                    {
+                        eInfo.Date = Data.SentDateTag.getEmailTag(e);
+                    }
+                    catch { }
+
+                    try
+                    {
+                        eInfo.From = Data.FromTag.getEmailTag(e);
+                    }
+                    catch { }
+
+                    try
+                    {
+                        eInfo.To = Data.ToTag.getEmailTag(e);
+                    }
+                    catch { }
+
+                    try
+                    {
+                        eInfo.Subject = Data.SubjectTag.getEmailTag(e);
+                    
+                    }
+                    catch { }
+
+
+                    eInfo.setEmail(e);
                     arrEmailInfo.Add(eInfo);
                 }
             }
 
             //data binding
             dtgListEmail.DataSource = arrEmailInfo;
+            showTagListOfSelectedEmail();
         }
 
         private void showFilterList()
         {
+            arrFilterInfo.Clear();
             foreach (IFilter filter in Data.getFilterCollection())
             {
                 FilterBriefInfo fInfo = new FilterBriefInfo(filter);
-                fInfo.Name = filter.Name;
                 arrFilterInfo.Add(fInfo);
             }
+            filterBriefInfoBindingSource.ResetBindings(false);
+            filterBriefInfoBindingSource.DataSource = arrFilterInfo;
+        }
 
-            dtgFilterList.DataSource = arrFilterInfo;
-            
+        private void showTagListOfSelectedEmail()
+        {
+            arrTagInfo.Clear();
+            dtgTagOfEmail.DataSource = null;
+
+            //get selected mail
+            EmailBriefInfo email_brief_info;
+            DataGridViewRow selectedRow = new DataGridViewRow();
+            DataGridViewSelectedCellCollection selectedCells = dtgListEmail.SelectedCells;
+
+            if (selectedCells.Count >= 1)
+            {
+                selectedRow = dtgListEmail.Rows[selectedCells[0].RowIndex];
+                if (selectedRow != null && selectedRow.DataBoundItem != null)
+                {
+                    email_brief_info = (EmailBriefInfo)selectedRow.DataBoundItem;
+                    IEmail email = email_brief_info.getEmail();
+                    this.selected_email = email; //remember selected email
+
+                    //build array of TagBriefInfo
+                    foreach (ITag tag in Data.getTagCollection())
+                    {
+                        try
+                        {
+                            string tagValue = tag.getEmailTag(email);
+                            if (tagValue != "")
+                            {
+                                string tagName = tag.Name;
+                                arrTagInfo.Add(new TagBriefInfo(tagName, tagValue));
+                            }
+                        }
+                        catch
+                        {
+                        }
+                    }
+
+                    //bind to grid
+                    dtgTagOfEmail.DataSource = arrTagInfo;
+                }
+            }
         }
 
         private void MainScreen_Load(object sender, EventArgs e)
         {
+            //new Testing.MainTest();
             showEmailList(null);
             showFilterList();
+            updateCmbTags();
+        }
+
+        //show all tags in the combobox
+        private void updateCmbTags()
+        {
+            lsTags.DataSource = null;
+            this.arrTagsOfCmb.Clear();
+            foreach (ITag tag in Data.getTagCollection())
+            {
+                TagBriefInfoForCmb tag_brief_info = new TagBriefInfoForCmb(tag);
+                this.arrTagsOfCmb.Add(tag_brief_info);
+            }
+            lsTags.DataSource = arrTagsOfCmb;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -230,23 +307,112 @@ namespace EmailReader
         private void btnApplyFilter_Click(object sender, EventArgs e)
         {
             //get selected filters
-            ICollection<IFilter> arrSelectedFilters=new List<IFilter>();
+            arrSelectedFilters.Clear();         
 
-            //check each row of grid to find out selected row
-            for (int i = 0; i < dtgFilterList.Rows.Count; i++)
+            foreach (FilterBriefInfo filterInfo in arrFilterInfo)
             {
-                if ( (dtgFilterList.Rows[i].Cells[0].Value!=null) 
-                    && ((bool)(dtgFilterList.Rows[i].Cells[0].Value) == true) ) 
-                {
-                    //correspond Filter 
-                    arrSelectedFilters.Add( ((FilterBriefInfo)arrFilterInfo[i]).Filter);
-                }
+                if (filterInfo.IsSelected)
+                    arrSelectedFilters.Add(filterInfo.Filter);
             }
-            
             showEmailList(arrSelectedFilters);
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Data.undo();
+            showEmailList(null);
+            showFilterList();
 
+            MessageBox.Show("Chỗ này cần bàn với Tùng?");
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Data.redo();
+            showEmailList(null);
+            showFilterList();
+        }
+
+
+        private void dtgListEmail_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            showTagListOfSelectedEmail();
+        }
+
+        //tag to selected email
+        private void btnAddTag_Click(object sender, EventArgs e)
+        {
+            //if user selects existing tag
+            if (lsTags.SelectedItem != null)
+            {
+                ITag selected_tag = ((TagBriefInfoForCmb)lsTags.SelectedItem).getTag();
+
+                try //try add tag
+                {
+                    selected_tag.tagEmail(selected_email, txtNewTagValue.Text);
+                }
+                catch //tag exist --> edit
+                {
+                    selected_tag.editEmailTag(selected_email, txtNewTagValue.Text);
+                }
+            }
+            else //user type new tag type, create tag and add tag to email
+            {
+                string new_tag_name = lsTags.Text;
+                ITag new_tag = new Tag(new_tag_name, false);
+                Data.getTagCollection().Add(new_tag);
+                new_tag.tagEmail(selected_email, txtNewTagValue.Text);
+            }
+
+            showTagListOfSelectedEmail();
+            updateCmbTags();
+            showEmailList(arrSelectedFilters);
+        }
+
+        private void btnDeleteTagFromEmail_Click(object sender, EventArgs e)
+        {
+            ITag selected_tag = ((TagBriefInfoForCmb)lsTags.SelectedItem).getTag();
+
+            try
+            {
+                selected_tag.untagEmail(selected_email);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("You want to delete tag "+selected_tag.Name+"\n"+ex.Message,"Error");
+            }
+
+            showTagListOfSelectedEmail();
+            showEmailList(arrSelectedFilters);
+        }
+
+        private void btnDeleteTagType_Click(object sender, EventArgs e)
+        {
+            ITag selected_tag = ((TagBriefInfoForCmb)lsTags.SelectedItem).getTag();
+
+            DialogResult dlret=MessageBox.Show("This action will delete this tag from all emails, do you want to continue?","Warning",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            if (dlret==DialogResult.Yes)             
+            {
+                if (selected_tag.isDefaultTag == false)
+                {
+                    Data.getTagCollection().Remove(selected_tag); //can hoi Tung lai ham cu the de xoa loai TAG
+
+                    showTagListOfSelectedEmail();
+                    updateCmbTags();
+                    showEmailList(arrSelectedFilters);
+                }
+                else
+                {
+                    MessageBox.Show("You cannot delete a default tag type", "Warning!!!");
+                }
+            }
+        }
+
+        private void btnManageFilter_Click(object sender, EventArgs e)
+        {
+            FilterManager filter_manager = new FilterManager();
+            filter_manager.ShowDialog();
+        }
 
     }
 }

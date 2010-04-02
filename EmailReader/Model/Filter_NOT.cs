@@ -21,13 +21,9 @@ namespace EmailReader.Model
       return !this.filter.apply(email);
     }
 
-    #region Observer
-    public override void updateDelete()
+    protected override void selfDelete()
     {
       filter.detachObserver(this);
-      notifyObserver();
-      Data.removeFilter(this);
     }
-    #endregion
   }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace EmailReader.Model.Operator
 {
-  public class StringEquals : EmailReader.Model.IOperator
+  public class StringEquals : IOperator
   {
     static IOperator _operator = null;
 

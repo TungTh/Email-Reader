@@ -37,13 +37,6 @@
       <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
     </TypeIdentifier>
   </Class>
-  <Class Name="EmailReader.Model.Data">
-    <Position X="17.75" Y="0.5" Width="4.5" />
-    <TypeIdentifier>
-      <FileName>Model\Data.cs</FileName>
-      <HashCode>gAAQAAAIAAAAAAAAAggEAAAAAAAAAAAAECAAAQAAAQA=</HashCode>
-    </TypeIdentifier>
-  </Class>
   <Class Name="EmailReader.Model.Email" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="14" Y="1.5" Width="1.5" />
     <TypeIdentifier>
@@ -56,7 +49,7 @@
     <Position X="4.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <FileName>Model\ObservableTag.cs</FileName>
-      <HashCode>AACAIAgAAAAAIAAAAKAQAAQAACAAAAAAgAAAAEAAwAA=</HashCode>
+      <HashCode>AACAIAgAAAAAIAAAAKAQAAQAACAAAAAAgAAEAEAAwAA=</HashCode>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
@@ -64,26 +57,27 @@
     <Position X="4.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <FileName>Model\Tag.cs</FileName>
-      <HashCode>AAAAAAgAAAAAAAAAAKAAAAAAAAAAAAAAAAAAAAAASAA=</HashCode>
+      <HashCode>AAAAAAgAAAAAAAAAAKAAAAAAAAAAAAAAAAAEAAAASAA=</HashCode>
     </TypeIdentifier>
   </Class>
   <Class Name="EmailReader.Model.Command.Action" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="14" Y="0.5" Width="1.5" />
+    <Position X="3.75" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <FileName>Model\Command\Action.cs</FileName>
       <HashCode>AAAAIAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="EmailReader.Model.Command.ActionHandler" Collapsed="true">
-    <Position X="15.75" Y="0.5" Width="1.5" />
+  <Class Name="EmailReader.Model.Command.ActionHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <FileName>Model\Command\ActionHandler.cs</FileName>
       <HashCode>AEQACgAEBAABAQAAAAEAAAAAAAAABAAABgAAAEAAAAA=</HashCode>
     </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="EmailReader.Model.Command.Macro" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="15.75" Y="1.5" Width="1.5" />
+    <Position X="3.75" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <FileName>Model\Command\Macro.cs</FileName>
       <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
@@ -91,7 +85,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="EmailReader.Model.Command.ReverseOrderMacro" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="15.75" Y="2.5" Width="1.75" />
+    <Position X="3.75" Y="8.5" Width="1.5" />
     <TypeIdentifier>
       <FileName>Model\Command\ReverseOrderMacro.cs</FileName>
       <HashCode>AAIAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
@@ -110,8 +104,72 @@
     <Position X="11.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <FileName>Model\Filter_NOT.cs</FileName>
-      <HashCode>AAAAEAAAAAABIAEAAAAAMESAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <HashCode>AAAAEAAAAAABAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
     </TypeIdentifier>
+  </Class>
+  <Class Name="EmailReader.Model.Command.EditEmailTag" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Model\Command\EditEmailTag.cs</FileName>
+      <HashCode>AAAAAABAAAAAAAAAAACEAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EmailReader.Model.Command.InsertFilter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Model\Command\InsertFilter.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EmailReader.Model.Command.InsertTag" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Model\Command\InsertTag.cs</FileName>
+      <HashCode>AAAAAABAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EmailReader.Model.Command.RemoveFilter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Model\Command\RemoveFilter.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EmailReader.Model.Command.RemoveTag" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Model\Command\RemoveTag.cs</FileName>
+      <HashCode>AAAAAABAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EmailReader.Model.Command.RenameTag" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Model\Command\RenameTag.cs</FileName>
+      <HashCode>AAAAIABAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EmailReader.Model.Command.TagEmail" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Model\Command\TagEmail.cs</FileName>
+      <HashCode>ABAAAABAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EmailReader.Model.Command.UntagEmail" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Model\Command\UntagEmail.cs</FileName>
+      <HashCode>AAAAAABAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Interface Name="EmailReader.Model.IEmail" Collapsed="true">
     <Position X="15.75" Y="3.75" Width="1.5" />
@@ -138,11 +196,11 @@
     <Position X="14" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <FileName>Model\ITag.cs</FileName>
-      <HashCode>AACAAAgAAAAAAAAAAKAAAAQAAAAAAAAAgAAAAAAAQAA=</HashCode>
+      <HashCode>AACAAAgAAAAAAAAAAKAAAAQAAAAAAAAAgAAEAAAAQAA=</HashCode>
     </TypeIdentifier>
   </Interface>
   <Interface Name="EmailReader.Model.Command.IAction" Collapsed="true">
-    <Position X="14" Y="3.75" Width="1.5" />
+    <Position X="3.75" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <FileName>Model\Command\IAction.cs</FileName>
       <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
@@ -160,6 +218,13 @@
     <TypeIdentifier>
       <FileName>Model\Observer\ISubject.cs</FileName>
       <HashCode>AAAAAAAAAAAAIAAAAAAQAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="EmailReader.Model.Command.IActionHandler" Collapsed="true">
+    <Position X="2" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Model\Command\IActionHandler.cs</FileName>
+      <HashCode>AEAAAAAEBAAAAQAAAAEAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
     </TypeIdentifier>
   </Interface>
 </ClassDiagram>

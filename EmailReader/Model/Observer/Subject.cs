@@ -29,8 +29,8 @@ namespace EmailReader.Model.Observer
     {
       if (listObservers.Contains(o))
         listObservers.Remove(o);
-      else
-        throw new KeyNotFoundException();
+      //else
+      //throw new KeyNotFoundException();
     }
   }
 }

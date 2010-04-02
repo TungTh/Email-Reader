@@ -1,6 +1,6 @@
-namespace EmailReader.Model
+namespace EmailReader
 {
-    partial class FilterCreation
+    partial class FilterManager
     {
         /// <summary>
         /// Required designer variable.

@@ -28,63 +28,61 @@ namespace EmailReader
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dtgListEmail = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.TagName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtgTagOfEmail = new System.Windows.Forms.DataGridView();
             this.btnExit = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnAddTag = new System.Windows.Forms.Button();
+            this.lsTags = new System.Windows.Forms.ComboBox();
+            this.txtNewTagValue = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.dtgFilterList = new System.Windows.Forms.DataGridView();
-            this.selectedFilters = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnDeleteTagFromEmail = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.btnManageFilter = new System.Windows.Forms.Button();
             this.a = new System.Windows.Forms.Label();
             this.btnApplyFilter = new System.Windows.Forms.Button();
+            this.filterBriefInfoDataGridView = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnDeleteTagType = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.filterBriefInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dtgListEmail)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgFilterList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgTagOfEmail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filterBriefInfoDataGridView)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.filterBriefInfoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dtgListEmail
             // 
             this.dtgListEmail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgListEmail.Location = new System.Drawing.Point(285, 61);
+            this.dtgListEmail.Location = new System.Drawing.Point(285, 87);
             this.dtgListEmail.Name = "dtgListEmail";
-            this.dtgListEmail.Size = new System.Drawing.Size(593, 207);
+            this.dtgListEmail.ReadOnly = true;
+            this.dtgListEmail.Size = new System.Drawing.Size(593, 181);
             this.dtgListEmail.TabIndex = 0;
+            this.dtgListEmail.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgListEmail_CellEnter);
             // 
-            // dataGridView2
+            // dtgTagOfEmail
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.TagName,
-            this.Value});
-            this.dataGridView2.Location = new System.Drawing.Point(285, 331);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(593, 160);
-            this.dataGridView2.TabIndex = 1;
-            // 
-            // TagName
-            // 
-            this.TagName.HeaderText = "Name";
-            this.TagName.Name = "TagName";
-            // 
-            // Value
-            // 
-            this.Value.HeaderText = "Value";
-            this.Value.Name = "Value";
+            this.dtgTagOfEmail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgTagOfEmail.Location = new System.Drawing.Point(6, 21);
+            this.dtgTagOfEmail.Name = "dtgTagOfEmail";
+            this.dtgTagOfEmail.ReadOnly = true;
+            this.dtgTagOfEmail.Size = new System.Drawing.Size(589, 160);
+            this.dtgTagOfEmail.TabIndex = 1;
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(803, 539);
+            this.btnExit.Location = new System.Drawing.Point(811, 606);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
             this.btnExit.TabIndex = 3;
@@ -92,35 +90,39 @@ namespace EmailReader
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // button3
+            // btnAddTag
             // 
-            this.button3.Location = new System.Drawing.Point(803, 510);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Add Tag";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnAddTag.Location = new System.Drawing.Point(6, 227);
+            this.btnAddTag.Name = "btnAddTag";
+            this.btnAddTag.Size = new System.Drawing.Size(75, 23);
+            this.btnAddTag.TabIndex = 4;
+            this.btnAddTag.Text = "Save";
+            this.toolTip1.SetToolTip(this.btnAddTag, "Save tag value in email. If this tag type doesn\'t exist EmailReader auto creates " +
+                    "a new one");
+            this.btnAddTag.UseVisualStyleBackColor = true;
+            this.btnAddTag.Click += new System.EventHandler(this.btnAddTag_Click);
             // 
-            // comboBox1
+            // lsTags
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.lsTags.FormattingEnabled = true;
+            this.lsTags.Items.AddRange(new object[] {
             "A",
             "B ",
             "C"});
-            this.comboBox1.Location = new System.Drawing.Point(285, 510);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(147, 21);
-            this.comboBox1.TabIndex = 5;
-            this.comboBox1.Text = "Select name or type new";
+            this.lsTags.Location = new System.Drawing.Point(6, 200);
+            this.lsTags.Name = "lsTags";
+            this.lsTags.Size = new System.Drawing.Size(158, 21);
+            this.lsTags.TabIndex = 5;
+            this.lsTags.Text = "Select tag or type new";
+            this.toolTip1.SetToolTip(this.lsTags, "You can create new tag type just by typing its name");
             // 
-            // textBox1
+            // txtNewTagValue
             // 
-            this.textBox1.Location = new System.Drawing.Point(438, 511);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(354, 20);
-            this.textBox1.TabIndex = 6;
-            this.textBox1.Text = "value";
+            this.txtNewTagValue.Location = new System.Drawing.Point(173, 201);
+            this.txtNewTagValue.Name = "txtNewTagValue";
+            this.txtNewTagValue.Size = new System.Drawing.Size(422, 20);
+            this.txtNewTagValue.TabIndex = 6;
+            this.toolTip1.SetToolTip(this.txtNewTagValue, "Enter value of tag for selected email");
             // 
             // label1
             // 
@@ -131,15 +133,6 @@ namespace EmailReader
             this.label1.TabIndex = 7;
             this.label1.Text = "Tags:";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(282, 494);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 13);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Add new tag";
-            // 
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(717, 14);
@@ -148,6 +141,7 @@ namespace EmailReader
             this.button4.TabIndex = 9;
             this.button4.Text = "Undo";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
@@ -157,6 +151,7 @@ namespace EmailReader
             this.button5.TabIndex = 10;
             this.button5.Text = "Redo";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // label3
             // 
@@ -168,32 +163,15 @@ namespace EmailReader
             this.label3.TabIndex = 11;
             this.label3.Text = "Email Reader";
             // 
-            // button1
+            // btnDeleteTagFromEmail
             // 
-            this.button1.Location = new System.Drawing.Point(285, 537);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(82, 23);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Delete tag";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // dtgFilterList
-            // 
-            this.dtgFilterList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgFilterList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.selectedFilters});
-            this.dtgFilterList.Location = new System.Drawing.Point(12, 86);
-            this.dtgFilterList.Name = "dtgFilterList";
-            this.dtgFilterList.Size = new System.Drawing.Size(264, 404);
-            this.dtgFilterList.TabIndex = 14;
-            // 
-            // selectedFilters
-            // 
-            this.selectedFilters.HeaderText = "";
-            this.selectedFilters.Name = "selectedFilters";
-            this.selectedFilters.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.selectedFilters.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.selectedFilters.Width = 20;
+            this.btnDeleteTagFromEmail.Location = new System.Drawing.Point(87, 227);
+            this.btnDeleteTagFromEmail.Name = "btnDeleteTagFromEmail";
+            this.btnDeleteTagFromEmail.Size = new System.Drawing.Size(185, 23);
+            this.btnDeleteTagFromEmail.TabIndex = 13;
+            this.btnDeleteTagFromEmail.Text = "Delete Tag from this Email only";
+            this.btnDeleteTagFromEmail.UseVisualStyleBackColor = true;
+            this.btnDeleteTagFromEmail.Click += new System.EventHandler(this.btnDeleteTagFromEmail_Click);
             // 
             // button6
             // 
@@ -204,14 +182,15 @@ namespace EmailReader
             this.button6.Text = "Delete mail";
             this.button6.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // btnManageFilter
             // 
-            this.button7.Location = new System.Drawing.Point(14, 511);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(128, 24);
-            this.button7.TabIndex = 16;
-            this.button7.Text = "Manage Filters";
-            this.button7.UseVisualStyleBackColor = true;
+            this.btnManageFilter.Location = new System.Drawing.Point(14, 511);
+            this.btnManageFilter.Name = "btnManageFilter";
+            this.btnManageFilter.Size = new System.Drawing.Size(128, 24);
+            this.btnManageFilter.TabIndex = 16;
+            this.btnManageFilter.Text = "Manage Filters";
+            this.btnManageFilter.UseVisualStyleBackColor = true;
+            this.btnManageFilter.Click += new System.EventHandler(this.btnManageFilter_Click);
             // 
             // a
             // 
@@ -232,34 +211,116 @@ namespace EmailReader
             this.btnApplyFilter.UseVisualStyleBackColor = true;
             this.btnApplyFilter.Click += new System.EventHandler(this.btnApplyFilter_Click);
             // 
+            // filterBriefInfoDataGridView
+            // 
+            this.filterBriefInfoDataGridView.AutoGenerateColumns = false;
+            this.filterBriefInfoDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewCheckBoxColumn1,
+            this.dataGridViewTextBoxColumn1});
+            this.filterBriefInfoDataGridView.DataSource = this.filterBriefInfoBindingSource;
+            this.filterBriefInfoDataGridView.Location = new System.Drawing.Point(12, 87);
+            this.filterBriefInfoDataGridView.Name = "filterBriefInfoDataGridView";
+            this.filterBriefInfoDataGridView.Size = new System.Drawing.Size(264, 404);
+            this.filterBriefInfoDataGridView.TabIndex = 19;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnDeleteTagType);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.btnDeleteTagFromEmail);
+            this.groupBox1.Controls.Add(this.txtNewTagValue);
+            this.groupBox1.Controls.Add(this.lsTags);
+            this.groupBox1.Controls.Add(this.btnAddTag);
+            this.groupBox1.Controls.Add(this.dtgTagOfEmail);
+            this.groupBox1.Location = new System.Drawing.Point(283, 310);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(602, 265);
+            this.groupBox1.TabIndex = 20;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Details of selected email:";
+            // 
+            // btnDeleteTagType
+            // 
+            this.btnDeleteTagType.Location = new System.Drawing.Point(278, 227);
+            this.btnDeleteTagType.Name = "btnDeleteTagType";
+            this.btnDeleteTagType.Size = new System.Drawing.Size(142, 23);
+            this.btnDeleteTagType.TabIndex = 16;
+            this.btnDeleteTagType.Text = "Delete Tag type";
+            this.btnDeleteTagType.UseVisualStyleBackColor = true;
+            this.btnDeleteTagType.Click += new System.EventHandler(this.btnDeleteTagType_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(170, 183);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(34, 13);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "Value";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 183);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(157, 13);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Tag (type name for adding new)";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(284, 61);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(40, 13);
+            this.label5.TabIndex = 21;
+            this.label5.Text = "Emails:";
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.DataPropertyName = "IsSelected";
+            this.dataGridViewCheckBoxColumn1.HeaderText = "";
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Name";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // filterBriefInfoBindingSource
+            // 
+            this.filterBriefInfoBindingSource.DataSource = typeof(EmailReader.View.FilterBriefInfo);
+            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(890, 569);
+            this.ClientSize = new System.Drawing.Size(898, 641);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.filterBriefInfoDataGridView);
             this.Controls.Add(this.btnApplyFilter);
             this.Controls.Add(this.a);
-            this.Controls.Add(this.button7);
+            this.Controls.Add(this.btnManageFilter);
             this.Controls.Add(this.button6);
-            this.Controls.Add(this.dtgFilterList);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.dtgListEmail);
             this.Name = "MainScreen";
             this.Text = "MainScreen";
             this.Load += new System.EventHandler(this.MainScreen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgListEmail)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgFilterList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgTagOfEmail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filterBriefInfoDataGridView)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.filterBriefInfoBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -268,24 +329,29 @@ namespace EmailReader
         #endregion
 
         private System.Windows.Forms.DataGridView dtgListEmail;
-      private System.Windows.Forms.DataGridView dataGridView2;
+      private System.Windows.Forms.DataGridView dtgTagOfEmail;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnAddTag;
+        private System.Windows.Forms.ComboBox lsTags;
+        private System.Windows.Forms.TextBox txtNewTagValue;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dtgFilterList;
+      private System.Windows.Forms.Button btnDeleteTagFromEmail;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-      private System.Windows.Forms.DataGridViewTextBoxColumn TagName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Value;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn selectedFilters;
+        private System.Windows.Forms.Button btnManageFilter;
         private System.Windows.Forms.Label a;
-        private System.Windows.Forms.Button btnApplyFilter;
+      private System.Windows.Forms.Button btnApplyFilter;
+      private System.Windows.Forms.BindingSource filterBriefInfoBindingSource;
+      private System.Windows.Forms.DataGridView filterBriefInfoDataGridView;
+      private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+      private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnDeleteTagType;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
