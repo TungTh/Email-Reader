@@ -18,6 +18,11 @@ namespace EmailReader.Model.Command
       get { return _Undo.Count != 0; }
     }
 
+    public bool CanRedo
+    {
+      get { return _Redo.Count != 0; }
+    }
+
     public ActionHandler()
     {
     }

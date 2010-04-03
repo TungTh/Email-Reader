@@ -30,5 +30,17 @@ namespace EmailReader.Model
     {
       _Tag.detachObserver(this);
     }
+
+    public void Edit(string newName, ITag newTag, IOperator newFilterOperator, string newCriteria)
+    {
+      _name = newName;
+      _Operator = newFilterOperator;
+
+      _Tag.detachObserver(this);
+      _Tag = newTag;
+      _Tag.attachObserver(this);
+
+      this.criteria = newCriteria;
+    }
   }
 }

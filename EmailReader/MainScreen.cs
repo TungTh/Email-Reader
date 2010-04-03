@@ -232,13 +232,21 @@ namespace EmailReader
     private void button4_Click(object sender, EventArgs e)
     {
       Data.undo();
+      controlUndoButton();
       showEmailList(null);
       showFilterList();
+    }
+
+    private void controlUndoButton()
+    {
+      button4.Enabled = Data.ActionHandler.CanUndo;
+      button5.Enabled = Data.ActionHandler.CanRedo;
     }
 
     private void button5_Click(object sender, EventArgs e)
     {
       Data.redo();
+      controlUndoButton();
       showEmailList(null);
       showFilterList();
     }

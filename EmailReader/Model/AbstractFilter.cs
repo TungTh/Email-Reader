@@ -6,7 +6,7 @@ namespace EmailReader.Model
 {
   public abstract class AbstractFilter : IFilter
   {
-    string _name = null;
+    protected string _name = null;
     ISubject _subject = new UndoableSubject();
 
     #region ISubject Members

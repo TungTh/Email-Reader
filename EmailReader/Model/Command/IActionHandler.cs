@@ -5,6 +5,7 @@ namespace EmailReader.Model.Command
   {
     void beginMacro();
     bool CanUndo { get; }
+    bool CanRedo { get; }
     void endMacro();
     void redo();
     void storeAction(IAction action);
