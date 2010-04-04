@@ -4,17 +4,19 @@ using System.Text;
 
 namespace EmailReader.Model.Command
 {
-  public class Action : IAction
+  class RenameTag : IAction
   {
+    ITag _tag;
     string _name;
-    public Action(string name)
+    internal RenameTag(ITag tag, string name)
     {
+      _tag = tag;
       _name = name;
     }
 
     public void execute()
     {
-      System.Diagnostics.Debug.WriteLine(_name);
+      _tag.rename(_name);
     }
   }
 }
