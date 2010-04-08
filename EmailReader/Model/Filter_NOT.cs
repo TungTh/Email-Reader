@@ -2,28 +2,42 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using EmailReader.Model.Observer;
-
+using EmailReader.Model.Command;
 namespace EmailReader.Model
 {
   public class Filter_NOT : AbstractFilter
   {
-    private IFilter filter;
+    private IFilter _filter;
 
+    public IFilter Filter
+    {
+      get { return _filter; }
+    }
     public Filter_NOT(string name, IFilter filter)
       : base(name)
     {
-      this.filter = filter;
-      this.filter.attachObserver(this);
+      this._filter = filter;
+      this._filter.attachObserver(this);
     }
 
     public override bool apply(IEmail email)
     {
-      return !this.filter.apply(email);
+      return !this._filter.apply(email);
     }
 
     protected override void selfDelete()
     {
-      filter.detachObserver(this);
+      _filter.detachObserver(this);
+    }
+
+    public void edit(IFilter filter)
+    {
+      Data.ActionHandler.beginMacro();
+      Data.ActionHandler.storeAction(new EditFilterNOT(this, filter));
+      _filter.detachObserver(this);
+      _filter = filter;
+      _filter.attachObserver(this);
+      Data.ActionHandler.endMacro();
     }
   }
 }

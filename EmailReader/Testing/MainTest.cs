@@ -9,7 +9,7 @@ namespace EmailReader.Testing
   {
     public MainTest()
     {
-      testDeleteTag();
+      testEditBasicFilter();
     }
 
     void testDeleteTag()
@@ -37,6 +37,28 @@ namespace EmailReader.Testing
       System.Windows.Forms.MessageBox.Show(Data.getFilterCollection().Count.ToString());
       Data.removeTag(tag);
       System.Windows.Forms.MessageBox.Show(Data.getFilterCollection().Count.ToString());
+    }
+
+    void testEditBasicFilter()
+    {
+      BasicFilter basicFilter = new BasicFilter("FROM", Data.FromTag, StringContaining.getInstance(), "TEST2");
+      Data.insertFilter(basicFilter);
+      basicFilter.edit("TO", Data.ToTag, StringEquals.getInstance(), "Sender5");
+      Data.ActionHandler.undo();
+      Data.ActionHandler.redo();
+    }
+
+    void testEditBasicFilter()
+    {
+      BasicFilter basicFilter = new BasicFilter("FROM", Data.FromTag, StringContaining.getInstance(), "TEST2");
+      BasicFilter basicFilter2 = new BasicFilter("TO", Data.FromTag, StringContaining.getInstance(), "TEST5");
+      Data.insertFilter(basicFilter);
+      Data.insertFilter(basicFilter2);
+
+      basicFilter.edit("TO", Data.ToTag, StringEquals.getInstance(), "Sender5");
+      
+      Data.ActionHandler.undo();
+      Data.ActionHandler.redo();
     }
 
     void printEmail(ITag tag, IEmail email)

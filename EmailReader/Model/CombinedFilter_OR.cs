@@ -10,7 +10,7 @@ namespace EmailReader.Model
         {}
         public override bool apply(IEmail email)
         {
-            return filter1.apply(email) || filter2.apply(email);
+            return _filter1.apply(email) || _filter2.apply(email);
         }
     }
 }

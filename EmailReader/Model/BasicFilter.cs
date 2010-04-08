@@ -3,44 +3,64 @@ using System.Collections.Generic;
 using System.Text;
 using EmailReader.Model.Observer;
 using EmailReader.Model.Operator;
-
+using EmailReader.Model.Command;
 namespace EmailReader.Model
 {
   public class BasicFilter : AbstractFilter
   {
-    private string criteria;
-    ITag _Tag;
-    IOperator _Operator;
+    private string _criteria;
+    private ITag _tag;
+    private IOperator _operator;
+
+    public string Criteria
+    {
+      get { return _criteria; }
+    }
+
+    /// <summary>
+    /// Warning: modify this object will affect on the main filter
+    /// </summary>
+    public ITag Tag
+    {
+      get { return _tag; }
+    }
+
+    public IOperator Operator
+    {
+      get { return _operator; }
+    }
 
     public BasicFilter(string name, ITag tag, IOperator filterOperator, string criteria)
       : base(name)
     {
-      _Tag = tag;
-      _Operator = filterOperator;
-      _Tag.attachObserver(this);
-      this.criteria = criteria;
+      _tag = tag;
+      _operator = filterOperator;
+      _tag.attachObserver(this);
+      this._criteria = criteria;
     }
 
     public override bool apply(IEmail email)
     {
-      return _Tag.hasTag(email) && _Operator.apply(_Tag.getEmailTag(email), criteria);
+      return _tag.hasTag(email) && _operator.apply(_tag.getEmailTag(email), _criteria);
     }
 
     protected override void selfDelete()
     {
-      _Tag.detachObserver(this);
+      _tag.detachObserver(this);
     }
 
-    public void Edit(string newName, ITag newTag, IOperator newFilterOperator, string newCriteria)
+    public void edit(string newName, ITag newTag, IOperator newFilterOperator, string newCriteria)
     {
+      Data.ActionHandler.beginMacro();
+      Data.ActionHandler.storeAction(new EditBasicFilter(this, _name, _tag, _operator, _criteria));
       _name = newName;
-      _Operator = newFilterOperator;
+      _operator = newFilterOperator;
+      _criteria = newCriteria;
 
-      _Tag.detachObserver(this);
-      _Tag = newTag;
-      _Tag.attachObserver(this);
-
-      this.criteria = newCriteria;
+      _tag.detachObserver(this);
+      _tag = newTag;
+      _tag.attachObserver(this);
+      Data.ActionHandler.endMacro();
     }
   }
 }

@@ -71,7 +71,10 @@
     <Compile Include="Data.cs" />
     <Compile Include="Model\Command\AttachObserver.cs" />
     <Compile Include="Model\Command\DettachObserver.cs" />
+    <Compile Include="Model\Command\EditBasicFilter.cs" />
+    <Compile Include="Model\Command\EditCombinedFilter.cs" />
     <Compile Include="Model\Command\EditEmailTag.cs" />
+    <Compile Include="Model\Command\EditFilterNOT.cs" />
     <Compile Include="Model\Command\IActionHandler.cs" />
     <Compile Include="Model\Command\InsertFilter.cs" />
     <Compile Include="Model\Command\InsertTag.cs" />

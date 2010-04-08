@@ -276,7 +276,7 @@ namespace EmailReader
 
     private void MainScreen_Load(object sender, EventArgs e)
     {
-      //new Testing.MainTest();
+      new Testing.MainTest();
       showEmailList(null);
       showFilterList();
       updateCmbTags();
@@ -317,14 +317,14 @@ namespace EmailReader
 
     private void btnUndo_Click(object sender, EventArgs e)
     {
-      Data.undo();
+      Data.ActionHandler.undo();
       controlUndoButtons();
       updateInterface();
     }
 
     private void btnRedo_Click(object sender, EventArgs e)
     {
-      Data.redo();
+      Data.ActionHandler.redo();
       controlUndoButtons();
       updateInterface();
     }
