@@ -1,0 +1,71 @@
+Filter creation and editing
+
+--------------
+Brief info
+--------------
+We have 3 kinds of filter:
++ Basic filter 
++ Combined filter
++ Filter NOT
+They share the interface IFilter.
+
+The corresponding classes are: 
++ BasicFilter
++ CombinedFilter_AND, CombinedFilter_OR 
++ Filter_NOT
+
+To support editing, all filter class will provide methods to access his composing components.
+
+1. Basic filter: 
+This filter works based on the operation on ITag object. 
+
+- Instanciation
+//// constructor /////
+public BasicFilter(string name, ITag tag, IOperator filterOperator, string criteria)
+
+To instanciate a new object, we must indicate:
++ The name of the filter
++ The tag object which it is based on
++ The operator that will be applied to the tag value
++ The criteria for the operator.
+
+- Editing
+To edit the filter, we must use the edit method
+
+////// edit //////
+public void edit(string newName, ITag newTag, IOperator newFilterOperator, string newCriteria)
+
+
+2. Combined filter.
+This filter works based on the logical operation on two other filters.
+
+- Instanciation
+//// constructor /////
+public CombinedFilter_AND(string name, IFilter f1, IFilter f2)
+
+To instanciate a new object, we must indicate:
++ The name of the filter
++ The 2 filters which it is based on.
+
+- Editing
+While working on the editing function of the combined filter, we have a problem with the current classes structure.
+Since we have 2 kinds of combined filter: AND and OR implementing by 2 different classes, if we want to edit the operation on 2 based filters, we will have to create the corresponding object instead of directly editing the current object.
+
+Hence, the sequence for editing combined filter might be:
++ use the edit method of the current filter object.
++ or create new object, remove the old filter and then add the new one to the filters list of Data.
+
+3. Filter NOT
+This filter simply return the inversed result of the given filter.
+
+- Instanciation
+//// constructor /////
+public Filter_NOT(string name, IFilter filter)
+
+To instanciate a new object, we must indicate:
++ The name of the filter
++ The target filter that will be inverted.
+
+- Editing
+Use the "edit" method of the object to edit the filter.
+
