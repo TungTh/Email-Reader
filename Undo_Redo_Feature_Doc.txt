@@ -1,0 +1,11 @@
+Undo / Redo feature
+The Undo/Redo feature is implemented in the program.
+All the data manulating methods of classes in the model are implemented the undo feature.
+
+The user only needs to manage the ActionHandler in the Data class to control the undo/redo stack.
+It means that if the user would like to have different undo stack for different Form, he must create different ActionHandler and switch between them every time he switch form (by using Data.ActionHandler setter and getter).
+
+To undo/redo the user simply call Data.ActionHandler.Undo or Data.ActionHandler.Redo.
+The ActionHandler also support 2 properties : CanUndo, CanRedo.
+
+There is a warning that execution undo/redo might change all the data of program (Filters, Tags).

@@ -15,7 +15,6 @@ namespace EmailReader.Model.Observer
     {
       if (!listObservers.Contains(o))
         listObservers.Add(o);
-      else throw new DuplicateWaitObjectException();
     }
     public void notifyObserver()
     {
@@ -29,8 +28,6 @@ namespace EmailReader.Model.Observer
     {
       if (listObservers.Contains(o))
         listObservers.Remove(o);
-      //else
-      //throw new KeyNotFoundException();
     }
   }
 }

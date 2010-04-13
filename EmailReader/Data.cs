@@ -15,13 +15,19 @@ namespace EmailReader
 
     static List<IFilter> _Filters;
 
-    public static IActionHandler ActionHandler = new ActionHandler();
+    static IActionHandler _ActionHandler = new ActionHandler();
 
     public static ITag FromTag = new Tag("From", true);
     public static ITag ToTag = new Tag("To", true);
     public static ITag SubjectTag = new Tag("Subject", true); //Hai fix 
     public static ITag SentDateTag = new Tag("SentDate", true);
     public static ITag SignatureTag = new Tag("Signature", false); //Hai add for demo, don't remove
+
+    public static IActionHandler ActionHandler
+    {
+      get { return _ActionHandler; }
+      set { _ActionHandler = value; }
+    }
 
     static Data()
     {
@@ -110,14 +116,5 @@ namespace EmailReader
     }
     #endregion
 
-    public static void undo()
-    {
-      ActionHandler.undo();
-    }
-
-    public static void redo()
-    {
-      ActionHandler.redo();
-    }
   }
 }
