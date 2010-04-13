@@ -320,19 +320,22 @@ namespace EmailReader
         private void button4_Click(object sender, EventArgs e)
         {
             Data.undo();
-            showEmailList(null);
-            showFilterList();
-
-            MessageBox.Show("Chỗ này cần bàn với Tùng?");
+            updateMainScreen();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             Data.redo();
-            showEmailList(null);
-            showFilterList();
+            updateMainScreen();
         }
 
+        private void updateMainScreen()
+        {
+            showFilterList();
+            showEmailList(arrSelectedFilters);
+            showTagListOfSelectedEmail();
+            updateCmbTags();
+        }
 
         private void dtgListEmail_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
