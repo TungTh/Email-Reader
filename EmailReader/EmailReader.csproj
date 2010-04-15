@@ -140,6 +140,8 @@
     <Compile Include="Testing\MainTest.cs" />
     <Compile Include="View\EmailBriefInfo.cs" />
     <Compile Include="View\FilterBriefInfo.cs" />
+    <Compile Include="View\FilterBriefInfoForCmb.cs" />
+    <Compile Include="View\OperationBriefInfo.cs" />
     <Compile Include="View\TagBriefInfo.cs" />
     <Compile Include="View\TagBriefInfoForCmb.cs" />
   </ItemGroup>

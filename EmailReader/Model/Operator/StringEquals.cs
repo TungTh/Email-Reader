@@ -19,7 +19,7 @@ namespace EmailReader.Model.Operator
 
     public string Name
     {
-      get { return "String equal operator"; }
+      get { return "equal"; }
     }
 
     public bool validateInput(string value, string criteria)

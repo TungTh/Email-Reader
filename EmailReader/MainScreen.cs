@@ -425,6 +425,7 @@ namespace EmailReader
     {
       FilterManager filter_manager = new FilterManager();
       filter_manager.ShowDialog();
+      updateMainScreen();
     }
 
     private void updateInterface()

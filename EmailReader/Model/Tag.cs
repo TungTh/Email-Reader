@@ -11,6 +11,7 @@ namespace EmailReader.Model
 
     public Tag(string name, bool isDefault) : base(name, isDefault) { }
 
+    
     public override void tagEmail(IEmail email, string value)
     {
       if (!_TaggedEmails.ContainsKey(email))

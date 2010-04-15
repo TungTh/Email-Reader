@@ -29,54 +29,55 @@ namespace EmailReader
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioBasicFilter = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.txtValue = new System.Windows.Forms.TextBox();
+            this.cmbTag = new System.Windows.Forms.ComboBox();
+            this.cmbOperator = new System.Windows.Forms.ComboBox();
+            this.rbCombinedFilter = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.cmbFilter = new System.Windows.Forms.ComboBox();
+            this.cmbFilter2OfCombinedFilter = new System.Windows.Forms.ComboBox();
+            this.cmbOperatorOfCombinedFilter = new System.Windows.Forms.ComboBox();
+            this.cmbFilter1OfCombinedFilter = new System.Windows.Forms.ComboBox();
             this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnRedo = new System.Windows.Forms.Button();
+            this.btnUndo = new System.Windows.Forms.Button();
+            this.btSave = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmbFilterOfNotFilter = new System.Windows.Forms.ComboBox();
+            this.rbNotFilter = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btDelete = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtFilterName = new System.Windows.Forms.TextBox();
+            this.dtgFilterList = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgFilterList)).BeginInit();
             this.SuspendLayout();
             // 
-            // radioButton1
+            // radioBasicFilter
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(12, 76);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(132, 17);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Create/ edit Basic filter";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioBasicFilter.AutoSize = true;
+            this.radioBasicFilter.Checked = true;
+            this.radioBasicFilter.Location = new System.Drawing.Point(12, 76);
+            this.radioBasicFilter.Name = "radioBasicFilter";
+            this.radioBasicFilter.Size = new System.Drawing.Size(132, 17);
+            this.radioBasicFilter.TabIndex = 0;
+            this.radioBasicFilter.TabStop = true;
+            this.radioBasicFilter.Text = "Create/ edit Basic filter";
+            this.radioBasicFilter.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.comboBox2);
+            this.groupBox1.Controls.Add(this.txtValue);
+            this.groupBox1.Controls.Add(this.cmbTag);
+            this.groupBox1.Controls.Add(this.cmbOperator);
             this.groupBox1.Location = new System.Drawing.Point(12, 99);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(534, 69);
@@ -84,49 +85,46 @@ namespace EmailReader
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Basic filter";
             // 
-            // textBox1
+            // txtValue
             // 
-            this.textBox1.Location = new System.Drawing.Point(334, 29);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(184, 20);
-            this.textBox1.TabIndex = 25;
-            this.textBox1.Tag = "";
-            this.textBox1.Text = "type value";
+            this.txtValue.Location = new System.Drawing.Point(334, 29);
+            this.txtValue.Name = "txtValue";
+            this.txtValue.Size = new System.Drawing.Size(184, 20);
+            this.txtValue.TabIndex = 25;
+            this.txtValue.Tag = "";
             // 
-            // comboBox1
+            // cmbTag
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(14, 28);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(184, 21);
-            this.comboBox1.TabIndex = 22;
-            this.comboBox1.Text = "Select tag";
+            this.cmbTag.FormattingEnabled = true;
+            this.cmbTag.Location = new System.Drawing.Point(14, 28);
+            this.cmbTag.Name = "cmbTag";
+            this.cmbTag.Size = new System.Drawing.Size(184, 21);
+            this.cmbTag.TabIndex = 22;
             // 
-            // comboBox2
+            // cmbOperator
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(204, 28);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(124, 21);
-            this.comboBox2.TabIndex = 24;
-            this.comboBox2.Text = "Select Operator";
+            this.cmbOperator.FormattingEnabled = true;
+            this.cmbOperator.Location = new System.Drawing.Point(204, 28);
+            this.cmbOperator.Name = "cmbOperator";
+            this.cmbOperator.Size = new System.Drawing.Size(124, 21);
+            this.cmbOperator.TabIndex = 24;
             // 
-            // radioButton2
+            // rbCombinedFilter
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(12, 183);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(153, 17);
-            this.radioButton2.TabIndex = 2;
-            this.radioButton2.Text = "Create/ edit Combined filter";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.rbCombinedFilter.AutoSize = true;
+            this.rbCombinedFilter.Location = new System.Drawing.Point(12, 183);
+            this.rbCombinedFilter.Name = "rbCombinedFilter";
+            this.rbCombinedFilter.Size = new System.Drawing.Size(153, 17);
+            this.rbCombinedFilter.TabIndex = 2;
+            this.rbCombinedFilter.Text = "Create/ edit Combined filter";
+            this.rbCombinedFilter.UseVisualStyleBackColor = true;
+            this.rbCombinedFilter.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.comboBox4);
-            this.groupBox2.Controls.Add(this.comboBox3);
-            this.groupBox2.Controls.Add(this.cmbFilter);
+            this.groupBox2.Controls.Add(this.cmbFilter2OfCombinedFilter);
+            this.groupBox2.Controls.Add(this.cmbOperatorOfCombinedFilter);
+            this.groupBox2.Controls.Add(this.cmbFilter1OfCombinedFilter);
             this.groupBox2.Location = new System.Drawing.Point(16, 210);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(530, 73);
@@ -134,40 +132,32 @@ namespace EmailReader
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Combined Filter";
             // 
-            // comboBox4
+            // cmbFilter2OfCombinedFilter
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Items.AddRange(new object[] {
-            "All mail from PUF",
-            "All spam"});
-            this.comboBox4.Location = new System.Drawing.Point(287, 36);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(162, 21);
-            this.comboBox4.TabIndex = 24;
-            this.comboBox4.Text = "Select Filter 2";
+            this.cmbFilter2OfCombinedFilter.FormattingEnabled = true;
+            this.cmbFilter2OfCombinedFilter.Location = new System.Drawing.Point(287, 36);
+            this.cmbFilter2OfCombinedFilter.Name = "cmbFilter2OfCombinedFilter";
+            this.cmbFilter2OfCombinedFilter.Size = new System.Drawing.Size(162, 21);
+            this.cmbFilter2OfCombinedFilter.TabIndex = 24;
             // 
-            // comboBox3
+            // cmbOperatorOfCombinedFilter
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
+            this.cmbOperatorOfCombinedFilter.FormattingEnabled = true;
+            this.cmbOperatorOfCombinedFilter.Items.AddRange(new object[] {
             "AND",
             "OR"});
-            this.comboBox3.Location = new System.Drawing.Point(160, 36);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 21);
-            this.comboBox3.TabIndex = 21;
+            this.cmbOperatorOfCombinedFilter.Location = new System.Drawing.Point(160, 36);
+            this.cmbOperatorOfCombinedFilter.Name = "cmbOperatorOfCombinedFilter";
+            this.cmbOperatorOfCombinedFilter.Size = new System.Drawing.Size(121, 21);
+            this.cmbOperatorOfCombinedFilter.TabIndex = 21;
             // 
-            // cmbFilter
+            // cmbFilter1OfCombinedFilter
             // 
-            this.cmbFilter.FormattingEnabled = true;
-            this.cmbFilter.Items.AddRange(new object[] {
-            "All mail from PUF",
-            "All spam"});
-            this.cmbFilter.Location = new System.Drawing.Point(11, 36);
-            this.cmbFilter.Name = "cmbFilter";
-            this.cmbFilter.Size = new System.Drawing.Size(143, 21);
-            this.cmbFilter.TabIndex = 19;
-            this.cmbFilter.Text = "Select Filter 1";
+            this.cmbFilter1OfCombinedFilter.FormattingEnabled = true;
+            this.cmbFilter1OfCombinedFilter.Location = new System.Drawing.Point(11, 36);
+            this.cmbFilter1OfCombinedFilter.Name = "cmbFilter1OfCombinedFilter";
+            this.cmbFilter1OfCombinedFilter.Size = new System.Drawing.Size(143, 21);
+            this.cmbFilter1OfCombinedFilter.TabIndex = 19;
             // 
             // button7
             // 
@@ -178,46 +168,40 @@ namespace EmailReader
             this.button7.Text = "Close";
             this.button7.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btnRedo
             // 
-            this.button6.Location = new System.Drawing.Point(255, 409);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 35;
-            this.button6.Text = "Redo";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnRedo.Location = new System.Drawing.Point(255, 409);
+            this.btnRedo.Name = "btnRedo";
+            this.btnRedo.Size = new System.Drawing.Size(75, 23);
+            this.btnRedo.TabIndex = 35;
+            this.btnRedo.Text = "Redo";
+            this.btnRedo.UseVisualStyleBackColor = true;
+            this.btnRedo.Click += new System.EventHandler(this.btnRedo_Click);
             // 
-            // button5
+            // btnUndo
             // 
-            this.button5.Location = new System.Drawing.Point(174, 409);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 34;
-            this.button5.Text = "Undo";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnUndo.Location = new System.Drawing.Point(174, 409);
+            this.btnUndo.Name = "btnUndo";
+            this.btnUndo.Size = new System.Drawing.Size(75, 23);
+            this.btnUndo.TabIndex = 34;
+            this.btnUndo.Text = "Undo";
+            this.btnUndo.UseVisualStyleBackColor = true;
+            this.btnUndo.Click += new System.EventHandler(this.btnUndo_Click);
             // 
-            // button2
+            // btSave
             // 
-            this.button2.Location = new System.Drawing.Point(12, 409);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 33;
-            this.button2.Text = "Save";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(93, 409);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 32;
-            this.button1.Text = "Create new";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btSave.Location = new System.Drawing.Point(12, 409);
+            this.btSave.Name = "btSave";
+            this.btSave.Size = new System.Drawing.Size(75, 23);
+            this.btSave.TabIndex = 33;
+            this.btSave.Text = "Save";
+            this.btSave.UseVisualStyleBackColor = true;
+            this.btSave.Click += new System.EventHandler(this.btSave_Click);
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.checkBox1);
-            this.groupBox3.Controls.Add(this.comboBox7);
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.cmbFilterOfNotFilter);
             this.groupBox3.Location = new System.Drawing.Point(16, 326);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(530, 64);
@@ -225,45 +209,32 @@ namespace EmailReader
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Not filter";
             // 
-            // checkBox1
+            // label3
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(11, 30);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(41, 17);
-            this.checkBox1.TabIndex = 20;
-            this.checkBox1.Text = "not";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(10, 29);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(30, 13);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "NOT";
             // 
-            // comboBox7
+            // cmbFilterOfNotFilter
             // 
-            this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Items.AddRange(new object[] {
-            "All mail from PUF",
-            "All spam"});
-            this.comboBox7.Location = new System.Drawing.Point(60, 28);
-            this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(114, 21);
-            this.comboBox7.TabIndex = 19;
-            this.comboBox7.Text = "Select filter";
+            this.cmbFilterOfNotFilter.FormattingEnabled = true;
+            this.cmbFilterOfNotFilter.Location = new System.Drawing.Point(60, 28);
+            this.cmbFilterOfNotFilter.Name = "cmbFilterOfNotFilter";
+            this.cmbFilterOfNotFilter.Size = new System.Drawing.Size(114, 21);
+            this.cmbFilterOfNotFilter.TabIndex = 19;
             // 
-            // radioButton3
+            // rbNotFilter
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(12, 299);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(129, 17);
-            this.radioButton3.TabIndex = 37;
-            this.radioButton3.Text = "Create/ edit NOT filter";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(577, 49);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(230, 329);
-            this.listBox1.TabIndex = 39;
+            this.rbNotFilter.AutoSize = true;
+            this.rbNotFilter.Location = new System.Drawing.Point(12, 299);
+            this.rbNotFilter.Name = "rbNotFilter";
+            this.rbNotFilter.Size = new System.Drawing.Size(129, 17);
+            this.rbNotFilter.TabIndex = 37;
+            this.rbNotFilter.Text = "Create/ edit NOT filter";
+            this.rbNotFilter.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -278,23 +249,15 @@ namespace EmailReader
             // 
             this.toolTip1.ToolTipTitle = "Select a Filter to edit";
             // 
-            // button3
+            // btDelete
             // 
-            this.button3.Location = new System.Drawing.Point(578, 384);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 41;
-            this.button3.Text = "Delete ";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(659, 384);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 42;
-            this.button4.Text = "Edit";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btDelete.Location = new System.Drawing.Point(578, 384);
+            this.btDelete.Name = "btDelete";
+            this.btDelete.Size = new System.Drawing.Size(75, 23);
+            this.btDelete.TabIndex = 41;
+            this.btDelete.Text = "Delete ";
+            this.btDelete.UseVisualStyleBackColor = true;
+            this.btDelete.Click += new System.EventHandler(this.btDelete_Click);
             // 
             // label2
             // 
@@ -305,44 +268,66 @@ namespace EmailReader
             this.label2.TabIndex = 46;
             this.label2.Text = "Filter name:";
             // 
-            // textBox2
+            // txtFilterName
             // 
-            this.textBox2.Location = new System.Drawing.Point(76, 20);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(184, 20);
-            this.textBox2.TabIndex = 45;
-            this.textBox2.Tag = "";
-            this.textBox2.Text = "type value";
+            this.txtFilterName.Location = new System.Drawing.Point(76, 20);
+            this.txtFilterName.Name = "txtFilterName";
+            this.txtFilterName.Size = new System.Drawing.Size(184, 20);
+            this.txtFilterName.TabIndex = 45;
+            this.txtFilterName.Tag = "";
             // 
-            // FilterCreation
+            // dtgFilterList
+            // 
+            this.dtgFilterList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgFilterList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Name});
+            this.dtgFilterList.Location = new System.Drawing.Point(578, 46);
+            this.dtgFilterList.Name = "dtgFilterList";
+            this.dtgFilterList.Size = new System.Drawing.Size(225, 329);
+            this.dtgFilterList.TabIndex = 47;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "IsSelected";
+            this.Column1.HeaderText = "";
+            this.Column1.Name = "Column1";
+            // 
+            // Name
+            // 
+            this.Name.DataPropertyName = "Name";
+            this.Name.HeaderText = "Name";
+            this.Name.Name = "Name";
+            // 
+            // FilterManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(820, 449);
+            this.Controls.Add(this.dtgFilterList);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.txtFilterName);
+            this.Controls.Add(this.btDelete);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.radioButton3);
+            this.Controls.Add(this.rbNotFilter);
             this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnRedo);
+            this.Controls.Add(this.btnUndo);
+            this.Controls.Add(this.btSave);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.radioButton2);
+            this.Controls.Add(this.rbCombinedFilter);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.radioButton1);
-            this.Name = "FilterCreation";
+            this.Controls.Add(this.radioBasicFilter);
+           // this.Name = "FilterManager";
             this.Text = "Filter Manager";
+            this.Load += new System.EventHandler(this.FilterManager_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgFilterList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -350,31 +335,31 @@ namespace EmailReader
 
         #endregion
 
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioBasicFilter;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.TextBox txtValue;
+        private System.Windows.Forms.ComboBox cmbTag;
+        private System.Windows.Forms.ComboBox cmbOperator;
+        private System.Windows.Forms.RadioButton rbCombinedFilter;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox cmbFilter;
+        private System.Windows.Forms.ComboBox cmbFilter2OfCombinedFilter;
+        private System.Windows.Forms.ComboBox cmbOperatorOfCombinedFilter;
+        private System.Windows.Forms.ComboBox cmbFilter1OfCombinedFilter;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnRedo;
+        private System.Windows.Forms.Button btnUndo;
+        private System.Windows.Forms.Button btSave;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ComboBox comboBox7;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ComboBox cmbFilterOfNotFilter;
+        private System.Windows.Forms.RadioButton rbNotFilter;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btDelete;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtFilterName;
+        private System.Windows.Forms.DataGridView dtgFilterList;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        private System.Windows.Forms.Label label3;
     }
 }

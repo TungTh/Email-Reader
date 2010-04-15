@@ -19,7 +19,7 @@ namespace EmailReader.Model.Operator
 
     public string Name
     {
-      get { return "String contains operator"; }
+      get { return "contain"; }
     }
 
     public bool validateInput(string value, string criteria)

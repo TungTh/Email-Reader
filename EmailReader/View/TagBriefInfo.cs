@@ -49,5 +49,13 @@ namespace EmailReader.View
             this.name = name;
             this.tag_value = value;
         }
+
+        public TagBriefInfo(ITag tag)
+        {
+            this.name = name;
+            this.tag_value = "";
+            this.tag = tag;
+        }
+
     }
 }

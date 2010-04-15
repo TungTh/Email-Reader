@@ -9,7 +9,7 @@ namespace EmailReader.Testing
   {
     public MainTest()
     {
-      testEditBasicFilter();
+      //testEditBasicFilter();
     }
 
     void testDeleteTag()
@@ -39,6 +39,7 @@ namespace EmailReader.Testing
       System.Windows.Forms.MessageBox.Show(Data.getFilterCollection().Count.ToString());
     }
 
+      /*
   
     void testEditBasicFilter()
     {
@@ -53,6 +54,7 @@ namespace EmailReader.Testing
       Data.ActionHandler.redo();
     }
 
+     */
     void printEmail(ITag tag, IEmail email)
     {
       System.Windows.Forms.MessageBox.Show(tag.getEmailTag(email));
