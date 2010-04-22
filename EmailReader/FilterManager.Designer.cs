@@ -55,6 +55,7 @@ namespace EmailReader
             this.dtgFilterList = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEditFilter = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -299,11 +300,22 @@ namespace EmailReader
             this.Name.HeaderText = "Name";
             this.Name.Name = "Name";
             // 
+            // btnEditFilter
+            // 
+            this.btnEditFilter.Location = new System.Drawing.Point(659, 384);
+            this.btnEditFilter.Name = "btnEditFilter";
+            this.btnEditFilter.Size = new System.Drawing.Size(75, 23);
+            this.btnEditFilter.TabIndex = 48;
+            this.btnEditFilter.Text = "Edit";
+            this.btnEditFilter.UseVisualStyleBackColor = true;
+            this.btnEditFilter.Click += new System.EventHandler(this.btnEditFilter_Click);
+            // 
             // FilterManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(820, 449);
+            this.Controls.Add(this.btnEditFilter);
             this.Controls.Add(this.dtgFilterList);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtFilterName);
@@ -319,7 +331,6 @@ namespace EmailReader
             this.Controls.Add(this.rbCombinedFilter);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.radioBasicFilter);
-           // this.Name = "FilterManager";
             this.Text = "Filter Manager";
             this.Load += new System.EventHandler(this.FilterManager_Load);
             this.groupBox1.ResumeLayout(false);
@@ -361,5 +372,6 @@ namespace EmailReader
         private System.Windows.Forms.DataGridViewCheckBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Name;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnEditFilter;
     }
 }

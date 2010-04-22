@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using EmailReader;
 using EmailReader.Model;
+using EmailReader.Model.Command;
 using EmailReader.Model.Operator;
 using EmailReader.View;
 using System.Collections;
@@ -22,6 +23,7 @@ namespace EmailReader
     ArrayList arrTagsOfCmb = new ArrayList(); //all tags in data
     ICollection<IFilter> arrSelectedFilters = new List<IFilter>();
     IEmail selected_email;
+      ActionHandler actionHandleOfMainScreen = new ActionHandler();
 
     public MainScreen()
     {
@@ -277,11 +279,10 @@ namespace EmailReader
     private void MainScreen_Load(object sender, EventArgs e)
     {
       new Testing.MainTest();
-      showEmailList(null);
-      showFilterList();
-      updateCmbTags();
 
-      controlUndoButtons();
+      //set action Handle of the MainScreen
+      Data.ActionHandler = actionHandleOfMainScreen;
+      updateMainScreen();
     }
 
     //show all tags in the combobox
@@ -318,15 +319,13 @@ namespace EmailReader
     private void btnUndo_Click(object sender, EventArgs e)
     {
       Data.ActionHandler.undo();
-      controlUndoButtons();
-      updateInterface();
+      updateMainScreen();
     }
 
     private void btnRedo_Click(object sender, EventArgs e)
     {
       Data.ActionHandler.redo();
-      controlUndoButtons();
-      updateInterface();
+      updateMainScreen();
     }
 
 
@@ -334,8 +333,7 @@ namespace EmailReader
     private void button4_Click(object sender, EventArgs e)
     {
         Data.ActionHandler.undo();
-        controlUndoButtons();
-        updateInterface();
+        updateMainScreen();
     }
 
     private void dtgListEmail_CellEnter(object sender, DataGridViewCellEventArgs e)
@@ -367,10 +365,8 @@ namespace EmailReader
         Data.insertTag(new_tag);
         new_tag.tagEmail(selected_email, txtNewTagValue.Text);
       }
-   
-      showTagListOfSelectedEmail();
-      updateCmbTags();
-      showEmailList(arrSelectedFilters);
+
+      updateMainScreen();
     }
 
       private void updateMainScreen()
@@ -379,6 +375,7 @@ namespace EmailReader
           showEmailList(arrSelectedFilters);
           showTagListOfSelectedEmail();
           updateCmbTags();
+          controlUndoButtons();
       }
 
 
@@ -394,9 +391,7 @@ namespace EmailReader
       {
         MessageBox.Show("You want to delete tag " + selected_tag.Name + "\n" + ex.Message, "Error");
       }
-
-      showTagListOfSelectedEmail();
-      showEmailList(arrSelectedFilters);
+      updateMainScreen();
     }
 
     private void btnDeleteTagType_Click(object sender, EventArgs e)
@@ -410,9 +405,7 @@ namespace EmailReader
         {
           Data.getTagCollection().Remove(selected_tag); //can hoi Tung lai ham cu the de xoa loai TAG
 
-          showTagListOfSelectedEmail();
-          updateCmbTags();
-          showEmailList(arrSelectedFilters);
+          updateMainScreen();
         }
         else
         {
@@ -425,21 +418,25 @@ namespace EmailReader
     {
       FilterManager filter_manager = new FilterManager();
       filter_manager.ShowDialog();
+      Data.ActionHandler = actionHandleOfMainScreen; //restore action handle for mainscreen
       updateMainScreen();
     }
 
-    private void updateInterface()
-    {
-      showTagListOfSelectedEmail();
-      showFilterList();
-      updateCmbTags();
-      showEmailList(arrSelectedFilters);
-    }
 
     private void controlUndoButtons()
     {
       btnUndo.Enabled = Data.ActionHandler.CanUndo;
       btnRedo.Enabled = Data.ActionHandler.CanRedo;
     }
+
+      private void MainScreen_Activated(object sender, EventArgs e)
+      {
+
+      }
+
+      private void button6_Click(object sender, EventArgs e)
+      {
+
+      }
   }
 }

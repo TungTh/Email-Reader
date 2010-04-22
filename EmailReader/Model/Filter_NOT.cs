@@ -37,6 +37,7 @@ namespace EmailReader.Model
       _filter.detachObserver(this);
       _filter = filter;
       _filter.attachObserver(this);
+    
       Data.ActionHandler.endMacro();
     }
   }
