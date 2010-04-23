@@ -53,8 +53,6 @@ namespace EmailReader
           this.label2 = new System.Windows.Forms.Label();
           this.txtFilterName = new System.Windows.Forms.TextBox();
           this.dtgFilterList = new System.Windows.Forms.DataGridView();
-          this.Column1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-          this.FilterName = new System.Windows.Forms.DataGridViewTextBoxColumn();
           this.btnEditFilter = new System.Windows.Forms.Button();
           this.grBasicFilter.SuspendLayout();
           this.grCombinedFilter.SuspendLayout();
@@ -80,7 +78,7 @@ namespace EmailReader
           this.grBasicFilter.Controls.Add(this.txtValue);
           this.grBasicFilter.Controls.Add(this.cmbTag);
           this.grBasicFilter.Controls.Add(this.cmbOperator);
-          this.grBasicFilter.Location = new System.Drawing.Point(12, 99);
+          this.grBasicFilter.Location = new System.Drawing.Point(12, 104);
           this.grBasicFilter.Name = "grBasicFilter";
           this.grBasicFilter.Size = new System.Drawing.Size(534, 69);
           this.grBasicFilter.TabIndex = 1;
@@ -114,7 +112,7 @@ namespace EmailReader
           // rbCombinedFilter
           // 
           this.rbCombinedFilter.AutoSize = true;
-          this.rbCombinedFilter.Location = new System.Drawing.Point(12, 183);
+          this.rbCombinedFilter.Location = new System.Drawing.Point(12, 184);
           this.rbCombinedFilter.Name = "rbCombinedFilter";
           this.rbCombinedFilter.Size = new System.Drawing.Size(153, 17);
           this.rbCombinedFilter.TabIndex = 2;
@@ -128,9 +126,9 @@ namespace EmailReader
           this.grCombinedFilter.Controls.Add(this.cmbOperatorOfCombinedFilter);
           this.grCombinedFilter.Controls.Add(this.cmbFilter1OfCombinedFilter);
           this.grCombinedFilter.Enabled = false;
-          this.grCombinedFilter.Location = new System.Drawing.Point(16, 210);
+          this.grCombinedFilter.Location = new System.Drawing.Point(12, 212);
           this.grCombinedFilter.Name = "grCombinedFilter";
-          this.grCombinedFilter.Size = new System.Drawing.Size(530, 73);
+          this.grCombinedFilter.Size = new System.Drawing.Size(530, 49);
           this.grCombinedFilter.TabIndex = 3;
           this.grCombinedFilter.TabStop = false;
           this.grCombinedFilter.Text = "Combined Filter";
@@ -138,9 +136,9 @@ namespace EmailReader
           // cmbFilter2OfCombinedFilter
           // 
           this.cmbFilter2OfCombinedFilter.FormattingEnabled = true;
-          this.cmbFilter2OfCombinedFilter.Location = new System.Drawing.Point(287, 36);
+          this.cmbFilter2OfCombinedFilter.Location = new System.Drawing.Point(334, 19);
           this.cmbFilter2OfCombinedFilter.Name = "cmbFilter2OfCombinedFilter";
-          this.cmbFilter2OfCombinedFilter.Size = new System.Drawing.Size(162, 21);
+          this.cmbFilter2OfCombinedFilter.Size = new System.Drawing.Size(184, 21);
           this.cmbFilter2OfCombinedFilter.TabIndex = 24;
           // 
           // cmbOperatorOfCombinedFilter
@@ -149,7 +147,7 @@ namespace EmailReader
           this.cmbOperatorOfCombinedFilter.Items.AddRange(new object[] {
             "AND",
             "OR"});
-          this.cmbOperatorOfCombinedFilter.Location = new System.Drawing.Point(160, 36);
+          this.cmbOperatorOfCombinedFilter.Location = new System.Drawing.Point(204, 19);
           this.cmbOperatorOfCombinedFilter.Name = "cmbOperatorOfCombinedFilter";
           this.cmbOperatorOfCombinedFilter.Size = new System.Drawing.Size(121, 21);
           this.cmbOperatorOfCombinedFilter.TabIndex = 21;
@@ -157,9 +155,9 @@ namespace EmailReader
           // cmbFilter1OfCombinedFilter
           // 
           this.cmbFilter1OfCombinedFilter.FormattingEnabled = true;
-          this.cmbFilter1OfCombinedFilter.Location = new System.Drawing.Point(11, 36);
+          this.cmbFilter1OfCombinedFilter.Location = new System.Drawing.Point(14, 19);
           this.cmbFilter1OfCombinedFilter.Name = "cmbFilter1OfCombinedFilter";
-          this.cmbFilter1OfCombinedFilter.Size = new System.Drawing.Size(143, 21);
+          this.cmbFilter1OfCombinedFilter.Size = new System.Drawing.Size(184, 21);
           this.cmbFilter1OfCombinedFilter.TabIndex = 19;
           // 
           // button7
@@ -173,7 +171,7 @@ namespace EmailReader
           // 
           // btnRedo
           // 
-          this.btnRedo.Location = new System.Drawing.Point(255, 409);
+          this.btnRedo.Location = new System.Drawing.Point(467, 409);
           this.btnRedo.Name = "btnRedo";
           this.btnRedo.Size = new System.Drawing.Size(75, 23);
           this.btnRedo.TabIndex = 35;
@@ -183,7 +181,7 @@ namespace EmailReader
           // 
           // btnUndo
           // 
-          this.btnUndo.Location = new System.Drawing.Point(174, 409);
+          this.btnUndo.Location = new System.Drawing.Point(386, 409);
           this.btnUndo.Name = "btnUndo";
           this.btnUndo.Size = new System.Drawing.Size(75, 23);
           this.btnUndo.TabIndex = 34;
@@ -206,7 +204,7 @@ namespace EmailReader
           this.grNotFilter.Controls.Add(this.label3);
           this.grNotFilter.Controls.Add(this.cmbFilterOfNotFilter);
           this.grNotFilter.Enabled = false;
-          this.grNotFilter.Location = new System.Drawing.Point(16, 326);
+          this.grNotFilter.Location = new System.Drawing.Point(12, 324);
           this.grNotFilter.Name = "grNotFilter";
           this.grNotFilter.Size = new System.Drawing.Size(530, 64);
           this.grNotFilter.TabIndex = 38;
@@ -225,7 +223,7 @@ namespace EmailReader
           // cmbFilterOfNotFilter
           // 
           this.cmbFilterOfNotFilter.FormattingEnabled = true;
-          this.cmbFilterOfNotFilter.Location = new System.Drawing.Point(60, 28);
+          this.cmbFilterOfNotFilter.Location = new System.Drawing.Point(46, 26);
           this.cmbFilterOfNotFilter.Name = "cmbFilterOfNotFilter";
           this.cmbFilterOfNotFilter.Size = new System.Drawing.Size(114, 21);
           this.cmbFilterOfNotFilter.TabIndex = 19;
@@ -233,7 +231,7 @@ namespace EmailReader
           // rbNotFilter
           // 
           this.rbNotFilter.AutoSize = true;
-          this.rbNotFilter.Location = new System.Drawing.Point(12, 299);
+          this.rbNotFilter.Location = new System.Drawing.Point(12, 296);
           this.rbNotFilter.Name = "rbNotFilter";
           this.rbNotFilter.Size = new System.Drawing.Size(129, 17);
           this.rbNotFilter.TabIndex = 37;
@@ -256,7 +254,7 @@ namespace EmailReader
           // 
           // btDelete
           // 
-          this.btDelete.Location = new System.Drawing.Point(578, 384);
+          this.btDelete.Location = new System.Drawing.Point(647, 409);
           this.btDelete.Name = "btDelete";
           this.btDelete.Size = new System.Drawing.Size(75, 23);
           this.btDelete.TabIndex = 41;
@@ -284,29 +282,14 @@ namespace EmailReader
           // dtgFilterList
           // 
           this.dtgFilterList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-          this.dtgFilterList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.FilterName});
-          this.dtgFilterList.Location = new System.Drawing.Point(578, 46);
+          this.dtgFilterList.Location = new System.Drawing.Point(578, 36);
           this.dtgFilterList.Name = "dtgFilterList";
-          this.dtgFilterList.Size = new System.Drawing.Size(225, 329);
+          this.dtgFilterList.Size = new System.Drawing.Size(225, 352);
           this.dtgFilterList.TabIndex = 47;
-          // 
-          // Column1
-          // 
-          this.Column1.DataPropertyName = "IsSelected";
-          this.Column1.HeaderText = "";
-          this.Column1.Name = "Column1";
-          // 
-          // FilterName
-          // 
-          this.FilterName.DataPropertyName = "Name";
-          this.FilterName.HeaderText = "Name";
-          this.FilterName.Name = "FilterName";
           // 
           // btnEditFilter
           // 
-          this.btnEditFilter.Location = new System.Drawing.Point(659, 384);
+          this.btnEditFilter.Location = new System.Drawing.Point(728, 409);
           this.btnEditFilter.Name = "btnEditFilter";
           this.btnEditFilter.Size = new System.Drawing.Size(75, 23);
           this.btnEditFilter.TabIndex = 48;
@@ -375,8 +358,6 @@ namespace EmailReader
         private System.Windows.Forms.TextBox txtFilterName;
       private System.Windows.Forms.DataGridView dtgFilterList;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnEditFilter;
-      private System.Windows.Forms.DataGridViewCheckBoxColumn Column1;
-      private System.Windows.Forms.DataGridViewTextBoxColumn FilterName;
+      private System.Windows.Forms.Button btnEditFilter;
     }
 }

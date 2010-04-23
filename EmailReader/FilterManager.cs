@@ -125,13 +125,10 @@ namespace EmailReader
 
     private void save()
     {
-
       string resultMsg = "Filter haven't created";
 
       if (txtFilterName.Text == "")
-      {
         MessageBox.Show("You must type filter name", "Warning");
-      }
       else
       {
         if (editMode == EditModes.CreateNew) //save new filter
@@ -153,24 +150,20 @@ namespace EmailReader
           }
           else if (rbNotFilter.Checked)
           {
-
             IFilter selected_filter1 = ((FilterBriefInfoForCmb)cmbFilterOfNotFilter.SelectedItem).getFilter();
 
             IFilter newFilter = new Filter_NOT(txtFilterName.Text, selected_filter1);
             Data.insertFilter(newFilter);
             resultMsg = "Created 1 NOT filter";
-
           }
         }
         else if (editMode == EditModes.EditOld) //save edited filter 
         {
           if (rbNotFilter.Checked)
           {
-
             IFilter selected_filter1 = ((FilterBriefInfoForCmb)cmbFilterOfNotFilter.SelectedItem).getFilter();
             ((Filter_NOT)editedFilter).edit(selected_filter1);
             resultMsg = "Updated 1 NOT filter: " + editedFilter.Name;
-
           }
           else if (radioBasicFilter.Checked)
           {
@@ -238,7 +231,6 @@ namespace EmailReader
     private void btnRedo_Click(object sender, EventArgs e)
     {
       Data.ActionHandler.redo();
-
       updateScreen();
     }
 
@@ -305,12 +297,9 @@ namespace EmailReader
               cmbOperatorOfCombinedFilter.Text = "AND";
             else
               cmbOperatorOfCombinedFilter.Text = "OR";
-
           }
         }
-
       }
-
     }
 
     private void radioBasicFilter_CheckedChanged(object sender, EventArgs e)
