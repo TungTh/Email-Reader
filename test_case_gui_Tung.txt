@@ -1,0 +1,7 @@
+﻿Trong MainScreen:
+	Hai nút Undo và Redo luôn bị disable?
+
+Trong FilterManager:
+	Chức năng: Edit trong Filter NOT không Undo được
+
+Các filter nếu trùng tên,  khi hiện trong combobox người dùng ko phân biệt dc cái nào, do đó Tùng nên cho thêm 1 điều kiện là ko cho tạo filter trùng với tên đã có
