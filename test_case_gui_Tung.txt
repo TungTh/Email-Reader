@@ -1,7 +1,14 @@
 ﻿Trong MainScreen:
 	Hai nút Undo và Redo luôn bị disable?
+	Ly do: Trước khi vào mainscreen, minh đã thực hiện các thao tác trên data.
+	Nhưng trong mainscreen, mình tạo mới ActionHandler --> mất các thao tác cũ.
+	Giải quyết: Tạo một biến kiểu ActionHandler để giữ ActionHandler ban đầu của Data
+		actionHandleOfMainScreen = Data.ActionHandler;
+	sau đó, mọi việc làm như bình thường (switch giữa các action handler)
+	
 
 Trong FilterManager:
 	Chức năng: Edit trong Filter NOT không Undo được
+	--> Lỗi do Tùng: lưu value của undo sai (lưu giá trị mới, đúng ra phải lưu giá trị cũ)
 
 Các filter nếu trùng tên,  khi hiện trong combobox người dùng ko phân biệt dc cái nào, do đó Tùng nên cho thêm 1 điều kiện là ko cho tạo filter trùng với tên đã có

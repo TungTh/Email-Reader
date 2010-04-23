@@ -5,57 +5,57 @@ using EmailReader.Model;
 
 namespace EmailReader.View
 {
-    class TagBriefInfo
+  class TagBriefInfo
+  {
+    ITag tag;
+    string name, tag_value;
+
+    public string Name
     {
-        ITag tag;
-        string name, tag_value;
-
-        public string Name
-        {
-            get
-            {
-                return name;
-            }
-            set
-            {
-                name = value;
-            }
-        }
-
-        public string Value
-        {
-            get
-            {
-                return tag_value;
-            }
-            set
-            {
-                tag_value = value;
-            }
-        }
-
-        public void setTag(ITag tag)
-        {
-            this.tag = tag;
-        }
-
-        public ITag getTag()
-        {
-            return tag;
-        }
-
-        public TagBriefInfo(string name, string value)
-        {
-            this.name = name;
-            this.tag_value = value;
-        }
-
-        public TagBriefInfo(ITag tag)
-        {
-            this.name = name;
-            this.tag_value = "";
-            this.tag = tag;
-        }
-
+      get
+      {
+        return name;
+      }
+      set
+      {
+        name = value;
+      }
     }
+
+    public string Value
+    {
+      get
+      {
+        return tag_value;
+      }
+      set
+      {
+        tag_value = value;
+      }
+    }
+
+    public void setTag(ITag tag)
+    {
+      this.tag = tag;
+    }
+
+    public ITag getTag()
+    {
+      return tag;
+    }
+
+    public TagBriefInfo(string name, string value)
+    {
+      this.name = name;
+      this.tag_value = value;
+    }
+
+    public TagBriefInfo(ITag tag)
+    {
+      this.name = tag.Name;
+      this.tag_value = "";
+      this.tag = tag;
+    }
+
+  }
 }

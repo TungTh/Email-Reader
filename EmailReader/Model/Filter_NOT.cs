@@ -33,11 +33,10 @@ namespace EmailReader.Model
     public void edit(IFilter filter)
     {
       Data.ActionHandler.beginMacro();
-      Data.ActionHandler.storeAction(new EditFilterNOT(this, filter));
+      Data.ActionHandler.storeAction(new EditFilterNOT(this, _filter));
       _filter.detachObserver(this);
       _filter = filter;
       _filter.attachObserver(this);
-    
       Data.ActionHandler.endMacro();
     }
   }
