@@ -23,7 +23,7 @@ namespace EmailReader
     ArrayList arrTagsOfCmb = new ArrayList(); //all tags in data
     ICollection<IFilter> arrSelectedFilters = new List<IFilter>();
     IEmail selected_email;
-      ActionHandler actionHandleOfMainScreen = new ActionHandler();
+    IActionHandler actionHandleOfMainScreen = null;
 
     public MainScreen()
     {
@@ -49,7 +49,6 @@ namespace EmailReader
           MessageBox.Show(tag.Name + " = " + tagValue);
         }
       }
-
     }
 
     void demoHienCacTag()
@@ -131,7 +130,6 @@ namespace EmailReader
           MessageBox.Show("tim thay roi:" + fromTag.getEmailTag(e) + toTag.getEmailTag(e));
       }
     }
-
 
     void demoTaoORFilterVaApplyFilter()
     {
@@ -281,7 +279,7 @@ namespace EmailReader
       new Testing.MainTest();
 
       //set action Handle of the MainScreen
-      Data.ActionHandler = actionHandleOfMainScreen;
+      actionHandleOfMainScreen = Data.ActionHandler;
       updateMainScreen();
     }
 
@@ -332,8 +330,8 @@ namespace EmailReader
 
     private void button4_Click(object sender, EventArgs e)
     {
-        Data.ActionHandler.undo();
-        updateMainScreen();
+      Data.ActionHandler.undo();
+      updateMainScreen();
     }
 
     private void dtgListEmail_CellEnter(object sender, DataGridViewCellEventArgs e)
@@ -369,14 +367,14 @@ namespace EmailReader
       updateMainScreen();
     }
 
-      private void updateMainScreen()
-      {
-          showFilterList();
-          showEmailList(arrSelectedFilters);
-          showTagListOfSelectedEmail();
-          updateCmbTags();
-          controlUndoButtons();
-      }
+    private void updateMainScreen()
+    {
+      showFilterList();
+      showEmailList(arrSelectedFilters);
+      showTagListOfSelectedEmail();
+      updateCmbTags();
+      controlUndoButtons();
+    }
 
 
     private void btnDeleteTagFromEmail_Click(object sender, EventArgs e)
@@ -429,14 +427,14 @@ namespace EmailReader
       btnRedo.Enabled = Data.ActionHandler.CanRedo;
     }
 
-      private void MainScreen_Activated(object sender, EventArgs e)
-      {
+    private void MainScreen_Activated(object sender, EventArgs e)
+    {
 
-      }
+    }
 
-      private void button6_Click(object sender, EventArgs e)
-      {
+    private void button6_Click(object sender, EventArgs e)
+    {
 
-      }
+    }
   }
 }
