@@ -127,6 +127,9 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="ClassDiagram1.cd" />
+    <None Include="Properties\DataSources\EmailReader.Model.IFilter.datasource" />
+    <None Include="Properties\DataSources\EmailReader.Model.ITag.datasource" />
+    <None Include="Properties\DataSources\EmailReader.Model.Operator.IOperator.datasource" />
     <None Include="Properties\DataSources\EmailReader.View.FilterBriefInfo.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -140,8 +143,6 @@
     <Compile Include="Testing\MainTest.cs" />
     <Compile Include="View\EmailBriefInfo.cs" />
     <Compile Include="View\FilterBriefInfo.cs" />
-    <Compile Include="View\FilterBriefInfoForCmb.cs" />
-    <Compile Include="View\OperationBriefInfo.cs" />
     <Compile Include="View\TagBriefInfo.cs" />
     <Compile Include="View\TagBriefInfoForCmb.cs" />
   </ItemGroup>

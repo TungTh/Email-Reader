@@ -11,18 +11,11 @@ using EmailReader.Model.Operator;
 using EmailReader.View;
 using EmailReader.Model.Command;
 
+
 namespace EmailReader
 {
   public partial class FilterManager : Form
   {
-    System.Collections.ArrayList arrFilterInfo = new ArrayList();
-
-    System.Collections.ArrayList arrFilterInfo1OfCombinedFilter = new ArrayList();
-    System.Collections.ArrayList arrFilterInfo2OfCombinedFilter = new ArrayList();
-    ArrayList arrFilterInfoOfNotFilter = new ArrayList();
-
-    ArrayList arrTagsForComboBox = new ArrayList(); //all tags in data
-    ArrayList arrOperatorForComboBox = new ArrayList();
     static ActionHandler actionHandlerOfFilterManager = new ActionHandler();
 
     enum EditModes { CreateNew = 1, EditOld = 2 };
@@ -34,98 +27,50 @@ namespace EmailReader
       InitializeComponent();
     }
 
-    private void showFilterLists()
-    {
-      cmbFilter1OfCombinedFilter.DataSource = null; //refresh screen
-      cmbFilter2OfCombinedFilter.DataSource = null;
-      cmbFilterOfNotFilter.DataSource = null;
-
-      arrFilterInfo1OfCombinedFilter.Clear();
-      arrFilterInfo2OfCombinedFilter.Clear();
-      arrFilterInfoOfNotFilter.Clear();
-
-      dtgFilterList.DataSource = null; //refresh screen
-      arrFilterInfo.Clear();
-
-      foreach (IFilter filter in Data.getFilterCollection())
-      {
-        FilterBriefInfoForCmb fInfo = new FilterBriefInfoForCmb(filter);
-
-        //data of 3 combobox
-        arrFilterInfo1OfCombinedFilter.Add(fInfo);
-        arrFilterInfo2OfCombinedFilter.Add(fInfo);
-        arrFilterInfoOfNotFilter.Add(fInfo);
-
-        //data of grid
-        FilterBriefInfo fBInfo = new FilterBriefInfo(filter);
-        arrFilterInfo.Add(fBInfo);
-      }
-
-      cmbFilter1OfCombinedFilter.DataSource = arrFilterInfo1OfCombinedFilter;
-      cmbFilter2OfCombinedFilter.DataSource = arrFilterInfo2OfCombinedFilter;
-      cmbFilterOfNotFilter.DataSource = arrFilterInfoOfNotFilter;
-      dtgFilterList.DataSource = arrFilterInfo;
-    }
-
-    private void showOperationList()
-    {
-      foreach (IOperator ope in Data.getOperatorCollection())
-      {
-        OperationBriefInfo oInfo = new OperationBriefInfo(ope);
-        arrOperatorForComboBox.Add(oInfo);
-      }
-      cmbOperator.DataSource = arrOperatorForComboBox;
-    }
-
-    //show all tags in the combobox
-    private void showTagList()
-    {
-
-      this.arrTagsForComboBox.Clear();
-      foreach (ITag tag in Data.getTagCollection())
-      {
-        TagBriefInfoForCmb tag_brief_info = new TagBriefInfoForCmb(tag);
-        this.arrTagsForComboBox.Add(tag_brief_info);
-      }
-      cmbTag.DataSource = arrTagsForComboBox;
-    }
-
-    private void updateScreen()
-    {
-      showOperationList();
-      showTagList();
-      showFilterLists();
-      controlUndoButtons();
-    }
-
     private void FilterManager_Load(object sender, EventArgs e)
     {
       Data.ActionHandler = actionHandlerOfFilterManager;
+      showTagList();
+      showOperationList();
       updateScreen();
       editMode = EditModes.CreateNew;
     }
 
-    private void createCombinedFilter()
+    private void showFilterLists()
     {
-      //create combined filter
-      IFilter selected_filter1 = ((FilterBriefInfoForCmb)cmbFilter1OfCombinedFilter.SelectedItem).getFilter();
-      IFilter selected_filter2 = ((FilterBriefInfoForCmb)cmbFilter2OfCombinedFilter.SelectedItem).getFilter();
+      // Init data for iFilterCombobox
+      iFilterBindingSource_F1.DataSource = Data.getFilterCollection();
+      iFilterBindingSource_F2.DataSource = Data.getFilterCollection();
+      iFilterBindingSource_NotF.DataSource = Data.getFilterCollection();
+      iFilterBindingSource.DataSource = Data.getFilterCollection();
 
-      IFilter newFilter;
+      iFilterBindingSource_F1.ResetBindings(false);
+      iFilterBindingSource_F2.ResetBindings(false);
+      iFilterBindingSource_NotF.ResetBindings(false);
+      iFilterBindingSource.ResetBindings(false);
+    }
 
-      if (cmbOperatorOfCombinedFilter.Text == "AND")
-      {
-        newFilter = new CombinedFilter_AND(txtFilterName.Text, selected_filter1, selected_filter2);
-      }
-      else
-        newFilter = new CombinedFilter_OR(txtFilterName.Text, selected_filter1, selected_filter2);
-      Data.insertFilter(newFilter);
+    private void showOperationList()
+    {
+      iOperatorBindingSource.DataSource = Data.getOperatorCollection();
+      iOperatorBindingSource.ResetBindings(false);
+    }
+
+    private void showTagList()
+    {
+      iTagBindingSource.DataSource = Data.getTagCollection();
+      iTagBindingSource.ResetBindings(false);
+    }
+
+    private void updateScreen()
+    {
+      showFilterLists();
+      controlUndoButtons();
     }
 
     private void save()
     {
       string resultMsg = "Filter haven't created";
-
       if (txtFilterName.Text == "")
         MessageBox.Show("You must type filter name", "Warning");
       else
@@ -143,82 +88,121 @@ namespace EmailReader
     {
       if (rbNotFilter.Checked)
       {
-        IFilter selected_filter1 = ((FilterBriefInfoForCmb)cmbFilterOfNotFilter.SelectedItem).getFilter();
-        ((Filter_NOT)editedFilter).edit(selected_filter1);
+        if (editedFilter is Filter_NOT)
+          ((Filter_NOT)editedFilter).edit((IFilter)iFilterComboBox_NotF.SelectedItem);
+        else
+          Data.replaceFilter(editedFilter, createNotFilter());
+
         resultMsg = "Updated 1 NOT filter: " + editedFilter.Name;
       }
       else if (radioBasicFilter.Checked)
       {
-        ITag selected_tag = ((TagBriefInfoForCmb)cmbTag.SelectedItem).getTag();
-        IOperator selected_operator = ((OperationBriefInfo)cmbOperator.SelectedItem).getOperator();
-        ((BasicFilter)editedFilter).edit(txtFilterName.Text, selected_tag, selected_operator, txtValue.Text);
+        if (editedFilter is BasicFilter)
+        {
+          ITag selected_tag = (ITag)iTagComboBox.SelectedItem;
+          IOperator selected_operator = (IOperator)iOperatorComboBox.SelectedItem;
+          ((BasicFilter)editedFilter).edit(txtFilterName.Text, selected_tag, selected_operator, txtValue.Text);
+        }
+        else
+          Data.replaceFilter(editedFilter, createBasicFilter());
+
         resultMsg = "Updated 1 Basic filter: " + editedFilter.Name;
       }
       else if (rbCombinedFilter.Checked)
       {
-        Data.removeFilter(editedFilter);
-        createCombinedFilter();
+        Data.replaceFilter(editedFilter, createCombinedFilter());
         resultMsg = "Updated 1 Combined filter: " + editedFilter.Name;
       }
+      editMode = EditModes.CreateNew;
       return resultMsg;
     }
 
     private string createNewFilter(string resultMsg)
     {
-      if (radioBasicFilter.Checked)
-      {
-        ITag selected_tag = ((TagBriefInfoForCmb)cmbTag.SelectedItem).getTag();
-        IOperator selected_operator = ((OperationBriefInfo)cmbOperator.SelectedItem).getOperator();
-
-        //create basic filter
-        IFilter filter = new BasicFilter(txtFilterName.Text, selected_tag, selected_operator, txtValue.Text);
-        Data.insertFilter(filter);
-        resultMsg = "Created 1 basic filter";
-      }
-      else if (rbCombinedFilter.Checked)
-      {
-        resultMsg = "Created 1 combined filter";
-        createCombinedFilter();
-      }
-      else if (rbNotFilter.Checked)
-      {
-        IFilter selected_filter1 = ((FilterBriefInfoForCmb)cmbFilterOfNotFilter.SelectedItem).getFilter();
-
-        IFilter newFilter = new Filter_NOT(txtFilterName.Text, selected_filter1);
-        Data.insertFilter(newFilter);
-        resultMsg = "Created 1 NOT filter";
-      }
+      if (Data.constainsFilter(txtFilterName.Text))
+        resultMsg = "The filter name is already used";
+      else
+        if (radioBasicFilter.Checked)
+        {
+          Data.insertFilter(createBasicFilter());
+          resultMsg = "Created 1 basic filter";
+        }
+        else if (rbCombinedFilter.Checked)
+        {
+          Data.insertFilter(createCombinedFilter());
+          resultMsg = "Created 1 combined filter";
+        }
+        else if (rbNotFilter.Checked)
+        {
+          Data.insertFilter(createNotFilter());
+          resultMsg = "Created 1 NOT filter";
+        }
       return resultMsg;
     }
 
-    bool noFilterIsSelected()
+    private IFilter createCombinedFilter()
     {
-      bool ret = true;
-      foreach (FilterBriefInfo filterInfo in arrFilterInfo)
+      IFilter selected_filter1 = (IFilter)iFilterComboBox_F1.SelectedItem;
+      IFilter selected_filter2 = (IFilter)iFilterComboBox_F2.SelectedItem;
+      IFilter newFilter;
+
+      if (cmbOperatorOfCombinedFilter.Text == "AND")
       {
-        if (filterInfo.IsSelected)
-        {
-          ret = false;
-          break;
-        }
+        newFilter = new CombinedFilter_AND(txtFilterName.Text, selected_filter1, selected_filter2);
       }
-      return ret;
+      else
+        newFilter = new CombinedFilter_OR(txtFilterName.Text, selected_filter1, selected_filter2);
+
+      return newFilter;
+    }
+
+    private IFilter createNotFilter()
+    {
+      return new Filter_NOT(txtFilterName.Text, (IFilter)iFilterComboBox_NotF.SelectedItem);
+    }
+
+    private IFilter createBasicFilter()
+    {
+      ITag selected_tag = (ITag)iTagComboBox.SelectedItem;
+      IOperator selected_operator = (IOperator)iOperatorComboBox.SelectedItem;
+
+      //create basic filter
+      IFilter filter = new BasicFilter(txtFilterName.Text, selected_tag, selected_operator, txtValue.Text);
+      return filter;
+    }
+
+    private bool noFilterIsSelected()
+    {
+      return iFilterDataGridView.SelectedCells.Count == 0;
+    }
+
+    private IFilter getSelectedFilter()
+    {
+      if (noFilterIsSelected())
+        return null;
+
+      int selectedRowIndex = iFilterDataGridView.SelectedCells[0].RowIndex;
+      return (IFilter)((BindingSource)iFilterDataGridView.DataSource)[selectedRowIndex];
+    }
+
+    private void controlUndoButtons()
+    {
+      btnUndo.Enabled = Data.ActionHandler.CanUndo;
+      btnRedo.Enabled = Data.ActionHandler.CanRedo;
     }
 
     private void btDelete_Click(object sender, EventArgs e)
     {
-      foreach (FilterBriefInfo filterInfo in arrFilterInfo)
+      if (!noFilterIsSelected())
       {
-        if (filterInfo.IsSelected)
-          Data.removeFilter(filterInfo.Filter);
+        Data.removeFilter(getSelectedFilter());
+        updateScreen();
       }
-      updateScreen();
     }
 
     private void btSave_Click(object sender, EventArgs e)
     {
-      if (noFilterIsSelected())
-        editMode = EditModes.CreateNew;
+      lblStatus.Text = String.Empty;
       save();
     }
 
@@ -229,12 +213,6 @@ namespace EmailReader
       updateScreen();
     }
 
-    private void controlUndoButtons()
-    {
-      btnUndo.Enabled = Data.ActionHandler.CanUndo;
-      btnRedo.Enabled = Data.ActionHandler.CanRedo;
-    }
-
     private void btnRedo_Click(object sender, EventArgs e)
     {
       Data.ActionHandler.redo();
@@ -243,63 +221,38 @@ namespace EmailReader
 
     private void btnEditFilter_Click(object sender, EventArgs e)
     {
-      foreach (FilterBriefInfo filterInfo in arrFilterInfo)
+      if (!noFilterIsSelected())
       {
-        if (filterInfo.IsSelected)
+        editMode = EditModes.EditOld;
+        this.editedFilter = getSelectedFilter();
+        this.txtFilterName.Text = editedFilter.Name;
+
+        lblStatus.Text = "Editing filter \"" + editedFilter.Name + "\"";
+
+        if (editedFilter is Filter_NOT)
         {
-          this.editedFilter = filterInfo.Filter;
-          editMode = EditModes.EditOld;
-          this.txtFilterName.Text = filterInfo.Name;
+          //load selected NOT FILTER
+          rbNotFilter.Checked = true;
+          iFilterComboBox_NotF.SelectedItem = ((Filter_NOT)editedFilter).Filter;
+        }
+        else if (editedFilter is BasicFilter)
+        {
+          radioBasicFilter.Checked = true;
+          iTagComboBox.SelectedItem = ((BasicFilter)editedFilter).Tag;
+          iOperatorComboBox.SelectedItem = ((BasicFilter)editedFilter).Operator;
+          txtValue.Text = ((BasicFilter)editedFilter).Criteria;
+        }
+        else if (editedFilter is CombinedFilter)
+        {
+          rbCombinedFilter.Checked = true;
 
-          if (filterInfo.Filter is Filter_NOT)
-          {
-            //load selected NOT FILTER
-            rbNotFilter.Checked = true;
+          iFilterComboBox_F1.SelectedItem = ((CombinedFilter)editedFilter).Filter1;
+          iFilterComboBox_F2.SelectedItem = ((CombinedFilter)editedFilter).Filter2;
 
-            //show details of this filter
-            foreach (FilterBriefInfoForCmb o in arrFilterInfoOfNotFilter)
-            {
-              if (o.getFilter().Name == ((Filter_NOT)filterInfo.Filter).Filter.Name)
-                cmbFilterOfNotFilter.SelectedItem = o;
-            }
-          }
-          else if (filterInfo.Filter is BasicFilter)
-          {
-            radioBasicFilter.Checked = true;
-            //show details of this filter5
-            foreach (TagBriefInfoForCmb o in arrTagsForComboBox)
-            {
-              if (o.Name == ((BasicFilter)editedFilter).Tag.Name)
-                cmbTag.SelectedItem = o;
-            }
-            foreach (OperationBriefInfo o in arrOperatorForComboBox)
-            {
-              if (o.Name == ((BasicFilter)editedFilter).Operator.Name)
-                cmbOperator.SelectedItem = o;
-            }
-            txtValue.Text = ((BasicFilter)editedFilter).Criteria;
-          }
-          else if (filterInfo.Filter is CombinedFilter)
-          {
-            rbCombinedFilter.Checked = true;
-
-            //show details of this filter
-            foreach (FilterBriefInfoForCmb o in arrFilterInfo1OfCombinedFilter)
-            {
-              if (o.getFilter().Name == ((CombinedFilter)filterInfo.Filter).Filter1.Name)
-                cmbFilter1OfCombinedFilter.SelectedItem = o;
-            }
-            foreach (FilterBriefInfoForCmb o in arrFilterInfo2OfCombinedFilter)
-            {
-              if (o.getFilter().Name == ((CombinedFilter)filterInfo.Filter).Filter2.Name)
-                cmbFilter2OfCombinedFilter.SelectedItem = o;
-            }
-
-            if (filterInfo.Filter.GetType() == typeof(CombinedFilter_AND))
-              cmbOperatorOfCombinedFilter.Text = "AND";
-            else
-              cmbOperatorOfCombinedFilter.Text = "OR";
-          }
+          if (editedFilter.GetType() == typeof(CombinedFilter_AND))
+            cmbOperatorOfCombinedFilter.Text = "AND";
+          else
+            cmbOperatorOfCombinedFilter.Text = "OR";
         }
       }
     }
@@ -319,5 +272,9 @@ namespace EmailReader
       grNotFilter.Enabled = rbNotFilter.Checked;
     }
 
+    private void btnClose_Click(object sender, EventArgs e)
+    {
+      this.Dispose();
+    }
   }
 }

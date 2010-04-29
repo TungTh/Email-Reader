@@ -31,40 +31,54 @@ namespace EmailReader
           this.components = new System.ComponentModel.Container();
           this.radioBasicFilter = new System.Windows.Forms.RadioButton();
           this.grBasicFilter = new System.Windows.Forms.GroupBox();
+          this.iOperatorComboBox = new System.Windows.Forms.ComboBox();
+          this.iOperatorBindingSource = new System.Windows.Forms.BindingSource(this.components);
+          this.iTagComboBox = new System.Windows.Forms.ComboBox();
+          this.iTagBindingSource = new System.Windows.Forms.BindingSource(this.components);
           this.txtValue = new System.Windows.Forms.TextBox();
-          this.cmbTag = new System.Windows.Forms.ComboBox();
-          this.cmbOperator = new System.Windows.Forms.ComboBox();
           this.rbCombinedFilter = new System.Windows.Forms.RadioButton();
           this.grCombinedFilter = new System.Windows.Forms.GroupBox();
-          this.cmbFilter2OfCombinedFilter = new System.Windows.Forms.ComboBox();
           this.cmbOperatorOfCombinedFilter = new System.Windows.Forms.ComboBox();
-          this.cmbFilter1OfCombinedFilter = new System.Windows.Forms.ComboBox();
-          this.button7 = new System.Windows.Forms.Button();
+          this.iFilterComboBox_F1 = new System.Windows.Forms.ComboBox();
+          this.iFilterBindingSource_F1 = new System.Windows.Forms.BindingSource(this.components);
+          this.iFilterComboBox_F2 = new System.Windows.Forms.ComboBox();
+          this.iFilterBindingSource_F2 = new System.Windows.Forms.BindingSource(this.components);
+          this.btnClose = new System.Windows.Forms.Button();
           this.btnRedo = new System.Windows.Forms.Button();
           this.btnUndo = new System.Windows.Forms.Button();
           this.btSave = new System.Windows.Forms.Button();
           this.grNotFilter = new System.Windows.Forms.GroupBox();
+          this.iFilterComboBox_NotF = new System.Windows.Forms.ComboBox();
+          this.iFilterBindingSource_NotF = new System.Windows.Forms.BindingSource(this.components);
           this.label3 = new System.Windows.Forms.Label();
-          this.cmbFilterOfNotFilter = new System.Windows.Forms.ComboBox();
           this.rbNotFilter = new System.Windows.Forms.RadioButton();
           this.label1 = new System.Windows.Forms.Label();
           this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
           this.btDelete = new System.Windows.Forms.Button();
           this.label2 = new System.Windows.Forms.Label();
           this.txtFilterName = new System.Windows.Forms.TextBox();
-          this.dtgFilterList = new System.Windows.Forms.DataGridView();
           this.btnEditFilter = new System.Windows.Forms.Button();
+          this.iFilterBindingSource = new System.Windows.Forms.BindingSource(this.components);
+          this.iFilterDataGridView = new System.Windows.Forms.DataGridView();
+          this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+          this.lblStatus = new System.Windows.Forms.Label();
           this.grBasicFilter.SuspendLayout();
+          ((System.ComponentModel.ISupportInitialize)(this.iOperatorBindingSource)).BeginInit();
+          ((System.ComponentModel.ISupportInitialize)(this.iTagBindingSource)).BeginInit();
           this.grCombinedFilter.SuspendLayout();
+          ((System.ComponentModel.ISupportInitialize)(this.iFilterBindingSource_F1)).BeginInit();
+          ((System.ComponentModel.ISupportInitialize)(this.iFilterBindingSource_F2)).BeginInit();
           this.grNotFilter.SuspendLayout();
-          ((System.ComponentModel.ISupportInitialize)(this.dtgFilterList)).BeginInit();
+          ((System.ComponentModel.ISupportInitialize)(this.iFilterBindingSource_NotF)).BeginInit();
+          ((System.ComponentModel.ISupportInitialize)(this.iFilterBindingSource)).BeginInit();
+          ((System.ComponentModel.ISupportInitialize)(this.iFilterDataGridView)).BeginInit();
           this.SuspendLayout();
           // 
           // radioBasicFilter
           // 
           this.radioBasicFilter.AutoSize = true;
           this.radioBasicFilter.Checked = true;
-          this.radioBasicFilter.Location = new System.Drawing.Point(12, 76);
+          this.radioBasicFilter.Location = new System.Drawing.Point(12, 43);
           this.radioBasicFilter.Name = "radioBasicFilter";
           this.radioBasicFilter.Size = new System.Drawing.Size(132, 17);
           this.radioBasicFilter.TabIndex = 0;
@@ -75,15 +89,43 @@ namespace EmailReader
           // 
           // grBasicFilter
           // 
+          this.grBasicFilter.Controls.Add(this.iOperatorComboBox);
+          this.grBasicFilter.Controls.Add(this.iTagComboBox);
           this.grBasicFilter.Controls.Add(this.txtValue);
-          this.grBasicFilter.Controls.Add(this.cmbTag);
-          this.grBasicFilter.Controls.Add(this.cmbOperator);
-          this.grBasicFilter.Location = new System.Drawing.Point(12, 104);
+          this.grBasicFilter.Location = new System.Drawing.Point(12, 71);
           this.grBasicFilter.Name = "grBasicFilter";
           this.grBasicFilter.Size = new System.Drawing.Size(534, 69);
           this.grBasicFilter.TabIndex = 1;
           this.grBasicFilter.TabStop = false;
           this.grBasicFilter.Text = "Basic filter";
+          // 
+          // iOperatorComboBox
+          // 
+          this.iOperatorComboBox.DataSource = this.iOperatorBindingSource;
+          this.iOperatorComboBox.DisplayMember = "Name";
+          this.iOperatorComboBox.Location = new System.Drawing.Point(204, 29);
+          this.iOperatorComboBox.Name = "iOperatorComboBox";
+          this.iOperatorComboBox.Size = new System.Drawing.Size(124, 21);
+          this.iOperatorComboBox.TabIndex = 50;
+          this.iOperatorComboBox.ValueMember = "Name";
+          // 
+          // iOperatorBindingSource
+          // 
+          this.iOperatorBindingSource.DataSource = typeof(EmailReader.Model.Operator.IOperator);
+          // 
+          // iTagComboBox
+          // 
+          this.iTagComboBox.DataSource = this.iTagBindingSource;
+          this.iTagComboBox.DisplayMember = "Name";
+          this.iTagComboBox.Location = new System.Drawing.Point(13, 28);
+          this.iTagComboBox.Name = "iTagComboBox";
+          this.iTagComboBox.Size = new System.Drawing.Size(184, 21);
+          this.iTagComboBox.TabIndex = 50;
+          this.iTagComboBox.ValueMember = "isDefaultTag";
+          // 
+          // iTagBindingSource
+          // 
+          this.iTagBindingSource.DataSource = typeof(EmailReader.Model.ITag);
           // 
           // txtValue
           // 
@@ -93,26 +135,10 @@ namespace EmailReader
           this.txtValue.TabIndex = 25;
           this.txtValue.Tag = "";
           // 
-          // cmbTag
-          // 
-          this.cmbTag.FormattingEnabled = true;
-          this.cmbTag.Location = new System.Drawing.Point(14, 28);
-          this.cmbTag.Name = "cmbTag";
-          this.cmbTag.Size = new System.Drawing.Size(184, 21);
-          this.cmbTag.TabIndex = 22;
-          // 
-          // cmbOperator
-          // 
-          this.cmbOperator.FormattingEnabled = true;
-          this.cmbOperator.Location = new System.Drawing.Point(204, 28);
-          this.cmbOperator.Name = "cmbOperator";
-          this.cmbOperator.Size = new System.Drawing.Size(124, 21);
-          this.cmbOperator.TabIndex = 24;
-          // 
           // rbCombinedFilter
           // 
           this.rbCombinedFilter.AutoSize = true;
-          this.rbCombinedFilter.Location = new System.Drawing.Point(12, 184);
+          this.rbCombinedFilter.Location = new System.Drawing.Point(12, 146);
           this.rbCombinedFilter.Name = "rbCombinedFilter";
           this.rbCombinedFilter.Size = new System.Drawing.Size(153, 17);
           this.rbCombinedFilter.TabIndex = 2;
@@ -122,24 +148,16 @@ namespace EmailReader
           // 
           // grCombinedFilter
           // 
-          this.grCombinedFilter.Controls.Add(this.cmbFilter2OfCombinedFilter);
           this.grCombinedFilter.Controls.Add(this.cmbOperatorOfCombinedFilter);
-          this.grCombinedFilter.Controls.Add(this.cmbFilter1OfCombinedFilter);
+          this.grCombinedFilter.Controls.Add(this.iFilterComboBox_F1);
+          this.grCombinedFilter.Controls.Add(this.iFilterComboBox_F2);
           this.grCombinedFilter.Enabled = false;
-          this.grCombinedFilter.Location = new System.Drawing.Point(12, 212);
+          this.grCombinedFilter.Location = new System.Drawing.Point(12, 174);
           this.grCombinedFilter.Name = "grCombinedFilter";
           this.grCombinedFilter.Size = new System.Drawing.Size(530, 49);
           this.grCombinedFilter.TabIndex = 3;
           this.grCombinedFilter.TabStop = false;
           this.grCombinedFilter.Text = "Combined Filter";
-          // 
-          // cmbFilter2OfCombinedFilter
-          // 
-          this.cmbFilter2OfCombinedFilter.FormattingEnabled = true;
-          this.cmbFilter2OfCombinedFilter.Location = new System.Drawing.Point(334, 19);
-          this.cmbFilter2OfCombinedFilter.Name = "cmbFilter2OfCombinedFilter";
-          this.cmbFilter2OfCombinedFilter.Size = new System.Drawing.Size(184, 21);
-          this.cmbFilter2OfCombinedFilter.TabIndex = 24;
           // 
           // cmbOperatorOfCombinedFilter
           // 
@@ -149,29 +167,50 @@ namespace EmailReader
             "OR"});
           this.cmbOperatorOfCombinedFilter.Location = new System.Drawing.Point(204, 19);
           this.cmbOperatorOfCombinedFilter.Name = "cmbOperatorOfCombinedFilter";
-          this.cmbOperatorOfCombinedFilter.Size = new System.Drawing.Size(121, 21);
+          this.cmbOperatorOfCombinedFilter.Size = new System.Drawing.Size(124, 21);
           this.cmbOperatorOfCombinedFilter.TabIndex = 21;
           // 
-          // cmbFilter1OfCombinedFilter
+          // iFilterComboBox_F1
           // 
-          this.cmbFilter1OfCombinedFilter.FormattingEnabled = true;
-          this.cmbFilter1OfCombinedFilter.Location = new System.Drawing.Point(14, 19);
-          this.cmbFilter1OfCombinedFilter.Name = "cmbFilter1OfCombinedFilter";
-          this.cmbFilter1OfCombinedFilter.Size = new System.Drawing.Size(184, 21);
-          this.cmbFilter1OfCombinedFilter.TabIndex = 19;
+          this.iFilterComboBox_F1.DataSource = this.iFilterBindingSource_F1;
+          this.iFilterComboBox_F1.DisplayMember = "Name";
+          this.iFilterComboBox_F1.Location = new System.Drawing.Point(14, 19);
+          this.iFilterComboBox_F1.Name = "iFilterComboBox_F1";
+          this.iFilterComboBox_F1.Size = new System.Drawing.Size(184, 21);
+          this.iFilterComboBox_F1.TabIndex = 49;
+          this.iFilterComboBox_F1.ValueMember = "Name";
           // 
-          // button7
+          // iFilterBindingSource_F1
           // 
-          this.button7.Location = new System.Drawing.Point(732, 486);
-          this.button7.Name = "button7";
-          this.button7.Size = new System.Drawing.Size(75, 23);
-          this.button7.TabIndex = 36;
-          this.button7.Text = "Close";
-          this.button7.UseVisualStyleBackColor = true;
+          this.iFilterBindingSource_F1.DataSource = typeof(EmailReader.Model.IFilter);
+          // 
+          // iFilterComboBox_F2
+          // 
+          this.iFilterComboBox_F2.DataSource = this.iFilterBindingSource_F2;
+          this.iFilterComboBox_F2.DisplayMember = "Name";
+          this.iFilterComboBox_F2.Location = new System.Drawing.Point(334, 19);
+          this.iFilterComboBox_F2.Name = "iFilterComboBox_F2";
+          this.iFilterComboBox_F2.Size = new System.Drawing.Size(184, 21);
+          this.iFilterComboBox_F2.TabIndex = 49;
+          this.iFilterComboBox_F2.ValueMember = "Name";
+          // 
+          // iFilterBindingSource_F2
+          // 
+          this.iFilterBindingSource_F2.DataSource = typeof(EmailReader.Model.IFilter);
+          // 
+          // btnClose
+          // 
+          this.btnClose.Location = new System.Drawing.Point(714, 342);
+          this.btnClose.Name = "btnClose";
+          this.btnClose.Size = new System.Drawing.Size(75, 23);
+          this.btnClose.TabIndex = 36;
+          this.btnClose.Text = "Close";
+          this.btnClose.UseVisualStyleBackColor = true;
+          this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
           // 
           // btnRedo
           // 
-          this.btnRedo.Location = new System.Drawing.Point(467, 409);
+          this.btnRedo.Location = new System.Drawing.Point(360, 342);
           this.btnRedo.Name = "btnRedo";
           this.btnRedo.Size = new System.Drawing.Size(75, 23);
           this.btnRedo.TabIndex = 35;
@@ -181,7 +220,7 @@ namespace EmailReader
           // 
           // btnUndo
           // 
-          this.btnUndo.Location = new System.Drawing.Point(386, 409);
+          this.btnUndo.Location = new System.Drawing.Point(279, 342);
           this.btnUndo.Name = "btnUndo";
           this.btnUndo.Size = new System.Drawing.Size(75, 23);
           this.btnUndo.TabIndex = 34;
@@ -191,7 +230,7 @@ namespace EmailReader
           // 
           // btSave
           // 
-          this.btSave.Location = new System.Drawing.Point(12, 409);
+          this.btSave.Location = new System.Drawing.Point(471, 342);
           this.btSave.Name = "btSave";
           this.btSave.Size = new System.Drawing.Size(75, 23);
           this.btSave.TabIndex = 33;
@@ -201,15 +240,29 @@ namespace EmailReader
           // 
           // grNotFilter
           // 
+          this.grNotFilter.Controls.Add(this.iFilterComboBox_NotF);
           this.grNotFilter.Controls.Add(this.label3);
-          this.grNotFilter.Controls.Add(this.cmbFilterOfNotFilter);
           this.grNotFilter.Enabled = false;
-          this.grNotFilter.Location = new System.Drawing.Point(12, 324);
+          this.grNotFilter.Location = new System.Drawing.Point(12, 257);
           this.grNotFilter.Name = "grNotFilter";
           this.grNotFilter.Size = new System.Drawing.Size(530, 64);
           this.grNotFilter.TabIndex = 38;
           this.grNotFilter.TabStop = false;
           this.grNotFilter.Text = "Not filter";
+          // 
+          // iFilterComboBox_NotF
+          // 
+          this.iFilterComboBox_NotF.DataSource = this.iFilterBindingSource_NotF;
+          this.iFilterComboBox_NotF.DisplayMember = "Name";
+          this.iFilterComboBox_NotF.Location = new System.Drawing.Point(46, 26);
+          this.iFilterComboBox_NotF.Name = "iFilterComboBox_NotF";
+          this.iFilterComboBox_NotF.Size = new System.Drawing.Size(151, 21);
+          this.iFilterComboBox_NotF.TabIndex = 49;
+          this.iFilterComboBox_NotF.ValueMember = "Name";
+          // 
+          // iFilterBindingSource_NotF
+          // 
+          this.iFilterBindingSource_NotF.DataSource = typeof(EmailReader.Model.IFilter);
           // 
           // label3
           // 
@@ -220,18 +273,10 @@ namespace EmailReader
           this.label3.TabIndex = 20;
           this.label3.Text = "NOT";
           // 
-          // cmbFilterOfNotFilter
-          // 
-          this.cmbFilterOfNotFilter.FormattingEnabled = true;
-          this.cmbFilterOfNotFilter.Location = new System.Drawing.Point(46, 26);
-          this.cmbFilterOfNotFilter.Name = "cmbFilterOfNotFilter";
-          this.cmbFilterOfNotFilter.Size = new System.Drawing.Size(114, 21);
-          this.cmbFilterOfNotFilter.TabIndex = 19;
-          // 
           // rbNotFilter
           // 
           this.rbNotFilter.AutoSize = true;
-          this.rbNotFilter.Location = new System.Drawing.Point(12, 296);
+          this.rbNotFilter.Location = new System.Drawing.Point(12, 229);
           this.rbNotFilter.Name = "rbNotFilter";
           this.rbNotFilter.Size = new System.Drawing.Size(129, 17);
           this.rbNotFilter.TabIndex = 37;
@@ -254,7 +299,7 @@ namespace EmailReader
           // 
           // btDelete
           // 
-          this.btDelete.Location = new System.Drawing.Point(647, 409);
+          this.btDelete.Location = new System.Drawing.Point(552, 342);
           this.btDelete.Name = "btDelete";
           this.btDelete.Size = new System.Drawing.Size(75, 23);
           this.btDelete.TabIndex = 41;
@@ -265,7 +310,7 @@ namespace EmailReader
           // label2
           // 
           this.label2.AutoSize = true;
-          this.label2.Location = new System.Drawing.Point(13, 23);
+          this.label2.Location = new System.Drawing.Point(13, 20);
           this.label2.Name = "label2";
           this.label2.Size = new System.Drawing.Size(61, 13);
           this.label2.TabIndex = 46;
@@ -273,23 +318,15 @@ namespace EmailReader
           // 
           // txtFilterName
           // 
-          this.txtFilterName.Location = new System.Drawing.Point(76, 20);
+          this.txtFilterName.Location = new System.Drawing.Point(76, 17);
           this.txtFilterName.Name = "txtFilterName";
           this.txtFilterName.Size = new System.Drawing.Size(184, 20);
           this.txtFilterName.TabIndex = 45;
           this.txtFilterName.Tag = "";
           // 
-          // dtgFilterList
-          // 
-          this.dtgFilterList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-          this.dtgFilterList.Location = new System.Drawing.Point(578, 36);
-          this.dtgFilterList.Name = "dtgFilterList";
-          this.dtgFilterList.Size = new System.Drawing.Size(225, 352);
-          this.dtgFilterList.TabIndex = 47;
-          // 
           // btnEditFilter
           // 
-          this.btnEditFilter.Location = new System.Drawing.Point(728, 409);
+          this.btnEditFilter.Location = new System.Drawing.Point(633, 342);
           this.btnEditFilter.Name = "btnEditFilter";
           this.btnEditFilter.Size = new System.Drawing.Size(75, 23);
           this.btnEditFilter.TabIndex = 48;
@@ -297,20 +334,58 @@ namespace EmailReader
           this.btnEditFilter.UseVisualStyleBackColor = true;
           this.btnEditFilter.Click += new System.EventHandler(this.btnEditFilter_Click);
           // 
+          // iFilterBindingSource
+          // 
+          this.iFilterBindingSource.DataSource = typeof(EmailReader.Model.IFilter);
+          // 
+          // iFilterDataGridView
+          // 
+          this.iFilterDataGridView.AllowUserToAddRows = false;
+          this.iFilterDataGridView.AllowUserToDeleteRows = false;
+          this.iFilterDataGridView.AllowUserToResizeRows = false;
+          this.iFilterDataGridView.AutoGenerateColumns = false;
+          this.iFilterDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1});
+          this.iFilterDataGridView.DataSource = this.iFilterBindingSource;
+          this.iFilterDataGridView.Location = new System.Drawing.Point(552, 41);
+          this.iFilterDataGridView.MultiSelect = false;
+          this.iFilterDataGridView.Name = "iFilterDataGridView";
+          this.iFilterDataGridView.Size = new System.Drawing.Size(237, 280);
+          this.iFilterDataGridView.TabIndex = 49;
+          // 
+          // dataGridViewTextBoxColumn1
+          // 
+          this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+          this.dataGridViewTextBoxColumn1.DataPropertyName = "Name";
+          this.dataGridViewTextBoxColumn1.HeaderText = "Name";
+          this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+          this.dataGridViewTextBoxColumn1.ReadOnly = true;
+          // 
+          // lblStatus
+          // 
+          this.lblStatus.AutoSize = true;
+          this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+          this.lblStatus.Location = new System.Drawing.Point(13, 347);
+          this.lblStatus.Name = "lblStatus";
+          this.lblStatus.Size = new System.Drawing.Size(41, 13);
+          this.lblStatus.TabIndex = 50;
+          this.lblStatus.Text = "status";
+          // 
           // FilterManager
           // 
           this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
           this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-          this.ClientSize = new System.Drawing.Size(820, 449);
+          this.ClientSize = new System.Drawing.Size(809, 385);
+          this.Controls.Add(this.lblStatus);
+          this.Controls.Add(this.iFilterDataGridView);
           this.Controls.Add(this.btnEditFilter);
-          this.Controls.Add(this.dtgFilterList);
           this.Controls.Add(this.label2);
           this.Controls.Add(this.txtFilterName);
           this.Controls.Add(this.btDelete);
           this.Controls.Add(this.label1);
           this.Controls.Add(this.grNotFilter);
           this.Controls.Add(this.rbNotFilter);
-          this.Controls.Add(this.button7);
+          this.Controls.Add(this.btnClose);
           this.Controls.Add(this.btnRedo);
           this.Controls.Add(this.btnUndo);
           this.Controls.Add(this.btSave);
@@ -323,10 +398,16 @@ namespace EmailReader
           this.Load += new System.EventHandler(this.FilterManager_Load);
           this.grBasicFilter.ResumeLayout(false);
           this.grBasicFilter.PerformLayout();
+          ((System.ComponentModel.ISupportInitialize)(this.iOperatorBindingSource)).EndInit();
+          ((System.ComponentModel.ISupportInitialize)(this.iTagBindingSource)).EndInit();
           this.grCombinedFilter.ResumeLayout(false);
+          ((System.ComponentModel.ISupportInitialize)(this.iFilterBindingSource_F1)).EndInit();
+          ((System.ComponentModel.ISupportInitialize)(this.iFilterBindingSource_F2)).EndInit();
           this.grNotFilter.ResumeLayout(false);
           this.grNotFilter.PerformLayout();
-          ((System.ComponentModel.ISupportInitialize)(this.dtgFilterList)).EndInit();
+          ((System.ComponentModel.ISupportInitialize)(this.iFilterBindingSource_NotF)).EndInit();
+          ((System.ComponentModel.ISupportInitialize)(this.iFilterBindingSource)).EndInit();
+          ((System.ComponentModel.ISupportInitialize)(this.iFilterDataGridView)).EndInit();
           this.ResumeLayout(false);
           this.PerformLayout();
 
@@ -336,28 +417,36 @@ namespace EmailReader
 
         private System.Windows.Forms.RadioButton radioBasicFilter;
         private System.Windows.Forms.GroupBox grBasicFilter;
-        private System.Windows.Forms.TextBox txtValue;
-        private System.Windows.Forms.ComboBox cmbTag;
-        private System.Windows.Forms.ComboBox cmbOperator;
+      private System.Windows.Forms.TextBox txtValue;
         private System.Windows.Forms.RadioButton rbCombinedFilter;
-        private System.Windows.Forms.GroupBox grCombinedFilter;
-        private System.Windows.Forms.ComboBox cmbFilter2OfCombinedFilter;
-        private System.Windows.Forms.ComboBox cmbOperatorOfCombinedFilter;
-        private System.Windows.Forms.ComboBox cmbFilter1OfCombinedFilter;
-        private System.Windows.Forms.Button button7;
+      private System.Windows.Forms.GroupBox grCombinedFilter;
+      private System.Windows.Forms.ComboBox cmbOperatorOfCombinedFilter;
+        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnRedo;
         private System.Windows.Forms.Button btnUndo;
         private System.Windows.Forms.Button btSave;
-        private System.Windows.Forms.GroupBox grNotFilter;
-        private System.Windows.Forms.ComboBox cmbFilterOfNotFilter;
+      private System.Windows.Forms.GroupBox grNotFilter;
         private System.Windows.Forms.RadioButton rbNotFilter;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button btDelete;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtFilterName;
-      private System.Windows.Forms.DataGridView dtgFilterList;
+      private System.Windows.Forms.TextBox txtFilterName;
         private System.Windows.Forms.Label label3;
       private System.Windows.Forms.Button btnEditFilter;
+      private System.Windows.Forms.BindingSource iFilterBindingSource_F1;
+      private System.Windows.Forms.ComboBox iFilterComboBox_F1;
+      private System.Windows.Forms.BindingSource iFilterBindingSource_F2;
+      private System.Windows.Forms.ComboBox iFilterComboBox_F2;
+      private System.Windows.Forms.BindingSource iFilterBindingSource_NotF;
+      private System.Windows.Forms.ComboBox iFilterComboBox_NotF;
+      private System.Windows.Forms.BindingSource iFilterBindingSource;
+      private System.Windows.Forms.DataGridView iFilterDataGridView;
+      private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+      private System.Windows.Forms.Label lblStatus;
+      private System.Windows.Forms.BindingSource iTagBindingSource;
+      private System.Windows.Forms.ComboBox iTagComboBox;
+      private System.Windows.Forms.BindingSource iOperatorBindingSource;
+      private System.Windows.Forms.ComboBox iOperatorComboBox;
     }
 }
