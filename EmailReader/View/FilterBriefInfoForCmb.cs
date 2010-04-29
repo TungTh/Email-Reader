@@ -18,7 +18,6 @@ namespace EmailReader.View
         {
           return filter;
         }
-        
 
         public FilterBriefInfoForCmb(IFilter filter)
         {
