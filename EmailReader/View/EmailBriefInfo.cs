@@ -5,76 +5,60 @@ using EmailReader.Model;
 
 namespace EmailReader.View
 {
-    class EmailBriefInfo
+  class EmailBriefInfo
+  {
+    private string _date, _from, _to, _subject;
+    private IEmail _email;
+
+    public string Date
     {
-        string date, from, to, subject;
-        IEmail e;
+      get
+      { return _date; }
 
-        public string Date
-        {
-            get
-            {
-                return date;
-            }
-
-            set
-            {
-                date = value;
-            }
-        }
-
-        public string From
-        {
-            get
-            {
-                return from;
-            }
-
-            set
-            {
-                from = value;
-            }
-        }
-
-        public string To
-        {
-            get
-            {
-                return to;
-            }
-
-            set
-            {
-                to = value;
-            }
-        }
-
-        public string Subject
-        {
-            get
-            {
-                return subject;
-            }
-
-            set
-            {
-                subject = value;
-            }
-        }
-
-        public IEmail getEmail()
-        {
-           return e;
-        }
-
-        public void setEmail(IEmail e)
-        {
-            this.e = e;
-        }
-
-        public EmailBriefInfo(IEmail e)
-        {
-            this.e = e;
-        }
+      set
+      { _date = value; }
     }
+
+    public string From
+    {
+      get
+      { return _from; }
+
+      set
+      { _from = value; }
+    }
+
+    public string To
+    {
+      get
+      { return _to; }
+
+      set
+      { _to = value; }
+    }
+
+    public string Subject
+    {
+      get
+      { return _subject; }
+
+      set
+      { _subject = value; }
+    }
+
+    public IEmail getEmail()
+    {
+      return _email;
+    }
+
+    public void setEmail(IEmail e)
+    {
+      this._email = e;
+    }
+
+    public EmailBriefInfo(IEmail e)
+    {
+      this._email = e;
+    }
+  }
 }

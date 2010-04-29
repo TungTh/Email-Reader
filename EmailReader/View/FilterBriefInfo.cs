@@ -7,13 +7,13 @@ namespace EmailReader.View
 {
   class FilterBriefInfo
   {
-    IFilter filter;
+    IFilter _filter;
 
     public string Name
     {
       get
       {
-        return filter.Name;
+        return _filter.Name;
       }
     }
 
@@ -29,13 +29,13 @@ namespace EmailReader.View
     {
       get
       {
-        return filter;
+        return _filter;
       }
     }
 
     public FilterBriefInfo(IFilter filter)
     {
-      this.filter = filter;
+      this._filter = filter;
     }
   }
 }

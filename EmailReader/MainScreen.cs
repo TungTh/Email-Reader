@@ -20,7 +20,6 @@ namespace EmailReader
     ArrayList arrEmailInfo = new ArrayList();
     ArrayList arrFilterInfo = new ArrayList();
     ArrayList arrTagInfo = new ArrayList();
-    ArrayList arrTagsOfCmb = new ArrayList(); //all tags in data
     ICollection<IFilter> arrSelectedFilters = new List<IFilter>();
     IEmail selected_email;
     IActionHandler actionHandleOfMainScreen = null;
@@ -28,132 +27,6 @@ namespace EmailReader
     public MainScreen()
     {
       InitializeComponent();
-    }
-
-    private void tagToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    void demoHienCacDefaultTag()
-    {
-      IEnumerator<IEmail> arrEmail = Data.getEmailCollection().GetEnumerator();
-      arrEmail.MoveNext();
-      IEmail email = arrEmail.Current;
-
-      foreach (ITag tag in Data.getTagCollection())
-      {
-        if (tag.isDefaultTag == true)
-        {
-          string tagValue = tag.getEmailTag(email);
-          MessageBox.Show(tag.Name + " = " + tagValue);
-        }
-      }
-    }
-
-    void demoHienCacTag()
-    {
-      IEnumerator<IEmail> arrEmail = Data.getEmailCollection().GetEnumerator();
-      arrEmail.MoveNext();
-      IEmail email = arrEmail.Current;
-
-      foreach (ITag tag in Data.getTagCollection())
-      {
-        string tagValue = tag.getEmailTag(email);
-        MessageBox.Show(tagValue);
-      }
-    }
-
-    void demoTaoBasicFilterVaApplyFilter()
-    {
-      //lay tag
-      IEnumerator<ITag> arrTag = Data.getTagCollection().GetEnumerator();
-      arrTag.MoveNext();
-      ITag fromTag = arrTag.Current;
-
-      //tao operator
-      IOperator strContainOper = StringContaining.getInstance();
-
-      IFilter basicFilter = new BasicFilter("From John", fromTag, strContainOper, "9");
-
-      //thu apply cac filter cho email
-
-      foreach (IEmail e in Data.getEmailCollection())
-      {
-        if (basicFilter.apply(e))
-          MessageBox.Show("tim thay roi:" + fromTag.getEmailTag(e));
-      }
-    }
-
-    void demoTaoNotFilter()
-    {
-      //lay tag
-      IEnumerator<ITag> arrTag = Data.getTagCollection().GetEnumerator();
-      arrTag.MoveNext();
-      ITag fromTag = arrTag.Current;
-
-      //tao operator
-      IOperator strContainOper = StringContaining.getInstance();
-
-      AbstractFilter basicFilter = new BasicFilter("From 9", fromTag, strContainOper, "9");
-      IFilter notFilter = new Filter_NOT("Not from 9", basicFilter);
-      //thu apply cac filter cho email
-
-      foreach (IEmail e in Data.getEmailCollection())
-      {
-        if (notFilter.apply(e))
-          MessageBox.Show("tim thay roi:" + fromTag.getEmailTag(e));
-      }
-    }
-
-    void demoTaoANDFilterVaApplyFilter()
-    {
-      //lay tag
-      IEnumerator<ITag> arrTag = Data.getTagCollection().GetEnumerator();
-      arrTag.MoveNext();
-      ITag fromTag = arrTag.Current;
-      arrTag.MoveNext();
-      ITag toTag = arrTag.Current;
-
-      //tao operator
-      IOperator strContainOper = StringContaining.getInstance();
-
-      IFilter filterForm5 = new BasicFilter("From 5", fromTag, strContainOper, "5");
-      IFilter filterTo2 = new BasicFilter("To 2", toTag, strContainOper, "2");
-      AbstractFilter filterFrom5AndTo2 = new CombinedFilter_AND("From 5 and to 2", filterForm5, filterTo2);
-
-      //thu apply cac filter cho email
-
-      foreach (IEmail e in Data.getEmailCollection())
-      {
-        if (filterFrom5AndTo2.apply(e))
-          MessageBox.Show("tim thay roi:" + fromTag.getEmailTag(e) + toTag.getEmailTag(e));
-      }
-    }
-
-    void demoTaoORFilterVaApplyFilter()
-    {
-      //lay tag
-      IEnumerator<ITag> arrTag = Data.getTagCollection().GetEnumerator();
-      arrTag.MoveNext();
-      ITag fromTag = arrTag.Current;
-      arrTag.MoveNext();
-      ITag toTag = arrTag.Current;
-
-      //tao operator
-      IOperator strContainOper = StringContaining.getInstance();
-
-      IFilter filterForm5 = new BasicFilter("From 5", fromTag, strContainOper, "5");
-      IFilter filterTo2 = new BasicFilter("To 2", toTag, strContainOper, "2");
-      AbstractFilter filterFrom5OrTo2 = new CombinedFilter_OR("From 5 or to 2", filterForm5, filterTo2);
-
-      //thu apply cac filter cho email
-
-      foreach (IEmail e in Data.getEmailCollection())
-      {
-        if (filterFrom5OrTo2.apply(e))
-          MessageBox.Show("tim thay roi:" + fromTag.getEmailTag(e) + toTag.getEmailTag(e));
-      }
     }
 
     private bool testEmailWithFilters(IEmail e, ICollection<IFilter> selectedFilters)
@@ -238,7 +111,6 @@ namespace EmailReader
     private void showTagListOfSelectedEmail()
     {
       arrTagInfo.Clear();
-      dtgTagOfEmail.DataSource = null;
 
       //get selected mail
       EmailBriefInfo email_brief_info;
@@ -263,13 +135,14 @@ namespace EmailReader
               if (tagValue != "")
               {
                 string tagName = tag.Name;
-                arrTagInfo.Add(new TagBriefInfo(tagName, tagValue));
+                arrTagInfo.Add(new TagBriefInfo(tag, tagName, tagValue));
               }
             }
           }
 
           //bind to grid
-          dtgTagOfEmail.DataSource = arrTagInfo;
+          tagBriefInfoBindingSource.DataSource = arrTagInfo;
+          tagBriefInfoBindingSource.ResetBindings(false);
         }
       }
     }
@@ -286,14 +159,23 @@ namespace EmailReader
     //show all tags in the combobox
     private void updateCmbTags()
     {
-      lsTags.DataSource = null;
-      this.arrTagsOfCmb.Clear();
-      foreach (ITag tag in Data.getTagCollection())
-      {
-        TagBriefInfoForCmb tag_brief_info = new TagBriefInfoForCmb(tag);
-        this.arrTagsOfCmb.Add(tag_brief_info);
-      }
-      lsTags.DataSource = arrTagsOfCmb;
+      iTagBindingSource.DataSource = Data.getTagCollection();
+      iTagBindingSource.ResetBindings(false);
+    }
+
+    private void controlUndoButtons()
+    {
+      btnUndo.Enabled = Data.ActionHandler.CanUndo;
+      btnRedo.Enabled = Data.ActionHandler.CanRedo;
+    }
+
+    private void updateMainScreen()
+    {
+      showFilterList();
+      showEmailList(arrSelectedFilters);
+      showTagListOfSelectedEmail();
+      updateCmbTags();
+      controlUndoButtons();
     }
 
     private void btnExit_Click(object sender, EventArgs e)
@@ -326,12 +208,6 @@ namespace EmailReader
       updateMainScreen();
     }
 
-    private void button4_Click(object sender, EventArgs e)
-    {
-      Data.ActionHandler.undo();
-      updateMainScreen();
-    }
-
     private void dtgListEmail_CellEnter(object sender, DataGridViewCellEventArgs e)
     {
       showTagListOfSelectedEmail();
@@ -341,10 +217,9 @@ namespace EmailReader
     private void btnAddTag_Click(object sender, EventArgs e)
     {
       //if user selects existing tag
-      if (lsTags.SelectedItem != null)
+      if (iTagComboBox.SelectedItem != null)
       {
-        ITag selected_tag = ((TagBriefInfoForCmb)lsTags.SelectedItem).getTag();
-
+        ITag selected_tag = (ITag)iTagComboBox.SelectedItem;
         try //try add tag
         {
           selected_tag.tagEmail(selected_email, txtNewTagValue.Text);
@@ -356,7 +231,7 @@ namespace EmailReader
       }
       else //user type new tag type, create tag and add tag to email
       {
-        string new_tag_name = lsTags.Text;
+        string new_tag_name = iTagComboBox.Text;
         ITag new_tag = new UndoableTag(new_tag_name, false);
         Data.insertTag(new_tag);
         new_tag.tagEmail(selected_email, txtNewTagValue.Text);
@@ -365,34 +240,28 @@ namespace EmailReader
       updateMainScreen();
     }
 
-    private void updateMainScreen()
-    {
-      showFilterList();
-      showEmailList(arrSelectedFilters);
-      showTagListOfSelectedEmail();
-      updateCmbTags();
-      controlUndoButtons();
-    }
-
-
     private void btnDeleteTagFromEmail_Click(object sender, EventArgs e)
     {
-      ITag selected_tag = ((TagBriefInfoForCmb)lsTags.SelectedItem).getTag();
-
-      try
+      ITag selected_tag = (ITag)iTagComboBox.SelectedItem;
+      if (selected_tag.isDefaultTag)
+        MessageBox.Show("You can not untag default tag", "Warning");
+      else
       {
-        selected_tag.untagEmail(selected_email);
+        try
+        {
+          selected_tag.untagEmail(selected_email);
+        }
+        catch (Exception ex)
+        {
+          MessageBox.Show("You want to delete tag " + selected_tag.Name + "\n" + ex.Message, "Error");
+        }
+        updateMainScreen();
       }
-      catch (Exception ex)
-      {
-        MessageBox.Show("You want to delete tag " + selected_tag.Name + "\n" + ex.Message, "Error");
-      }
-      updateMainScreen();
     }
 
     private void btnDeleteTagType_Click(object sender, EventArgs e)
     {
-      ITag selected_tag = ((TagBriefInfoForCmb)lsTags.SelectedItem).getTag();
+      ITag selected_tag = (ITag)iTagComboBox.SelectedItem;
 
       DialogResult dlret = MessageBox.Show("This action will delete this tag from all emails, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
       if (dlret == DialogResult.Yes)
@@ -418,21 +287,21 @@ namespace EmailReader
       updateMainScreen();
     }
 
-
-    private void controlUndoButtons()
+    private void tagBriefInfoDataGridView_RowEnter(object sender, DataGridViewCellEventArgs e)
     {
-      btnUndo.Enabled = Data.ActionHandler.CanUndo;
-      btnRedo.Enabled = Data.ActionHandler.CanRedo;
+      if (tagBriefInfoDataGridView.SelectedCells.Count > 0)
+      {
+        int selectedRowIndex = tagBriefInfoDataGridView.SelectedCells[0].RowIndex;
+        TagBriefInfo tag = (TagBriefInfo)((BindingSource)tagBriefInfoDataGridView.DataSource)[selectedRowIndex];
+        
+        iTagComboBox.SelectedItem = tag.getTag();
+        txtNewTagValue.Text = tagBriefInfoDataGridView.Rows[selectedRowIndex].Cells[1].Value.ToString();
+      }
     }
 
-    private void MainScreen_Activated(object sender, EventArgs e)
+    private void iTagComboBox_SelectedIndexChanged(object sender, EventArgs e)
     {
-
-    }
-
-    private void button6_Click(object sender, EventArgs e)
-    {
-
+      txtNewTagValue.Text = string.Empty;
     }
   }
 }

@@ -7,55 +7,40 @@ namespace EmailReader.View
 {
   class TagBriefInfo
   {
-    ITag tag;
-    string name, tag_value;
+    private ITag _tag;
+    private string _name, _tag_value;
 
     public string Name
     {
       get
-      {
-        return name;
-      }
+      { return _name; }
       set
-      {
-        name = value;
-      }
+      { _name = value; }
     }
 
     public string Value
     {
       get
-      {
-        return tag_value;
-      }
+      { return _tag_value; }
       set
-      {
-        tag_value = value;
-      }
+      { _tag_value = value; }
     }
 
     public void setTag(ITag tag)
     {
-      this.tag = tag;
+      this._tag = tag;
     }
 
     public ITag getTag()
     {
-      return tag;
+      return _tag;
     }
 
-    public TagBriefInfo(string name, string value)
+    public TagBriefInfo(ITag tag, string name, string value)
     {
-      this.name = name;
-      this.tag_value = value;
+      this._tag = tag;
+      this._name = name;
+      this._tag_value = value;
     }
-
-    public TagBriefInfo(ITag tag)
-    {
-      this.name = tag.Name;
-      this.tag_value = "";
-      this.tag = tag;
-    }
-
   }
 }

@@ -23,7 +23,6 @@ namespace EmailReader
     public static ITag ToTag = new Tag("To", true);
     public static ITag SubjectTag = new Tag("Subject", true); //Hai fix 
     public static ITag SentDateTag = new Tag("SentDate", true);
-    public static ITag SignatureTag = new Tag("Signature", false); //Hai add for demo, don't remove
 
     public static IActionHandler ActionHandler
     {
@@ -47,7 +46,7 @@ namespace EmailReader
       _Tags.Add(ToTag);
       _Tags.Add(SubjectTag);
       _Tags.Add(SentDateTag);
-      _Tags.Add(SignatureTag);
+      _Tags.Add(new UndoableTag("Signature",false));
 
       for (int i = 0; i < 100; i++)
       {
