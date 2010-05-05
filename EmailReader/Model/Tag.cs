@@ -4,14 +4,12 @@ using System.Text;
 using EmailReader.Model.Observer;
 namespace EmailReader.Model
 {
-
   public class Tag : ObservableTag
   {
     Dictionary<IEmail, string> _TaggedEmails = new Dictionary<IEmail, string>();
 
     public Tag(string name, bool isDefault) : base(name, isDefault) { }
 
-    
     public override void tagEmail(IEmail email, string value)
     {
       if (!_TaggedEmails.ContainsKey(email))
@@ -37,7 +35,6 @@ namespace EmailReader.Model
       if (!_TaggedEmails.ContainsKey(email))
         throw new Exception("This email was not existed");
       return _TaggedEmails[email];
-
     }
 
     public override bool hasTag(IEmail email)
@@ -45,6 +42,4 @@ namespace EmailReader.Model
       return _TaggedEmails.ContainsKey(email);
     }
   }
-
 }
-

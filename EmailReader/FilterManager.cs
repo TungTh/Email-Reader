@@ -11,7 +11,6 @@ using EmailReader.Model.Operator;
 using EmailReader.View;
 using EmailReader.Model.Command;
 
-
 namespace EmailReader
 {
   public partial class FilterManager : Form
@@ -181,6 +180,7 @@ namespace EmailReader
       if (noFilterIsSelected())
         return null;
 
+      // Get the first selected cell and get its row index
       int selectedRowIndex = iFilterDataGridView.SelectedCells[0].RowIndex;
       return (IFilter)((BindingSource)iFilterDataGridView.DataSource)[selectedRowIndex];
     }

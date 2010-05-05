@@ -9,7 +9,6 @@ namespace EmailReader.Model.Command
     ITag _tag = null;
     public void execute()
     {
-      System.Diagnostics.Debug.WriteLine("Insert Tag: " + _tag.Name);
       Data.insertTag(_tag);
     }
 

@@ -16,7 +16,6 @@ namespace EmailReader.Model.Command
 
     public void execute()
     {
-      System.Diagnostics.Debug.WriteLine("Dettach Observer: " + _obs.ToString());
       _subject.detachObserver(_obs);
     }
   }

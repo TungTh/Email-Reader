@@ -130,6 +130,7 @@
     <None Include="Properties\DataSources\EmailReader.Model.IFilter.datasource" />
     <None Include="Properties\DataSources\EmailReader.Model.ITag.datasource" />
     <None Include="Properties\DataSources\EmailReader.Model.Operator.IOperator.datasource" />
+    <None Include="Properties\DataSources\EmailReader.View.EmailBriefInfo.datasource" />
     <None Include="Properties\DataSources\EmailReader.View.FilterBriefInfo.datasource" />
     <None Include="Properties\DataSources\EmailReader.View.TagBriefInfo.datasource" />
     <None Include="Properties\Settings.settings">

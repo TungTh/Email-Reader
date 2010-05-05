@@ -30,11 +30,9 @@ namespace EmailReader.Model.Command
     public void beginMacro()
     {      
       if (_NumOfEndMacroNeeded++ == 0) _Macro = new ReverseOrderMacro();
-      System.Diagnostics.Debug.WriteLine("Begin " + _NumOfEndMacroNeeded.ToString());
     }
     public void endMacro()
     {
-      System.Diagnostics.Debug.WriteLine("End " + _NumOfEndMacroNeeded.ToString());
       System.Diagnostics.Debug.Assert(_NumOfEndMacroNeeded > 0);
       if (--_NumOfEndMacroNeeded == 0)
         storeAction(_Macro);
@@ -42,8 +40,6 @@ namespace EmailReader.Model.Command
 
     public void storeAction(IAction action)
     {
-      System.Diagnostics.Debug.WriteLine("Store: " + action.ToString());
-
       if (!_IsRedoing && !_IsUndoing) _Redo.Clear();
 
       if (_NumOfEndMacroNeeded > 0)
@@ -54,7 +50,6 @@ namespace EmailReader.Model.Command
 
     public void undo()
     {
-      System.Diagnostics.Debug.WriteLine("---- Undo ---");
       System.Diagnostics.Debug.Assert(_NumOfEndMacroNeeded == 0, "EndMacro is expected");
       if (_Undo.Count > 0)
       {
@@ -65,8 +60,6 @@ namespace EmailReader.Model.Command
     }
     public void redo()
     {
-      System.Diagnostics.Debug.WriteLine("---- Redo ---");
-
       System.Diagnostics.Debug.Assert(_NumOfEndMacroNeeded == 0, "EndMacro is expected");
       if (_Redo.Count > 0)
       {

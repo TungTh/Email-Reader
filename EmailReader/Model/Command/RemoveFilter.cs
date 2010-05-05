@@ -13,7 +13,6 @@ namespace EmailReader.Model.Command
 
     public void execute()
     {
-      System.Diagnostics.Debug.WriteLine("Remove filter: " + _filter.Name);
       Data.removeFilter(_filter);
     }
 

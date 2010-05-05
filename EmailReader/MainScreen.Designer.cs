@@ -49,8 +49,8 @@ namespace EmailReader
           this.iTagComboBox = new System.Windows.Forms.ComboBox();
           this.iTagBindingSource = new System.Windows.Forms.BindingSource(this.components);
           this.tagBriefInfoDataGridView = new System.Windows.Forms.DataGridView();
-          this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-          this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+          this.tagNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+          this.tagValueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
           this.tagBriefInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
           this.btnDeleteTagType = new System.Windows.Forms.Button();
           this.label4 = new System.Windows.Forms.Label();
@@ -251,8 +251,8 @@ namespace EmailReader
           // 
           this.tagBriefInfoDataGridView.AutoGenerateColumns = false;
           this.tagBriefInfoDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3});
+            this.tagNameColumn,
+            this.tagValueColumn});
           this.tagBriefInfoDataGridView.DataSource = this.tagBriefInfoBindingSource;
           this.tagBriefInfoDataGridView.Location = new System.Drawing.Point(6, 19);
           this.tagBriefInfoDataGridView.Name = "tagBriefInfoDataGridView";
@@ -260,18 +260,18 @@ namespace EmailReader
           this.tagBriefInfoDataGridView.TabIndex = 21;
           this.tagBriefInfoDataGridView.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.tagBriefInfoDataGridView_RowEnter);
           // 
-          // dataGridViewTextBoxColumn2
+          // tagNameColumn
           // 
-          this.dataGridViewTextBoxColumn2.DataPropertyName = "Name";
-          this.dataGridViewTextBoxColumn2.HeaderText = "Name";
-          this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+          this.tagNameColumn.DataPropertyName = "Name";
+          this.tagNameColumn.HeaderText = "Name";
+          this.tagNameColumn.Name = "tagNameColumn";
           // 
-          // dataGridViewTextBoxColumn3
+          // tagValueColumn
           // 
-          this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-          this.dataGridViewTextBoxColumn3.DataPropertyName = "Value";
-          this.dataGridViewTextBoxColumn3.HeaderText = "Value";
-          this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+          this.tagValueColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+          this.tagValueColumn.DataPropertyName = "Value";
+          this.tagValueColumn.HeaderText = "Value";
+          this.tagValueColumn.Name = "tagValueColumn";
           // 
           // tagBriefInfoBindingSource
           // 
@@ -372,11 +372,11 @@ namespace EmailReader
         private System.Windows.Forms.ToolTip toolTip1;
       private System.Windows.Forms.BindingSource tagBriefInfoBindingSource;
       private System.Windows.Forms.DataGridView tagBriefInfoDataGridView;
-      private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-      private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
       private System.Windows.Forms.BindingSource iTagBindingSource;
       private System.Windows.Forms.ComboBox iTagComboBox;
       private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
       private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+      private System.Windows.Forms.DataGridViewTextBoxColumn tagNameColumn;
+      private System.Windows.Forms.DataGridViewTextBoxColumn tagValueColumn;
     }
 }

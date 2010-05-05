@@ -14,7 +14,6 @@ namespace EmailReader.Model.Command
 
     public void execute()
     {
-      System.Diagnostics.Debug.WriteLine("Insert filter: " + _filter.Name);
       Data.insertFilter(_filter);
     }
 

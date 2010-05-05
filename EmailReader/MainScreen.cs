@@ -21,7 +21,7 @@ namespace EmailReader
     ArrayList arrFilterInfo = new ArrayList();
     ArrayList arrTagInfo = new ArrayList();
     ICollection<IFilter> arrSelectedFilters = new List<IFilter>();
-    IEmail selected_email;
+    IEmail selected_email = null;
     IActionHandler actionHandleOfMainScreen = null;
 
     public MainScreen()
@@ -60,31 +60,10 @@ namespace EmailReader
         {
           EmailBriefInfo eInfo = new EmailBriefInfo(e);
 
-          try
-          {
-            eInfo.Date = Data.SentDateTag.getEmailTag(e);
-          }
-          catch { }
-
-          try
-          {
-            eInfo.From = Data.FromTag.getEmailTag(e);
-          }
-          catch { }
-
-          try
-          {
-            eInfo.To = Data.ToTag.getEmailTag(e);
-          }
-          catch { }
-
-          try
-          {
-            eInfo.Subject = Data.SubjectTag.getEmailTag(e);
-
-          }
-          catch { }
-
+          eInfo.Date = Data.SentDateTag.getEmailTag(e);
+          eInfo.From = Data.FromTag.getEmailTag(e);
+          eInfo.To = Data.ToTag.getEmailTag(e);
+          eInfo.Subject = Data.SubjectTag.getEmailTag(e);
 
           eInfo.setEmail(e);
           arrEmailInfo.Add(eInfo);
@@ -119,14 +98,15 @@ namespace EmailReader
 
       if (selectedCells.Count >= 1)
       {
+        // Get the first selected cell and get its row index
         selectedRow = dtgListEmail.Rows[selectedCells[0].RowIndex];
         if (selectedRow != null && selectedRow.DataBoundItem != null)
         {
           email_brief_info = (EmailBriefInfo)selectedRow.DataBoundItem;
           IEmail email = email_brief_info.getEmail();
-          this.selected_email = email; //remember selected email
+          this.selected_email = email; //store selected email
 
-          //build array of TagBriefInfo
+          //build list of TagBriefInfo
           foreach (ITag tag in Data.getTagCollection())
           {
             if (tag.hasTag(email))
@@ -139,7 +119,6 @@ namespace EmailReader
               }
             }
           }
-
           //bind to grid
           tagBriefInfoBindingSource.DataSource = arrTagInfo;
           tagBriefInfoBindingSource.ResetBindings(false);
@@ -213,21 +192,17 @@ namespace EmailReader
       showTagListOfSelectedEmail();
     }
 
-    //tag to selected email
+    //tag the selected email
     private void btnAddTag_Click(object sender, EventArgs e)
     {
       //if user selects existing tag
       if (iTagComboBox.SelectedItem != null)
       {
         ITag selected_tag = (ITag)iTagComboBox.SelectedItem;
-        try //try add tag
-        {
-          selected_tag.tagEmail(selected_email, txtNewTagValue.Text);
-        }
-        catch //tag exist --> edit
-        {
+        if (selected_tag.hasTag(selected_email))
           selected_tag.editEmailTag(selected_email, txtNewTagValue.Text);
-        }
+        else
+          selected_tag.tagEmail(selected_email, txtNewTagValue.Text);
       }
       else //user type new tag type, create tag and add tag to email
       {
@@ -247,15 +222,11 @@ namespace EmailReader
         MessageBox.Show("You can not untag default tag", "Warning");
       else
       {
-        try
+        if (selected_tag.hasTag(selected_email))
         {
           selected_tag.untagEmail(selected_email);
+          updateMainScreen();
         }
-        catch (Exception ex)
-        {
-          MessageBox.Show("You want to delete tag " + selected_tag.Name + "\n" + ex.Message, "Error");
-        }
-        updateMainScreen();
       }
     }
 
@@ -266,16 +237,13 @@ namespace EmailReader
       DialogResult dlret = MessageBox.Show("This action will delete this tag from all emails, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
       if (dlret == DialogResult.Yes)
       {
-        if (selected_tag.isDefaultTag == false)
+        if (!selected_tag.isDefaultTag)
         {
-          Data.getTagCollection().Remove(selected_tag); //can hoi Tung lai ham cu the de xoa loai TAG
-
+          Data.removeTag(selected_tag);
           updateMainScreen();
         }
         else
-        {
           MessageBox.Show("You cannot delete a default tag type", "Warning!!!");
-        }
       }
     }
 
@@ -291,11 +259,12 @@ namespace EmailReader
     {
       if (tagBriefInfoDataGridView.SelectedCells.Count > 0)
       {
+        // Get the first selected cell and get its row index
         int selectedRowIndex = tagBriefInfoDataGridView.SelectedCells[0].RowIndex;
         TagBriefInfo tag = (TagBriefInfo)((BindingSource)tagBriefInfoDataGridView.DataSource)[selectedRowIndex];
-        
         iTagComboBox.SelectedItem = tag.getTag();
-        txtNewTagValue.Text = tagBriefInfoDataGridView.Rows[selectedRowIndex].Cells[1].Value.ToString();
+
+        txtNewTagValue.Text = tagBriefInfoDataGridView.Rows[selectedRowIndex].Cells[tagValueColumn.Index].Value.ToString();
       }
     }
 
